@@ -1,0 +1,16 @@
+package bigfarlands6234.farlands.mixin;
+
+import net.minecraft.class_3244;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
+
+@Mixin({class_3244.class})
+public class MixinServerPlayNetworkHandler {
+   public MixinServerPlayNetworkHandler() {
+   }
+
+   @Overwrite
+   private static boolean method_14371(double d, double e, double f, float g, float h) {
+      return false;
+   }
+}

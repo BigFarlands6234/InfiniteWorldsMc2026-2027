@@ -1,0 +1,29 @@
+{
+  "mappings": {
+    "bigfarlands6234/farlands/mixin/MixinWorldBorderProperties": {
+      "\u003cinit\u003e(DDDDIIDJD)V": "Lnet/minecraft/class_2784$class_5200;\u003cinit\u003e(DDDDIIDJD)V"
+    },
+    "bigfarlands6234/farlands/mixin/MixinPlayerEntity": {
+      "Lnet/minecraft/util/math/MathHelper;clamp(DDD)D": "Lnet/minecraft/class_3532;method_15350(DDD)D",
+      "tick": "Lnet/minecraft/class_1657;method_5773()V"
+    },
+    "supercoder79/farlands/mixin/MixinEntity": {
+      "updatePosition": "Lnet/minecraft/class_1297;method_30634(DDD)V",
+      "Lnet/minecraft/util/math/MathHelper;clamp(DDD)D": "Lnet/minecraft/class_3532;method_15350(DDD)D"
+    }
+  },
+  "data": {
+    "named:intermediary": {
+      "bigfarlands6234/farlands/mixin/MixinWorldBorderProperties": {
+        "\u003cinit\u003e(DDDDIIDJD)V": "Lnet/minecraft/class_2784$class_5200;\u003cinit\u003e(DDDDIIDJD)V"
+      },bigfarlands6234/farlands/mixin/MixinPlayerEntity": {
+        "Lnet/minecraft/util/math/MathHelper;clamp(DDD)D": "Lnet/minecraft/class_3532;method_15350(DDD)D",
+        "tick": "Lnet/minecraft/class_1657;method_5773()V"
+      },
+      "bigfarlands6234/farlands/mixin/MixinEntity": {
+        "updatePosition": "Lnet/minecraft/class_1297;method_30634(DDD)V",
+        "Lnet/minecraft/util/math/MathHelper;clamp(DDD)D": "Lnet/minecraft/class_3532;method_15350(DDD)D"
+      }
+    }
+  }
+}

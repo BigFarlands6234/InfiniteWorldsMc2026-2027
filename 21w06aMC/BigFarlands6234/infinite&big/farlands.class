@@ -1,0 +1,11 @@
+package bigfarlands6234.farlands;
+
+import net.fabricmc.api.ModInitializer;
+
+public class Farlands implements ModInitializer {
+   public Farlands() {
+   }
+
+   public void onInitialize() {
+   }
+}

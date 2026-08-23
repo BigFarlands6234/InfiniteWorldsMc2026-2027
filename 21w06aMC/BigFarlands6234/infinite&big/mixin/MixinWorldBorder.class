@@ -1,0 +1,30 @@
+package bigfarlands6234.farlands.mixin;
+
+import net.minecraft.class_2784;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+@Mixin({class_2784.class})
+public class MixinWorldBorder {
+   @Shadow
+   private int field_12732;
+   @Shadow
+   private class_2784.class_2785 field_12736;
+
+   public MixinWorldBorder() {
+   }
+
+   @Inject(
+      method = {"<init>"},
+      at = {@At("RETURN")}
+   )
+   private void handleConstructor(CallbackInfo ci) {
+      this.field_12732 = Integer.MAX_VALUE;
+      class_2784 var10003 = (class_2784)this;
+      ((class_2784)this).getClass();
+      this.field_12736 = new class_2784.class_2787(var10003, 4.294967294E9);
+   }
+}

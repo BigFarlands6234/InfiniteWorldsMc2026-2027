@@ -1,0 +1,42 @@
+package bigfarlands6234.farlands.mixin;
+
+import net.minecraft.class_3532;
+import net.minecraft.class_5832;
+import org.spongepowered.asm.mixin.Final;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.Shadow;
+
+@Mixin({class_5832.class})
+public class MixinAquiferSampler {
+   @Shadow
+   @Final
+   private int field_28822;
+   @Shadow
+   @Final
+   private int field_28823;
+   @Shadow
+   @Final
+   private int field_28824;
+   @Shadow
+   @Final
+   private int field_28825;
+   @Shadow
+   @Final
+   private int field_28826;
+   @Shadow
+   @Final
+   private int[] field_28816;
+
+   public MixinAquiferSampler() {
+   }
+
+   @Overwrite
+   private int method_33741(int x, int y, int z) {
+      int i = x - this.field_28822;
+      int j = y - this.field_28823;
+      int k = z - this.field_28824;
+      int dx = (j * this.field_28826 + k) * this.field_28825 + i;
+      return class_3532.method_15340(dx, 0, this.field_28816.length - 1);
+   }
+}

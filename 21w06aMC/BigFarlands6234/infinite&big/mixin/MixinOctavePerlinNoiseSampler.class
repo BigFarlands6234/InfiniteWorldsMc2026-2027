@@ -1,0 +1,16 @@
+package bigfarlands6234.farlands.mixin;
+
+import net.minecraft.class_3537;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
+
+@Mixin({class_3537.class})
+public class MixinOctavePerlinNoiseSampler {
+   public MixinOctavePerlinNoiseSampler() {
+   }
+
+   @Overwrite
+   public static double method_16452(double value) {
+      return value;
+   }
+}

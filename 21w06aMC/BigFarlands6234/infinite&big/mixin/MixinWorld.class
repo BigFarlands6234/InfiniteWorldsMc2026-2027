@@ -1,0 +1,22 @@
+package bigfarlands6234.farlands.mixin;
+
+import net.minecraft.class_1937;
+import net.minecraft.class_2338;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
+
+@Mixin({class_1937.class})
+public class MixinWorld {
+   public MixinWorld() {
+   }
+
+   @Overwrite
+   private static boolean method_8558(class_2338 pos) {
+      return pos.method_10263() >= Integer.MIN_VALUE && pos.method_10260() >= Integer.MIN_VALUE && pos.method_10263() < Integer.MAX_VALUE && pos.method_10260() < Integer.MAX_VALUE;
+   }
+
+   @Overwrite
+   private static boolean method_25952(int y) {
+      return y < Integer.MIN_VALUE || y >= Integer.MAX_VALUE;
+   }
+}

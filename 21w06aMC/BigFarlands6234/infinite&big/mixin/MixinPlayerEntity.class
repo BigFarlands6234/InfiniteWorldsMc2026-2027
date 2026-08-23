@@ -1,0 +1,24 @@
+package bigfarlands6234.farlands.mixin;
+
+import net.minecraft.class_1657;
+import net.minecraft.class_3532;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Redirect;
+
+@Mixin({class_1657.class})
+public class MixinPlayerEntity {
+   public MixinPlayerEntity() {
+   }
+
+   @Redirect(
+      method = {"tick"},
+      at = @At(
+   target = "Lnet/minecraft/util/math/MathHelper;clamp(DDD)D",
+   value = "INVOKE"
+)
+   )
+   private double redirectClamp(double value, double min, double max) {
+      return class_3532.method_15350(value, (double)Integer.MIN_VALUE, (double)Integer.MAX_VALUE);
+   }
+}

@@ -1,0 +1,53 @@
+package org.mcmodule.util;
+
+import java.util.LinkedList;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Function;
+
+public class ObjectAllocator<T extends Recycleable> {
+   private final int maxSize;
+   private final Function<ObjectAllocator<T>, T> allocateFunc;
+   private final LinkedList<T> objects;
+   private AtomicInteger size;
+
+   public ObjectAllocator(Function<ObjectAllocator<T>, T> allocateFunc) {
+      this(Integer.MAX_VALUE, allocateFunc);
+   }
+
+   public ObjectAllocator(int maxSize, Function<ObjectAllocator<T>, T> allocateFunc) {
+      this.objects = new LinkedList();
+      this.size = new AtomicInteger();
+      this.maxSize = maxSize;
+      this.allocateFunc = allocateFunc;
+   }
+
+   public T allocate() {
+      T obj = (T)(this.objects.poll());
+      if (obj == null) {
+         obj = this.newObject();
+      } else {
+         this.size.decrementAndGet();
+         obj.onRecycle();
+      }
+
+      return obj;
+   }
+
+   public boolean deallocate(T obj) {
+      if (this.size.getAndIncrement() >= this.maxSize) {
+         return false;
+      } else {
+         obj.markRecycled(this);
+         return this.objects.add(obj);
+      }
+   }
+
+   public void clear() {
+      this.objects.clear();
+      this.size.set(0);
+   }
+
+   private T newObject() {
+      return (T)(this.allocateFunc.apply(this));
+   }
+}

@@ -1,0 +1,16 @@
+[
+{
+  "modid": "farlandsbit",
+  "name": "farlands32bit",
+  "description": "a farlands mod you can probaly config.",
+  "version": "1.3",
+  "mcversion": "1.12.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Bigfarlands6234"],
+  "credits": "none",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

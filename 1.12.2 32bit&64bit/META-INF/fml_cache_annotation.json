@@ -1,0 +1,26 @@
+{
+  "com/bigfarlands6234/farlands/FarLandsCore": {
+    "name": "com/bigfarlands6234/farlands/FarLandsCore",
+    "interfaces": [
+      "net/minecraftforge/fml/relauncher/IFMLLoadingPlugin"
+    ],
+    "annotations": [
+      {
+        "type": "CLASS",
+        "name": "Lnet/minecraftforge/fml/relauncher/IFMLLoadingPlugin$TransformerExclusions;",
+        "target": "com/thistestuser/farlands/FarLandsCore",
+        "value": {
+          "values": [
+            "com.bigfarlands6234.farlands"
+          ]
+        }
+      }
+    ]
+  },
+  "com/bigfarlands6234/farlands/FarLandsTransformer": {
+    "name": "com/bigfarlands6234/farlands/FarLandsTransformer",
+    "interfaces": [
+      "net/minecraft/launchwrapper/IClassTransformer"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+package org.mcmodule.util;
+
+import java.util.LinkedList;
+import java.util.concurrent.ConcurrentHashMap;
+
+public class IntArrayAllcator {
+   private final int maxSize;
+   private final ConcurrentHashMap<Integer, LinkedList<int[]>> objects;
+
+   public IntArrayAllcator() {
+      this(1000);
+   }
+
+   public IntArrayAllcator(int maxSize) {
+      this.objects = new ConcurrentHashMap();
+      this.maxSize = maxSize;
+   }
+
+   public int[] allocate(int size) {
+      int[] array;
+      return (array = (int[])((LinkedList)this.objects.computeIfAbsent(size, (s) -> new LinkedList())).poll()) == null ? new int[size] : array;
+   }
+
+   public boolean deallocate(int[] array) {
+      LinkedList<int[]> list = (LinkedList)this.objects.computeIfAbsent(array.length, (s) -> new LinkedList());
+      return list.size() >= this.maxSize ? false : list.add(array);
+   }
+
+   public synchronized void clear() {
+      this.objects.clear();
+   }
+}

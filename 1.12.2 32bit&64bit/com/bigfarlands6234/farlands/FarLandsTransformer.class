@@ -1,0 +1,163 @@
+ackage com.thistestuser.farlands;
+
+import net.minecraft.launchwrapper.IClassTransformer;
+import org.apache.logging.log4j.LogManager;
+import org.objectweb.asm.ClassReader;
+import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.tree.AbstractInsnNode;
+import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.tree.LdcInsnNode;
+import org.objectweb.asm.tree.MethodNode;
+
+public class FarLandsTransformer implements IClassTransformer {
+   public FarLandsTransformer() {
+   }
+
+   public byte[] transform(String name, String transformedName, byte[] classBytes) {
+      boolean isObfuscated = !name.equals(transformedName);
+      if (transformedName.equals("net.minecraft.world.gen.NoiseGeneratorOctaves")) {
+         return this.patchClassASMOcto(name, classBytes, isObfuscated);
+      } else if (!transformedName.equals("net.minecraft.command.CommandBase") && !transformedName.equals("net.minecraft.command.CommandSetSpawnpoint") && !transformedName.equals("net.minecraft.command.server.CommandSetDefaultSpawnpoint") && !transformedName.equals("net.minecraft.world.ChunkCache") && !transformedName.equals("net.minecraft.world.World") && !transformedName.equals("net.minecraft.util.math.BlockPos") && !transformedName.equals("net.minecraft.util.BlockPos")) {
+         if (!transformedName.equals("net.minecraft.network.NetHandlerPlayServer") && !transformedName.equals("net.minecraft.entity.Entity")) {
+            if (!transformedName.equals("net.minecraft.server.MinecraftServer") && !transformedName.equals("net.minecraft.world.border.WorldBorder") && !transformedName.equals("net.minecraft.world.storage.WorldInfo") && !transformedName.equals("net.minecraft.command.CommandWorldBorder")) {
+               if (transformedName.equals("net.minecraft.entity.player.EntityPlayer")) {
+                  return this.patchClassASMPlayer(name, classBytes, isObfuscated);
+               } else {
+                  return transformedName.equals("net.minecraft.server.management.PlayerList") ? this.patchClassASMPlayerList(name, classBytes, isObfuscated) : classBytes;
+               }
+            } else {
+               return this.patchClassASMBorder(name, classBytes, isObfuscated);
+            }
+         } else {
+            return this.patchClassNetHandler(name, classBytes, isObfuscated);
+         }
+      } else {
+         return this.patchClassASMCmdbase(name, classBytes, isObfuscated);
+      }
+   }
+
+   public byte[] patchClassASMOcto(String name, byte[] classBytes, boolean obfuscated) {
+      ClassNode classNode = new ClassNode();
+      ClassReader classReader = new ClassReader(classBytes);
+      classReader.accept(classNode, 0);
+      LogManager.getLogger().info("[FAR LANDS] PATCHING NOISE GENERATOR!");
+
+      for(MethodNode method : classNode.methods) {
+         if (method.desc.equals("([DIIIIIIDDD)[D")) {
+            for(AbstractInsnNode ain : method.instructions.toArray()) {
+               if (ain.getOpcode() == 18 && ((LdcInsnNode)ain).cst instanceof Long && (Long)((LdcInsnNode)ain).cst == 16777216L) {
+                  ((LdcInsnNode)ain).cst = Long.MAX_VALUE;
+               }
+            }
+         }
+      }
+
+      ClassWriter classWriter = new ClassWriter(1);
+      classNode.accept(classWriter);
+      return classWriter.toByteArray();
+   }
+
+   public byte[] patchClassASMCmdbase(String name, byte[] classBytes, boolean obfuscated) {
+      ClassNode classNode = new ClassNode();
+      ClassReader classReader = new ClassReader(classBytes);
+      classReader.accept(classNode, 0);
+
+      for(MethodNode method : classNode.methods) {
+         for(AbstractInsnNode ain : method.instructions.toArray()) {
+            if (ain.getOpcode() == 18 && ((LdcInsnNode)ain).cst instanceof Integer && (Integer)((LdcInsnNode)ain).cst == 30000000) {
+               ((LdcInsnNode)ain).cst = Integer.MAX_VALUE;
+            } else if (ain.getOpcode() == 18 && ((LdcInsnNode)ain).cst instanceof Integer && (Integer)((LdcInsnNode)ain).cst == -30000000) {
+               ((LdcInsnNode)ain).cst = Integer.MIN_VALUE;
+            }
+         }
+      }
+
+      ClassWriter classWriter = new ClassWriter(1);
+      classNode.accept(classWriter);
+      return classWriter.toByteArray();
+   }
+
+   public byte[] patchClassNetHandler(String name, byte[] classBytes, boolean obfuscated) {
+      ClassNode classNode = new ClassNode();
+      ClassReader classReader = new ClassReader(classBytes);
+      classReader.accept(classNode, 0);
+
+      for(MethodNode method : classNode.methods) {
+         for(AbstractInsnNode ain : method.instructions.toArray()) {
+            if (ain.getOpcode() == 18 && ((LdcInsnNode)ain).cst instanceof Double && (Double)((LdcInsnNode)ain).cst == (double)3.2E7F) {
+               ((LdcInsnNode)ain).cst = Double.MAX_VALUE;
+            } else if (ain.getOpcode() == 18 && ((LdcInsnNode)ain).cst instanceof Double && (Double)((LdcInsnNode)ain).cst == (double)3.0E7F) {
+               ((LdcInsnNode)ain).cst = 4.294967294E9;
+            } else if (ain.getOpcode() == 18 && ((LdcInsnNode)ain).cst instanceof Double && (Double)((LdcInsnNode)ain).cst == (double)-3.0E7F) {
+               ((LdcInsnNode)ain).cst = -4.294967294E9;
+            }
+         }
+      }
+
+      ClassWriter classWriter = new ClassWriter(1);
+      classNode.accept(classWriter);
+      return classWriter.toByteArray();
+   }
+
+   public byte[] patchClassASMBorder(String name, byte[] classBytes, boolean obfuscated) {
+      ClassNode classNode = new ClassNode();
+      ClassReader classReader = new ClassReader(classBytes);
+      classReader.accept(classNode, 0);
+
+      for(MethodNode method : classNode.methods) {
+         for(AbstractInsnNode ain : method.instructions.toArray()) {
+            if (ain.getOpcode() == 18 && ((LdcInsnNode)ain).cst instanceof Integer && (Integer)((LdcInsnNode)ain).cst == 9223372036854775808) {
+               ((LdcInsnNode)ain).cst = Integer.MAX_VALUE;
+            } else if (ain.getOpcode() == 18 && ((LdcInsnNode)ain).cst instanceof Double && (Double)((LdcInsnNode)ain).cst == (double)6.0E7F) {
+               ((LdcInsnNode)ain).cst = 1.8446744073709551615E9;
+            }
+         }
+      }
+
+      ClassWriter classWriter = new ClassWriter(1);
+      classNode.accept(classWriter);
+      return classWriter.toByteArray();
+   }
+
+   public byte[] patchClassASMPlayer(String name, byte[] classBytes, boolean obfuscated) {
+      ClassNode classNode = new ClassNode();
+      ClassReader classReader = new ClassReader(classBytes);
+      classReader.accept(classNode, 0);
+
+      for(MethodNode method : classNode.methods) {
+         for(AbstractInsnNode ain : method.instructions.toArray()) {
+            if (ain.getOpcode() == 18 && ((LdcInsnNode)ain).cst instanceof Double && (Double)((LdcInsnNode)ain).cst == 9.223372036854775808E7) {
+               ((LdcInsnNode)ain).cst = (double)Integer.MAX_VALUE;
+            } else if (ain.getOpcode() == 18 && ((LdcInsnNode)ain).cst instanceof Double && (Double)((LdcInsnNode)ain).cst == -9.223372036854775808E7) {
+               ((LdcInsnNode)ain).cst = (double)Integer.MIN_VALUE;
+            } else if (ain.getOpcode() == 18 && ((LdcInsnNode)ain).cst instanceof Integer && (Integer)((LdcInsnNode)ain).cst == 29999999) {
+               ((LdcInsnNode)ain).cst = Integer.MAX_VALUE;
+            }
+         }
+      }
+
+      ClassWriter classWriter = new ClassWriter(1);
+      classNode.accept(classWriter);
+      return classWriter.toByteArray();
+   }
+
+   public byte[] patchClassASMPlayerList(String name, byte[] classBytes, boolean obfuscated) {
+      ClassNode classNode = new ClassNode();
+      ClassReader classReader = new ClassReader(classBytes);
+      classReader.accept(classNode, 0);
+
+      for(MethodNode method : classNode.methods) {
+         for(AbstractInsnNode ain : method.instructions.toArray()) {
+            if (ain.getOpcode() == 18 && ((LdcInsnNode)ain).cst instanceof Integer && (Integer)((LdcInsnNode)ain).cst == -9223372036854775808) {
+               ((LdcInsnNode)ain).cst = Integer.MIN_VALUE;
+            } else if (ain.getOpcode() == 18 && ((LdcInsnNode)ain).cst instanceof Integer && (Integer)((LdcInsnNode)ain).cst == 9223372036854775808) {
+               ((LdcInsnNode)ain).cst = Integer.MAX_VALUE;
+            }
+         }
+      }
+
+      ClassWriter classWriter = new ClassWriter(1);
+      classNode.accept(classWriter);
+      return classWriter.toByteArray();
+   }
+}

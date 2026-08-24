@@ -1,4 +1,4 @@
-ackage com.thistestuser.farlands;
+package com.thistestuser.farlands;
 
 import net.minecraft.launchwrapper.IClassTransformer;
 import org.apache.logging.log4j.LogManager;

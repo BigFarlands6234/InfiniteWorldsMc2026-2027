@@ -1,0 +1,60 @@
+package org.mcmodule.math;
+
+class SignedMutableBigInteger extends MutableBigInteger {
+   int sign = 1;
+
+   SignedMutableBigInteger() {
+   }
+
+   SignedMutableBigInteger(int val) {
+      super(val);
+   }
+
+   SignedMutableBigInteger(MutableBigInteger val) {
+      super(val);
+   }
+
+   void signedAdd(SignedMutableBigInteger addend) {
+      if (this.sign == addend.sign) {
+         this.add(addend);
+      } else {
+         this.sign *= this.subtract(addend);
+      }
+
+   }
+
+   void signedAdd(MutableBigInteger addend) {
+      if (this.sign == 1) {
+         this.add(addend);
+      } else {
+         this.sign *= this.subtract(addend);
+      }
+
+   }
+
+   void signedSubtract(SignedMutableBigInteger addend) {
+      if (this.sign == addend.sign) {
+         this.sign *= this.subtract(addend);
+      } else {
+         this.add(addend);
+      }
+
+   }
+
+   void signedSubtract(MutableBigInteger addend) {
+      if (this.sign == 1) {
+         this.sign *= this.subtract(addend);
+      } else {
+         this.add(addend);
+      }
+
+      if (this.intLen == 0) {
+         this.sign = 1;
+      }
+
+   }
+
+   public String toString() {
+      return this.toBigInteger(this.sign).toString();
+   }
+}

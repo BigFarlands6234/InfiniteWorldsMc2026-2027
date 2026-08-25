@@ -1,0 +1,18 @@
+package net.minecraft;
+
+import it.unimi.dsi.fastutil.Hash;
+
+enum Util$IdentityStrategy implements Hash.Strategy<Object> {
+   INSTANCE;
+
+   private Util$IdentityStrategy() {
+   }
+
+   public int hashCode(Object p_137626_) {
+      return System.identityHashCode(p_137626_);
+   }
+
+   public boolean equals(Object p_137623_, Object p_137624_) {
+      return p_137623_ == p_137624_;
+   }
+}

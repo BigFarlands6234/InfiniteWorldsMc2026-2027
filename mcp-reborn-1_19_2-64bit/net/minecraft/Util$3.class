@@ -1,0 +1,27 @@
+package net.minecraft;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.function.BooleanSupplier;
+
+class Util$3 implements BooleanSupplier {
+   Util$3(Path var1, Path var2) {
+      this.val$p_137503_ = var1;
+      this.val$p_137504_ = var2;
+   }
+
+   public boolean getAsBoolean() {
+      try {
+         Files.move(this.val$p_137503_, this.val$p_137504_);
+         return true;
+      } catch (IOException ioexception) {
+         Util.LOGGER.error("Failed to rename", ioexception);
+         return false;
+      }
+   }
+
+   public String toString() {
+      return "rename " + this.val$p_137503_ + " to " + this.val$p_137504_;
+   }
+}

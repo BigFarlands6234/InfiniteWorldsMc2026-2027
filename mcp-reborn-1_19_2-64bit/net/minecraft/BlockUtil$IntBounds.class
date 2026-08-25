@@ -1,0 +1,15 @@
+package net.minecraft;
+
+public class BlockUtil$IntBounds {
+   public final int min;
+   public final int max;
+
+   public BlockUtil$IntBounds(int p_124358_, int p_124359_) {
+      this.min = p_124358_;
+      this.max = p_124359_;
+   }
+
+   public String toString() {
+      return "IntBounds{min=" + this.min + ", max=" + this.max + "}";
+   }
+}

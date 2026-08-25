@@ -1,0 +1,15 @@
+package net.minecraft;
+
+import net.minecraft.core.BlockPos;
+
+public class BlockUtil$FoundRectangle {
+   public final BlockPos minCorner;
+   public final int axis1Size;
+   public final int axis2Size;
+
+   public BlockUtil$FoundRectangle(BlockPos p_124352_, int p_124353_, int p_124354_) {
+      this.minCorner = p_124352_;
+      this.axis1Size = p_124353_;
+      this.axis2Size = p_124354_;
+   }
+}

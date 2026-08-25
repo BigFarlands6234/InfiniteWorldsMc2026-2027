@@ -1,0 +1,12 @@
+package net.minecraft;
+
+import com.google.common.base.Ticker;
+
+class Util$1 extends Ticker {
+   Util$1() {
+   }
+
+   public long read() {
+      return Util.timeSource.getAsLong();
+   }
+}

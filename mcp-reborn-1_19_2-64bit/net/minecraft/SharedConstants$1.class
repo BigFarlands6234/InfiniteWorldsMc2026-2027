@@ -1,0 +1,19 @@
+package net.minecraft;
+
+import net.minecraft.util.datafix.DataFixerOptimizationOption;
+
+// $FF: synthetic class
+class SharedConstants$1 {
+   static {
+      try {
+         $SwitchMap$net$minecraft$util$datafix$DataFixerOptimizationOption[DataFixerOptimizationOption.INITIALIZED_UNOPTIMIZED.ordinal()] = 1;
+      } catch (NoSuchFieldError var2) {
+      }
+
+      try {
+         $SwitchMap$net$minecraft$util$datafix$DataFixerOptimizationOption[DataFixerOptimizationOption.INITIALIZED_OPTIMIZED.ordinal()] = 2;
+      } catch (NoSuchFieldError var1) {
+      }
+
+   }
+}

@@ -1,0 +1,12 @@
+package net.minecraft;
+
+import java.net.URL;
+
+enum Util$OS$2 {
+   private Util$OS$2(String p_183998_) {
+   }
+
+   protected String[] getOpenUrlArguments(URL p_137667_) {
+      return new String[]{"open", p_137667_.toString()};
+   }
+}

@@ -1,0 +1,95 @@
+import java.util.ArrayList;
+import java.util.Random;
+
+public class xc extends agy {
+   private Random a = new Random();
+
+   public xc(int par1) {
+      super(par1, acn.f);
+      this.bN = 157;
+   }
+
+   public boolean a() {
+      return false;
+   }
+
+   public int d() {
+      return 25;
+   }
+
+   public kw u_() {
+      return new amc();
+   }
+
+   public boolean b() {
+      return false;
+   }
+
+   public void getCollidingBoundingBoxes(xd par1World, long par2, int par3, long par4, wu par5AxisAlignedBB, ArrayList par6ArrayList) {
+      this.a(0.4375F, 0.0F, 0.4375F, 0.5625F, 0.875F, 0.5625F);
+      super.getCollidingBoundingBoxes(par1World, par2, par3, par4, par5AxisAlignedBB, par6ArrayList);
+      this.h();
+      super.getCollidingBoundingBoxes(par1World, par2, par3, par4, par5AxisAlignedBB, par6ArrayList);
+   }
+
+   public void h() {
+      this.a(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
+   }
+
+   public boolean blockActivated(xd par1World, long par2, int par3, long par4, yw par5EntityPlayer) {
+      if (par1World.F) {
+         return true;
+      } else {
+         amc tileentitybrewingstand = (amc)par1World.getBlockTileEntity(par2, par3, par4);
+         if (tileentitybrewingstand != null) {
+            par5EntityPlayer.a(tileentitybrewingstand);
+         }
+
+         return true;
+      }
+   }
+
+   public void randomDisplayTick(xd par1World, long par2, int par3, long par4, Random par5Random) {
+      double d = (double)par2 + 0.4 + (double)(par5Random.nextFloat() * 0.2F);
+      double d1 = (double)par3 + 0.7 + (double)(par5Random.nextFloat() * 0.3F);
+      double d2 = (double)par4 + 0.4 + (double)(par5Random.nextFloat() * 0.2F);
+      par1World.a("smoke", d, d1, d2, (double)0.0F, (double)0.0F, (double)0.0F);
+   }
+
+   public void onBlockRemoval(xd par1World, long par2, int par3, long par4) {
+      kw tileentity = par1World.getBlockTileEntity(par2, par3, par4);
+      if (tileentity != null && tileentity instanceof amc) {
+         amc tileentitybrewingstand = (amc)tileentity;
+
+         for(int i = 0; i < tileentitybrewingstand.a(); ++i) {
+            aan itemstack = tileentitybrewingstand.k_(i);
+            if (itemstack != null) {
+               double f = (double)(this.a.nextFloat() * 0.8F + 0.1F);
+               double f1 = (double)(this.a.nextFloat() * 0.8F + 0.1F);
+               double f2 = (double)(this.a.nextFloat() * 0.8F + 0.1F);
+
+               while(itemstack.a > 0) {
+                  int j = this.a.nextInt(21) + 10;
+                  if (j > itemstack.a) {
+                     j = itemstack.a;
+                  }
+
+                  itemstack.a -= j;
+                  fq entityitem = new fq(par1World, (double)par2 + f, (double)par3 + f1, (double)par4 + f2, new aan(itemstack.c, j, itemstack.i()));
+                  float f3 = 0.05F;
+                  entityitem.r = (double)((float)this.a.nextGaussian() * f3);
+                  entityitem.s = (double)((float)this.a.nextGaussian() * f3 + 0.2F);
+                  entityitem.t = (double)((float)this.a.nextGaussian() * f3);
+                  par1World.a(entityitem);
+               }
+            }
+         }
+      }
+
+      super.onBlockRemoval(par1World, par2, par3, par4);
+   }
+
+   public int a(int par1, Random par2Random, int par3) {
+      return yr.by.bQ;
+   }
+}

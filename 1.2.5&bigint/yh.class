@@ -1,0 +1,100 @@
+import java.util.List;
+import java.util.Random;
+
+public class yh implements ca {
+   private xd a;
+   private Random b;
+   private final boolean c;
+   private an d = new an(1);
+
+   public yh(xd par1World, long par2, boolean par4) {
+      this.a = par1World;
+      this.c = par4;
+      this.b = new Random(par2);
+   }
+
+   private void a(byte[] par1ArrayOfByte) {
+      int i = par1ArrayOfByte.length / 256;
+
+      for(int j = 0; j < 16; ++j) {
+         for(int k = 0; k < 16; ++k) {
+            for(int l = 0; l < i; ++l) {
+               int i1 = 0;
+               if (l == 0) {
+                  i1 = pb.z.bO;
+               } else if (l <= 2) {
+                  i1 = pb.v.bO;
+               } else if (l == 3) {
+                  i1 = pb.u.bO;
+               }
+
+               par1ArrayOfByte[j << 11 | k << 7 | l] = (byte)i1;
+            }
+         }
+      }
+
+   }
+
+   public ack loadChunk(long par1, long par2) {
+      return this.provideChunk(par1, par2);
+   }
+
+   public ack provideChunk(long par1, long par2) {
+      byte[] abyte0 = new byte['耀'];
+      this.a(abyte0);
+      ack chunk = new ack(this.a, abyte0, par1, par2);
+      if (this.c) {
+         this.d.generate(this, this.a, par1, par2, abyte0);
+      }
+
+      abn[] abiomegenbase = this.a.i().loadBlockGeneratorData((abn[])null, par1 * 16L, par2 * 16L, 16, 16);
+      byte[] abyte1 = chunk.m();
+
+      for(int i = 0; i < abyte1.length; ++i) {
+         abyte1[i] = (byte)abiomegenbase[i].M;
+      }
+
+      chunk.b();
+      return chunk;
+   }
+
+   public boolean chunkExists(long par1, long par2) {
+      return true;
+   }
+
+   public void populate(ca par1IChunkProvider, long par2, long par3) {
+      this.b.setSeed(this.a.v());
+      long l = this.b.nextLong() / 2L * 2L + 1L;
+      long l1 = this.b.nextLong() / 2L * 2L + 1L;
+      this.b.setSeed(par2 * l + par3 * l1 ^ this.a.v());
+      if (this.c) {
+         this.d.generateStructuresInChunk(this.a, this.b, par2, par3);
+      }
+
+   }
+
+   public boolean a(boolean par1, rw par2IProgressUpdate) {
+      return true;
+   }
+
+   public boolean a() {
+      return false;
+   }
+
+   public boolean b() {
+      return true;
+   }
+
+   public String c() {
+      return "FlatLevelSource";
+   }
+
+   public List getPossibleCreatures(acf par1EnumCreatureType, long par2, int par3, long par4) {
+      abn biomegenbase = this.a.getBiomeGenForCoords(par2, par4);
+      return biomegenbase == null ? null : biomegenbase.a(par1EnumCreatureType);
+   }
+
+   public qo findClosestStructure(xd par1World, String par2Str, long par3, int i, long j) {
+      return null;
+   }
+}

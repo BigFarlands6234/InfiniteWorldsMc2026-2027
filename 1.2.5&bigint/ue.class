@@ -1,0 +1,39 @@
+public class ue extends is {
+   private int i;
+
+   public ue(acq par1EntityLiving) {
+      super(par1EntityLiving);
+   }
+
+   public boolean a() {
+      if (!super.a()) {
+         return false;
+      } else {
+         return !this.e.func_48213_h(this.a.k, this.b, this.c, this.d);
+      }
+   }
+
+   public void c() {
+      super.c();
+      this.i = 240;
+   }
+
+   public boolean b() {
+      double d = this.a.f((double)this.b, (double)this.c, (double)this.d);
+      return this.i >= 0 && !this.e.func_48213_h(this.a.k, this.b, this.c, this.d) && d < (double)4.0F;
+   }
+
+   public void e() {
+      super.e();
+      if (this.a.aO().nextInt(20) == 0) {
+         this.a.k.playAuxSFX(1010, this.b, this.c, this.d, 0);
+      }
+
+      if (--this.i == 0 && this.a.k.q == 3) {
+         this.a.k.setBlockWithNotify(this.b, this.c, this.d, 0);
+         this.a.k.playAuxSFX(1012, this.b, this.c, this.d, 0);
+         this.a.k.playAuxSFX(2001, this.b, this.c, this.d, this.e.bO);
+      }
+
+   }
+}

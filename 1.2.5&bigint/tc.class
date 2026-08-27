@@ -1,0 +1,68 @@
+import java.util.ArrayList;
+import java.util.Random;
+
+public class tc extends agy {
+   public static boolean a = false;
+
+   protected tc(int par1, acn par2Material) {
+      super(par1, 0, par2Material);
+      this.a(1.0F);
+   }
+
+   public kw u_() {
+      return new bw();
+   }
+
+   public void setBlockBoundsBasedOnState(ali par1IBlockAccess, long par2, int par3, long par4) {
+      float f = 0.0625F;
+      this.a(0.0F, 0.0F, 0.0F, 1.0F, f, 1.0F);
+   }
+
+   public boolean shouldSideBeRendered(ali par1IBlockAccess, long par2, int par3, long par4, int par5) {
+      return par5 != 0 ? false : super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, par5);
+   }
+
+   public void getCollidingBoundingBoxes(xd world, long i, int j, long k, wu axisalignedbb, ArrayList arraylist) {
+   }
+
+   public boolean a() {
+      return false;
+   }
+
+   public boolean b() {
+      return false;
+   }
+
+   public int a(Random par1Random) {
+      return 0;
+   }
+
+   public void onEntityCollidedWithBlock(xd par1World, long par2, int par3, long par4, nn par5Entity) {
+      if (par5Entity.j == null && par5Entity.i == null && par5Entity instanceof yw && !par1World.F) {
+         ((yw)par5Entity).c(1);
+      }
+
+   }
+
+   public void randomDisplayTick(xd par1World, long par2, int par3, long par4, Random par5Random) {
+      double d = (double)par2 + (double)par5Random.nextFloat();
+      double d1 = (double)par3 + 0.8;
+      double d2 = (double)par4 + (double)par5Random.nextFloat();
+      double d3 = (double)0.0F;
+      double d4 = (double)0.0F;
+      double d5 = (double)0.0F;
+      par1World.a("smoke", d, d1, d2, d3, d4, d5);
+   }
+
+   public int d() {
+      return -1;
+   }
+
+   public void onBlockAdded(xd par1World, long par2, int par3, long par4) {
+      if (!a) {
+         if (par1World.t.g != 0) {
+            par1World.setBlockWithNotify(par2, par3, par4, 0);
+         }
+      }
+   }
+}

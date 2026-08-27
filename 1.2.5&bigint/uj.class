@@ -1,0 +1,110 @@
+import java.util.Random;
+
+public class uj extends pb {
+   private boolean a;
+
+   public uj(int par1, int par2, boolean par3) {
+      super(par1, par2, acn.e);
+      if (par3) {
+         this.a(true);
+      }
+
+      this.a = par3;
+   }
+
+   public int e() {
+      return 30;
+   }
+
+   public void a(xd par1World, int par2, int par3, int par4, yw par5EntityPlayer) {
+      this.h(par1World, par2, par3, par4);
+      super.onBlockClicked(par1World, (long)par2, par3, (long)par4, par5EntityPlayer);
+   }
+
+   public void b(xd par1World, int par2, int par3, int par4, nn par5Entity) {
+      this.h(par1World, par2, par3, par4);
+      super.onEntityWalking(par1World, (long)par2, par3, (long)par4, par5Entity);
+   }
+
+   public boolean b(xd par1World, int par2, int par3, int par4, yw par5EntityPlayer) {
+      this.h(par1World, par2, par3, par4);
+      return super.blockActivated(par1World, (long)par2, par3, (long)par4, par5EntityPlayer);
+   }
+
+   private void h(xd par1World, int par2, int par3, int par4) {
+      this.i(par1World, par2, par3, par4);
+      if (this.bO == pb.aN.bO) {
+         par1World.setBlockWithNotify((long)par2, par3, (long)par4, pb.aO.bO);
+      }
+
+   }
+
+   public void a(xd par1World, int par2, int par3, int par4, Random par5Random) {
+      if (this.bO == pb.aO.bO) {
+         par1World.setBlockWithNotify((long)par2, par3, (long)par4, pb.aN.bO);
+      }
+
+   }
+
+   public int a(int par1, Random par2Random, int par3) {
+      return yr.aC.bQ;
+   }
+
+   public int a(int par1, Random par2Random) {
+      return this.a(par2Random) + par2Random.nextInt(par1 + 1);
+   }
+
+   public int a(Random par1Random) {
+      return 4 + par1Random.nextInt(2);
+   }
+
+   public void b(xd par1World, int par2, int par3, int par4, Random par5Random) {
+      if (this.a) {
+         this.i(par1World, par2, par3, par4);
+      }
+
+   }
+
+   private void i(xd par1World, int par2, int par3, int par4) {
+      Random random = par1World.r;
+      double d = (double)0.0625F;
+
+      for(int i = 0; i < 6; ++i) {
+         double d1 = (double)((float)par2 + random.nextFloat());
+         double d2 = (double)((float)par3 + random.nextFloat());
+         double d3 = (double)((float)par4 + random.nextFloat());
+         if (i == 0 && !par1World.isBlockOpaqueCube((long)par2, par3 + 1, (long)par4)) {
+            d2 = (double)(par3 + 1) + d;
+         }
+
+         if (i == 1 && !par1World.isBlockOpaqueCube((long)par2, par3 - 1, (long)par4)) {
+            d2 = (double)(par3 + 0) - d;
+         }
+
+         if (i == 2 && !par1World.isBlockOpaqueCube((long)par2, par3, (long)(par4 + 1))) {
+            d3 = (double)(par4 + 1) + d;
+         }
+
+         if (i == 3 && !par1World.isBlockOpaqueCube((long)par2, par3, (long)(par4 - 1))) {
+            d3 = (double)(par4 + 0) - d;
+         }
+
+         if (i == 4 && !par1World.isBlockOpaqueCube((long)(par2 + 1), par3, (long)par4)) {
+            d1 = (double)(par2 + 1) + d;
+         }
+
+         if (i == 5 && !par1World.isBlockOpaqueCube((long)(par2 - 1), par3, (long)par4)) {
+            d1 = (double)(par2 + 0) - d;
+         }
+
+         if (d1 < (double)par2 || d1 > (double)(par2 + 1) || d2 < (double)0.0F || d2 > (double)(par3 + 1) || d3 < (double)par4 || d3 > (double)(par4 + 1)) {
+            par1World.a("reddust", d1, d2, d3, (double)0.0F, (double)0.0F, (double)0.0F);
+         }
+      }
+
+   }
+
+   protected aan b(int par1) {
+      return new aan(pb.aN);
+   }
+}

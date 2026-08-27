@@ -1,0 +1,34 @@
+public class vg extends rt {
+   public vg(xd par1World, double par2, double par4, double par6, double par8, double par10, double par12) {
+      super(par1World, par2, par4, par6, par8, par10, par12);
+      this.ao = 1.0F;
+      this.ap = 1.0F;
+      this.aq = 1.0F;
+      this.c(32);
+      this.a(0.02F, 0.02F);
+      this.am *= this.U.nextFloat() * 0.6F + 0.2F;
+      this.r = par8 * (double)0.2F + (double)((float)(Math.random() * (double)2.0F - (double)1.0F) * 0.02F);
+      this.s = par10 * (double)0.2F + (double)((float)(Math.random() * (double)2.0F - (double)1.0F) * 0.02F);
+      this.t = par12 * (double)0.2F + (double)((float)(Math.random() * (double)2.0F - (double)1.0F) * 0.02F);
+      this.e = (int)((double)8.0F / (Math.random() * 0.8 + 0.2));
+   }
+
+   public void J_() {
+      this.l = this.o;
+      this.m = this.p;
+      this.n = this.q;
+      this.s += 0.002;
+      this.b(this.r, this.s, this.t);
+      this.r *= (double)0.85F;
+      this.s *= (double)0.85F;
+      this.t *= (double)0.85F;
+      if (this.k.getBlockMaterial(gk.d(this.o), gk.c(this.p), gk.d(this.q)) != acn.g) {
+         this.A();
+      }
+
+      if (this.e-- <= 0) {
+         this.A();
+      }
+
+   }
+}

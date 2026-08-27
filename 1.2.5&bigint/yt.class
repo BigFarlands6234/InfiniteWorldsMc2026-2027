@@ -1,0 +1,36 @@
+import org.lwjgl.opengl.GL11;
+
+public class yt extends um {
+   private vl a = new vl();
+
+   public yt() {
+      this.g = 0.5F;
+   }
+
+   public void a(abf par1EntityFallingSand, double par2, double par4, double par6, float par8, float par9) {
+      GL11.glPushMatrix();
+      GL11.glTranslatef((float)par2, (float)par4, (float)par6);
+      this.a("/terrain.png");
+      pb block = pb.m[par1EntityFallingSand.a];
+      xd world = par1EntityFallingSand.n();
+      GL11.glDisable(2896);
+      if (block == pb.bK) {
+         this.a.a = world;
+         adz tessellator = adz.a;
+         tessellator.b();
+         tessellator.b((double)(-gk.d(par1EntityFallingSand.o)) - (double)0.5F, (double)(-gk.c(par1EntityFallingSand.p)) - (double)0.5F, (double)(-gk.d(par1EntityFallingSand.q)) - (double)0.5F);
+         this.a.renderBlockByRenderType(block, gk.d(par1EntityFallingSand.o), gk.c(par1EntityFallingSand.p), gk.d(par1EntityFallingSand.q));
+         tessellator.b((double)0.0F, (double)0.0F, (double)0.0F);
+         tessellator.a();
+      } else {
+         this.a.renderBlockFallingSand(block, world, gk.d(par1EntityFallingSand.o), gk.c(par1EntityFallingSand.p), gk.d(par1EntityFallingSand.q));
+      }
+
+      GL11.glEnable(2896);
+      GL11.glPopMatrix();
+   }
+
+   public void a(nn par1Entity, double par2, double par4, double par6, float par8, float par9) {
+      this.a((abf)par1Entity, par2, par4, par6, par8, par9);
+   }
+}

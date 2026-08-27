@@ -1,0 +1,67 @@
+public class xl extends agy {
+   protected xl(int par1, int par2) {
+      super(par1, par2, acn.d);
+   }
+
+   public int a_(int par1) {
+      return this.bN + (par1 != 1 ? 0 : 1);
+   }
+
+   public boolean blockActivated(xd par1World, long par2, int par3, long par4, yw par5EntityPlayer) {
+      if (par1World.getBlockMetadata(par2, par3, par4) == 0) {
+         return false;
+      } else {
+         this.ejectRecord(par1World, par2, par3, par4);
+         return true;
+      }
+   }
+
+   public void insertRecord(xd par1World, long par2, int par3, long par4, int par5) {
+      if (!par1World.F) {
+         dk tileentityrecordplayer = (dk)par1World.getBlockTileEntity(par2, par3, par4);
+         if (tileentityrecordplayer != null) {
+            tileentityrecordplayer.a = par5;
+            tileentityrecordplayer.j();
+            par1World.setBlockMetadataWithNotify(par2, par3, par4, 1);
+         }
+      }
+   }
+
+   public void ejectRecord(xd par1World, long par2, int par3, long par4) {
+      if (!par1World.F) {
+         dk tileentityrecordplayer = (dk)par1World.getBlockTileEntity(par2, par3, par4);
+         if (tileentityrecordplayer != null) {
+            int i = tileentityrecordplayer.a;
+            if (i != 0) {
+               par1World.playAuxSFX(1005, par2, par3, par4, 0);
+               par1World.playRecord((String)null, par2, par3, par4);
+               tileentityrecordplayer.a = 0;
+               tileentityrecordplayer.j();
+               par1World.setBlockMetadataWithNotify(par2, par3, par4, 0);
+               float f = 0.7F;
+               double d = (double)(par1World.r.nextFloat() * f) + (double)(1.0F - f) * (double)0.5F;
+               double d1 = (double)(par1World.r.nextFloat() * f) + (double)(1.0F - f) * 0.2 + 0.6;
+               double d2 = (double)(par1World.r.nextFloat() * f) + (double)(1.0F - f) * (double)0.5F;
+               fq entityitem = new fq(par1World, (double)par2 + d, (double)par3 + d1, (double)par4 + d2, new aan(i, 1, 0));
+               entityitem.c = 10;
+               par1World.a(entityitem);
+            }
+         }
+      }
+   }
+
+   public void onBlockRemoval(xd par1World, long par2, int par3, long par4) {
+      this.ejectRecord(par1World, par2, par3, par4);
+      super.onBlockRemoval(par1World, par2, par3, par4);
+   }
+
+   public void dropBlockAsItemWithChance(xd par1World, long par2, int par3, long par4, int par5, float par6, int par7) {
+      if (!par1World.F) {
+         super.dropBlockAsItemWithChance(par1World, par2, par3, par4, par5, par6, 0);
+      }
+   }
+
+   public kw u_() {
+      return new dk();
+   }
+}

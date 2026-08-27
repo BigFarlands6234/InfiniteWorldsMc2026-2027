@@ -1,0 +1,55 @@
+import org.lwjgl.opengl.GL11;
+
+public class yq extends rt {
+   private int a = 0;
+   private int au = 0;
+   private aaw av;
+
+   public yq(aaw par1RenderEngine, xd par2World, double par3, double par5, double par7) {
+      super(par2World, par3, par5, par7, (double)0.0F, (double)0.0F, (double)0.0F);
+      this.av = par1RenderEngine;
+      this.r = this.s = this.t = (double)0.0F;
+      this.au = 200;
+   }
+
+   public void renderParticle(adz par1Tessellator, double par2, double par3, double par4, double par5, double par6, double par7) {
+      float f = (float)(((double)this.a + par2) / (double)this.au);
+      f *= f;
+      float f1 = 2.0F - f * 2.0F;
+      if (f1 > 1.0F) {
+         f1 = 1.0F;
+      }
+
+      f1 *= 0.2F;
+      GL11.glDisable(2896);
+      float f2 = 0.125F;
+      double f3 = this.o - ar;
+      double f4 = this.p - as;
+      double f5 = this.q - at;
+      float f6 = this.k.getLightBrightness(gk.d(this.o), gk.c(this.p), gk.d(this.q));
+      this.av.b(this.av.b("/misc/footprint.png"));
+      GL11.glEnable(3042);
+      GL11.glBlendFunc(770, 771);
+      par1Tessellator.b();
+      par1Tessellator.a(f6, f6, f6, f1);
+      par1Tessellator.a(f3 - (double)f2, f4, f5 + (double)f2, (double)0.0F, (double)1.0F);
+      par1Tessellator.a(f3 + (double)f2, f4, f5 + (double)f2, (double)1.0F, (double)1.0F);
+      par1Tessellator.a(f3 + (double)f2, f4, f5 - (double)f2, (double)1.0F, (double)0.0F);
+      par1Tessellator.a(f3 - (double)f2, f4, f5 - (double)f2, (double)0.0F, (double)0.0F);
+      par1Tessellator.a();
+      GL11.glDisable(3042);
+      GL11.glEnable(2896);
+   }
+
+   public void J_() {
+      ++this.a;
+      if (this.a == this.au) {
+         this.A();
+      }
+
+   }
+
+   public int n() {
+      return 3;
+   }
+}

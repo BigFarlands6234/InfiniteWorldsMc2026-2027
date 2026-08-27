@@ -1,0 +1,13 @@
+import java.io.IOException;
+
+public interface ua {
+   ack loadChunk(xd var1, long var2, long var4) throws IOException;
+
+   void a(xd var1, ack var2) throws IOException;
+
+   void b(xd var1, ack var2) throws IOException;
+
+   void b();
+
+   void c();
+}

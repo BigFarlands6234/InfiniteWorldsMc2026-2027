@@ -1,0 +1,462 @@
+import net.minecraft.client.Minecraft;
+
+public class vq extends yw {
+   public oy a;
+   protected Minecraft b;
+   protected int c = 0;
+   public int d = 0;
+   public float e;
+   public float am;
+   public float an;
+   public float ao;
+   private ch cl = new ch();
+   private ch cm = new ch();
+   private ch cn = new ch();
+
+   public vq(Minecraft par1Minecraft, xd par2World, fc par3Session, int par4) {
+      super(par2World);
+      this.b = par1Minecraft;
+      this.aB = par4;
+      if (par3Session != null && par3Session.b != null && par3Session.b.length() > 0) {
+         this.Z = "http://s3.amazonaws.com/MinecraftSkins/" + par3Session.b + ".png";
+      }
+
+      this.aA = par3Session.b;
+   }
+
+   public void b(double par1, double par3, double par5) {
+      super.b(par1, par3, par5);
+   }
+
+   public void teleportPlayer(String tpXPos, String tpYPos, String tpZPos) {
+      double testPos = (double)0.0F;
+      double newPosX;
+      if (tpXPos.charAt(0) == '~') {
+         if (tpXPos.substring(1).equals("")) {
+            newPosX = this.o;
+         } else {
+            try {
+               testPos = Double.parseDouble(tpXPos.substring(1));
+            } catch (NumberFormatException var15) {
+               testPos = (double)0.0F;
+            }
+
+            newPosX = this.o + testPos;
+         }
+      } else {
+         newPosX = Double.parseDouble(tpXPos);
+      }
+
+      testPos = (double)0.0F;
+      double newPosY;
+      if (tpYPos.charAt(0) == '~') {
+         if (tpYPos.substring(1).equals("")) {
+            newPosY = this.p;
+         } else {
+            try {
+               testPos = Double.parseDouble(tpYPos.substring(1));
+            } catch (NumberFormatException var14) {
+               testPos = (double)0.0F;
+            }
+
+            newPosY = this.p + testPos;
+         }
+      } else {
+         newPosY = Double.parseDouble(tpYPos);
+      }
+
+      testPos = (double)0.0F;
+      double newPosZ;
+      if (tpZPos.charAt(0) == '~') {
+         if (tpZPos.substring(1).equals("")) {
+            newPosZ = this.q;
+         } else {
+            try {
+               testPos = Double.parseDouble(tpZPos.substring(1));
+            } catch (NumberFormatException var13) {
+               testPos = (double)0.0F;
+            }
+
+            newPosZ = this.q + testPos;
+         }
+      } else {
+         newPosZ = Double.parseDouble(tpZPos);
+      }
+
+      this.b(newPosX, newPosY, newPosZ, this.u, this.v);
+      this.b.f.a(this, false);
+   }
+
+   public void y_() {
+      super.y_();
+      this.ce = this.a.a;
+      this.cf = this.a.b;
+      this.ch = this.a.d;
+      this.an = this.e;
+      this.ao = this.am;
+      this.am = (float)((double)this.am + (double)(this.v - this.am) * (double)0.5F);
+      this.e = (float)((double)this.e + (double)(this.u - this.e) * (double)0.5F);
+   }
+
+   protected boolean H_() {
+      return true;
+   }
+
+   public void e() {
+      if (this.d > 0) {
+         --this.d;
+         if (this.d == 0) {
+            this.d(false);
+         }
+      }
+
+      if (this.c > 0) {
+         --this.c;
+      }
+
+      if (this.b.c.e()) {
+         this.o = this.q = (double)0.5F;
+         this.o = (double)0.0F;
+         this.q = (double)0.0F;
+         this.u = (float)this.V / 12.0F;
+         this.v = 10.0F;
+         this.p = (double)68.5F;
+      } else {
+         if (!this.b.K.a(dp.f)) {
+            this.b.v.b(dp.f);
+         }
+
+         this.aS = this.aR;
+         if (this.aQ) {
+            if (!this.k.F && this.j != null) {
+               this.h((nn)null);
+            }
+
+            if (this.b.s != null) {
+               this.b.a((vp)null);
+            }
+
+            if (this.aR == 0.0F) {
+               this.b.C.a("portal.trigger", 1.0F, this.U.nextFloat() * 0.4F + 0.8F);
+            }
+
+            this.aR += 0.0125F;
+            if (this.aR >= 1.0F) {
+               this.aR = 1.0F;
+               if (!this.k.F) {
+                  this.aP = 10;
+                  this.b.C.a("portal.travel", 1.0F, this.U.nextFloat() * 0.4F + 0.8F);
+                  byte byte0 = 0;
+                  if (this.aB == -1) {
+                     byte0 = 0;
+                  } else {
+                     byte0 = -1;
+                  }
+
+                  this.b.a(byte0);
+                  this.a((ajw)dp.x);
+               }
+            }
+
+            this.aQ = false;
+         } else if (this.a((aad)aad.k) && this.b((aad)aad.k).b() > 60) {
+            this.aR += 0.006666667F;
+            if (this.aR > 1.0F) {
+               this.aR = 1.0F;
+            }
+         } else {
+            if (this.aR > 0.0F) {
+               this.aR -= 0.05F;
+            }
+
+            if (this.aR < 0.0F) {
+               this.aR = 0.0F;
+            }
+         }
+
+         if (this.aP > 0) {
+            --this.aP;
+         }
+
+         boolean flag = this.a.d;
+         float f = 0.8F;
+         boolean flag1 = this.a.b >= f;
+         this.a.a();
+         if (this.aj()) {
+            oy var10000 = this.a;
+            var10000.a *= 0.2F;
+            var10000 = this.a;
+            var10000.b *= 0.2F;
+            this.c = 0;
+         }
+
+         if (this.a.e && this.Q < 0.2F) {
+            this.Q = 0.2F;
+         }
+
+         this.h(this.o - (double)this.I * 0.35, this.y.b + (double)0.5F, this.q + (double)this.I * 0.35);
+         this.h(this.o - (double)this.I * 0.35, this.y.b + (double)0.5F, this.q - (double)this.I * 0.35);
+         this.h(this.o + (double)this.I * 0.35, this.y.b + (double)0.5F, this.q - (double)this.I * 0.35);
+         this.h(this.o + (double)this.I * 0.35, this.y.b + (double)0.5F, this.q + (double)this.I * 0.35);
+         boolean flag2 = (float)this.aF().a() > 6.0F;
+         if (this.z && !flag1 && this.a.b >= f && !this.W() && flag2 && !this.aj() && !this.a((aad)aad.q)) {
+            if (this.c == 0) {
+               this.c = 7;
+            } else {
+               this.d(true);
+               this.c = 0;
+            }
+         }
+
+         if (this.V()) {
+            this.c = 0;
+         }
+
+         if (this.W() && (this.a.b < f || this.A || !flag2)) {
+            this.d(false);
+         }
+
+         if (this.aT.c && !flag && this.a.d) {
+            if (this.at == 0) {
+               this.at = 7;
+            } else {
+               this.aT.b = !this.aT.b;
+               this.aI();
+               this.at = 0;
+            }
+         }
+
+         if (this.aT.b) {
+            if (this.a.e) {
+               this.s -= 0.15;
+            }
+
+            if (this.a.d) {
+               this.s += 0.15;
+            }
+         }
+
+         super.e();
+         if (this.z && this.aT.b) {
+            this.aT.b = false;
+            this.aI();
+         }
+
+      }
+   }
+
+   public void c(int par1) {
+      if (!this.k.F) {
+         if (this.aB == 1 && par1 == 1) {
+            this.a((ajw)dp.C);
+            this.b.a(new c());
+         } else {
+            this.a((ajw)dp.B);
+            this.b.C.a("portal.travel", 1.0F, this.U.nextFloat() * 0.4F + 0.8F);
+            this.b.a(1);
+         }
+
+      }
+   }
+
+   public float I_() {
+      float f = 1.0F;
+      if (this.aT.b) {
+         f *= 1.1F;
+      }
+
+      f *= (this.bt * this.at() / this.aX + 1.0F) / 2.0F;
+      if (this.aj() && this.ah().c == yr.k.bQ) {
+         int i = this.al();
+         float f1 = (float)i / 20.0F;
+         if (f1 > 1.0F) {
+            f1 = 1.0F;
+         } else {
+            f1 *= f1;
+         }
+
+         f *= 1.0F - f1 * 0.15F;
+      }
+
+      return f;
+   }
+
+   public void b(ady par1NBTTagCompound) {
+      super.b(par1NBTTagCompound);
+      par1NBTTagCompound.a("Score", this.av);
+   }
+
+   public void a(ady par1NBTTagCompound) {
+      super.a(par1NBTTagCompound);
+      this.av = par1NBTTagCompound.f("Score");
+   }
+
+   public void af() {
+      super.af();
+      this.b.a((vp)null);
+   }
+
+   public void a(sc par1TileEntitySign) {
+      this.b.a(new alu(par1TileEntitySign));
+   }
+
+   public void a(io par1IInventory) {
+      this.b.a(new zn(this.ap, par1IInventory));
+   }
+
+   public void displayWorkbenchGUI(long par1, int par2, long par3) {
+      this.b.a(new aen(this.ap, this.k, par1, par2, par3));
+   }
+
+   public void displayGUIEnchantment(long par1, int par2, long par3) {
+      this.b.a(new sm(this.ap, this.k, par1, par2, par3));
+   }
+
+   public void a(ahg par1TileEntityFurnace) {
+      this.b.a(new kv(this.ap, par1TileEntityFurnace));
+   }
+
+   public void a(amc par1TileEntityBrewingStand) {
+      this.b.a(new hg(this.ap, par1TileEntityBrewingStand));
+   }
+
+   public void a(az par1TileEntityDispenser) {
+      this.b.a(new fb(this.ap, par1TileEntityDispenser));
+   }
+
+   public void d(nn par1Entity) {
+      this.b.j.a(new fs(this.b.f, par1Entity));
+   }
+
+   public void i(nn par1Entity) {
+      fs entitycrit2fx = new fs(this.b.f, par1Entity, "magicCrit");
+      this.b.j.a(entitycrit2fx);
+   }
+
+   public void b(nn par1Entity, int par2) {
+      this.b.j.a(new ws(this.b.f, par1Entity, this, -0.5F));
+   }
+
+   public void a(String s) {
+      this.b.w.a(s);
+   }
+
+   public boolean V() {
+      return this.a.e && !this.aK;
+   }
+
+   public void d(int par1) {
+      int i = this.bb() - par1;
+      if (i <= 0) {
+         this.l(par1);
+         if (i < 0) {
+            this.Y = this.ba / 2;
+         }
+      } else {
+         this.cc = i;
+         this.l(this.bb());
+         this.Y = this.ba;
+         this.c(md.k, i);
+         this.bA = this.bB = 10;
+      }
+
+   }
+
+   public void ag() {
+      this.b.a(false, 0, false);
+   }
+
+   public void ab() {
+   }
+
+   public void b(String par1Str) {
+      this.b.w.c(par1Str);
+   }
+
+   public void a(ajw par1StatBase, int par2) {
+      if (par1StatBase != null) {
+         if (par1StatBase.e()) {
+            aeb achievement = (aeb)par1StatBase;
+            if (achievement.c == null || this.b.K.a(achievement.c)) {
+               if (!this.b.K.a(achievement)) {
+                  this.b.v.a(achievement);
+               }
+
+               this.b.K.a(par1StatBase, par2);
+            }
+         } else {
+            this.b.K.a(par1StatBase, par2);
+         }
+
+      }
+   }
+
+   private boolean isBlockTranslucent(long par1, int par2, long par3) {
+      return this.k.isBlockNormalCube(par1, par2, par3);
+   }
+
+   protected boolean h(double par1, double par3, double par5) {
+      long i = gk.d(par1);
+      int j = gk.c(par3);
+      long k = gk.d(par5);
+      double d = par1 - (double)i;
+      double d1 = par5 - (double)k;
+      if (this.isBlockTranslucent(i, j, k) || this.isBlockTranslucent(i, j + 1, k)) {
+         boolean flag = !this.isBlockTranslucent(i - 1L, j, k) && !this.isBlockTranslucent(i - 1L, j + 1, k);
+         boolean flag1 = !this.isBlockTranslucent(i + 1L, j, k) && !this.isBlockTranslucent(i + 1L, j + 1, k);
+         boolean flag2 = !this.isBlockTranslucent(i, j, k - 1L) && !this.isBlockTranslucent(i, j + 1, k - 1L);
+         boolean flag3 = !this.isBlockTranslucent(i, j, k + 1L) && !this.isBlockTranslucent(i, j + 1, k + 1L);
+         byte byte0 = -1;
+         double d2 = (double)9999.0F;
+         if (flag && d < d2) {
+            d2 = d;
+            byte0 = 0;
+         }
+
+         if (flag1 && (double)1.0F - d < d2) {
+            d2 = (double)1.0F - d;
+            byte0 = 1;
+         }
+
+         if (flag2 && d1 < d2) {
+            d2 = d1;
+            byte0 = 4;
+         }
+
+         if (flag3 && (double)1.0F - d1 < d2) {
+            double d3 = (double)1.0F - d1;
+            byte0 = 5;
+         }
+
+         float f = 0.1F;
+         if (byte0 == 0) {
+            this.r = (double)(-f);
+         }
+
+         if (byte0 == 1) {
+            this.r = (double)f;
+         }
+
+         if (byte0 == 4) {
+            this.t = (double)(-f);
+         }
+
+         if (byte0 == 5) {
+            this.t = (double)f;
+         }
+      }
+
+      return false;
+   }
+
+   public void d(boolean par1) {
+      super.d(par1);
+      this.d = par1 ? 600 : 0;
+   }
+
+   public void a(float par1, int par2, int par3) {
+      this.aW = par1;
+      this.aV = par2;
+      this.aU = par3;
+   }
+}

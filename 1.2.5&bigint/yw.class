@@ -1,0 +1,1242 @@
+import java.util.List;
+
+public abstract class yw extends acq {
+   public aak ap = new aak(this);
+   public dd aq;
+   public dd ar;
+   protected ne as = new ne();
+   protected int at = 0;
+   public byte au = 0;
+   public int av = 0;
+   public float aw;
+   public float ax;
+   public boolean ay = false;
+   public int az = 0;
+   public String aA;
+   public int aB;
+   public String aC;
+   public int aD = 0;
+   public double aE;
+   public double aF;
+   public double aG;
+   public double aH;
+   public double aI;
+   public double aJ;
+   protected boolean aK;
+   public uh aL;
+   private int a;
+   public float aM;
+   public float aN;
+   public float aO;
+   private uh b;
+   private uh c;
+   public int aP = 20;
+   protected boolean aQ = false;
+   public float aR;
+   public float aS;
+   public qu aT = new qu();
+   public int aU;
+   public int aV;
+   public float aW;
+   private aan d;
+   private int e;
+   protected float aX = 0.1F;
+   protected float aY = 0.02F;
+   public act aZ = null;
+
+   public yw(xd par1World) {
+      super(par1World);
+      this.aq = new y(this.ap, !par1World.F);
+      this.ar = this.aq;
+      this.H = 1.62F;
+      uh chunkcoordinates = par1World.x();
+      this.c((double)chunkcoordinates.a + (double)0.5F, (double)(chunkcoordinates.b + 1), (double)chunkcoordinates.c + (double)0.5F, 0.0F, 0.0F);
+      this.bp = "humanoid";
+      this.bo = 180.0F;
+      this.W = 20;
+      this.bm = "/mob/char.png";
+   }
+
+   public int d() {
+      return 20;
+   }
+
+   protected void b() {
+      super.b();
+      this.ac.a(16, (byte)0);
+      this.ac.a(17, (byte)0);
+   }
+
+   public aan ah() {
+      return this.d;
+   }
+
+   public int ai() {
+      return this.e;
+   }
+
+   public boolean aj() {
+      return this.d != null;
+   }
+
+   public int al() {
+      return this.aj() ? this.d.l() - this.e : 0;
+   }
+
+   public void am() {
+      if (this.d != null) {
+         this.d.b(this.k, this, this.e);
+      }
+
+      this.an();
+   }
+
+   public void an() {
+      this.d = null;
+      this.e = 0;
+      if (!this.k.F) {
+         this.e(false);
+      }
+
+   }
+
+   public boolean ao() {
+      return this.aj() && yr.e[this.d.c].c(this.d) == aaq.d;
+   }
+
+   public void J_() {
+      if (this.d != null) {
+         aan itemstack = this.ap.b();
+         if (itemstack != this.d) {
+            this.an();
+         } else {
+            if (this.e <= 25 && this.e % 4 == 0) {
+               this.a((aan)itemstack, 5);
+            }
+
+            if (--this.e == 0 && !this.k.F) {
+               this.ap();
+            }
+         }
+      }
+
+      if (this.aD > 0) {
+         --this.aD;
+      }
+
+      if (this.az()) {
+         ++this.a;
+         if (this.a > 100) {
+            this.a = 100;
+         }
+
+         if (!this.k.F) {
+            if (!this.bk()) {
+               this.a(true, true, false);
+            } else if (this.k.m()) {
+               this.a(false, true, true);
+            }
+         }
+      } else if (this.a > 0) {
+         ++this.a;
+         if (this.a >= 110) {
+            this.a = 0;
+         }
+      }
+
+      super.J_();
+      if (!this.k.F && this.ar != null && !this.ar.b(this)) {
+         this.af();
+         this.ar = this.aq;
+      }
+
+      if (this.aT.b) {
+         for(int i = 0; i < 8; ++i) {
+         }
+      }
+
+      if (this.T() && this.aT.a) {
+         this.D();
+      }
+
+      this.aE = this.aH;
+      this.aF = this.aI;
+      this.aG = this.aJ;
+      double d = this.o - this.aH;
+      double d1 = this.p - this.aI;
+      double d2 = this.q - this.aJ;
+      double d3 = (double)10.0F;
+      if (d > d3) {
+         this.aE = this.aH = this.o;
+      }
+
+      if (d2 > d3) {
+         this.aG = this.aJ = this.q;
+      }
+
+      if (d1 > d3) {
+         this.aF = this.aI = this.p;
+      }
+
+      if (d < -d3) {
+         this.aE = this.aH = this.o;
+      }
+
+      if (d2 < -d3) {
+         this.aG = this.aJ = this.q;
+      }
+
+      if (d1 < -d3) {
+         this.aF = this.aI = this.p;
+      }
+
+      this.aH += d * (double)0.25F;
+      this.aJ += d2 * (double)0.25F;
+      this.aI += d1 * (double)0.25F;
+      this.a((ajw)gv.k, 1);
+      if (this.j == null) {
+         this.c = null;
+      }
+
+      if (!this.k.F) {
+         this.as.a(this);
+      }
+
+   }
+
+   protected void a(aan par1ItemStack, int par2) {
+      if (par1ItemStack.m() == aaq.c) {
+         this.k.a(this, "random.drink", 0.5F, this.k.r.nextFloat() * 0.1F + 0.9F);
+      }
+
+      if (par1ItemStack.m() == aaq.b) {
+         for(int i = 0; i < par2; ++i) {
+            bo vec3d = bo.b(((double)this.U.nextFloat() - (double)0.5F) * 0.1, Math.random() * 0.1 + 0.1, (double)0.0F);
+            vec3d.a(-this.v * (float)Math.PI / 180.0F);
+            vec3d.b(-this.u * (float)Math.PI / 180.0F);
+            bo vec3d1 = bo.b(((double)this.U.nextFloat() - (double)0.5F) * 0.3, (double)(-this.U.nextFloat()) * 0.6 - 0.3, 0.6);
+            vec3d1.a(-this.v * (float)Math.PI / 180.0F);
+            vec3d1.b(-this.u * (float)Math.PI / 180.0F);
+            vec3d1 = vec3d1.c(this.o, this.p + (double)this.I(), this.q);
+            this.k.a("iconcrack_" + par1ItemStack.a().bQ, vec3d1.a, vec3d1.b, vec3d1.c, vec3d.a, vec3d.b + 0.05, vec3d.c);
+         }
+
+         this.k.a(this, "random.eat", 0.5F + 0.5F * (float)this.U.nextInt(2), (this.U.nextFloat() - this.U.nextFloat()) * 0.2F + 1.0F);
+      }
+
+   }
+
+   protected void ap() {
+      if (this.d != null) {
+         this.a((aan)this.d, 16);
+         int i = this.d.a;
+         aan itemstack = this.d.b(this.k, this);
+         if (itemstack != this.d || itemstack != null && itemstack.a != i) {
+            this.ap.a[this.ap.c] = itemstack;
+            if (itemstack.a == 0) {
+               this.ap.a[this.ap.c] = null;
+            }
+         }
+
+         this.an();
+      }
+
+   }
+
+   public void a(byte par1) {
+      if (par1 == 9) {
+         this.ap();
+      } else {
+         super.a(par1);
+      }
+
+   }
+
+   protected boolean aq() {
+      return this.bb() <= 0 || this.az();
+   }
+
+   protected void af() {
+      this.ar = this.aq;
+   }
+
+   public void S() {
+      this.aC = "http://s3.amazonaws.com/MinecraftCloaks/" + this.aA + ".png";
+      this.aa = this.aC;
+   }
+
+   public void O() {
+      double d = this.o;
+      double d1 = this.p;
+      double d2 = this.q;
+      super.O();
+      this.aw = this.ax;
+      this.ax = 0.0F;
+      this.k(this.o - d, this.p - d1, this.q - d2);
+   }
+
+   public void z() {
+      this.H = 1.62F;
+      this.a(0.6F, 1.8F);
+      super.z();
+      this.l(this.d());
+      this.bD = 0;
+   }
+
+   private int bj() {
+      if (this.a((aad)aad.e)) {
+         return 6 - (1 + this.b((aad)aad.e).c()) * 1;
+      } else {
+         return this.a((aad)aad.f) ? 6 + (1 + this.b((aad)aad.f).c()) * 2 : 6;
+      }
+   }
+
+   protected void y_() {
+      int i = this.bj();
+      if (this.ay) {
+         ++this.az;
+         if (this.az >= i) {
+            this.az = 0;
+            this.ay = false;
+         }
+      } else {
+         this.az = 0;
+      }
+
+      this.bw = (float)this.az / (float)i;
+   }
+
+   public void e() {
+      if (this.at > 0) {
+         --this.at;
+      }
+
+      if (this.k.q == 0 && this.bb() < this.d() && this.V % 20 * 12 == 0) {
+         this.k(1);
+      }
+
+      this.ap.g();
+      this.aw = this.ax;
+      super.e();
+      this.bt = this.aX;
+      this.bu = this.aY;
+      if (this.W()) {
+         this.bt = (float)((double)this.bt + (double)this.aX * 0.3);
+         this.bu = (float)((double)this.bu + (double)this.aY * 0.3);
+      }
+
+      float f = gk.a(this.r * this.r + this.t * this.t);
+      float f1 = (float)Math.atan(-this.s * (double)0.2F) * 15.0F;
+      if (f > 0.1F) {
+         f = 0.1F;
+      }
+
+      if (!this.z || this.bb() <= 0) {
+         f = 0.0F;
+      }
+
+      if (this.z || this.bb() <= 0) {
+         f1 = 0.0F;
+      }
+
+      this.ax += (f - this.ax) * 0.4F;
+      this.bG += (f1 - this.bG) * 0.8F;
+      if (this.bb() > 0) {
+         List list = this.k.b(this, this.y.b((double)1.0F, (double)0.0F, (double)1.0F));
+         if (list != null) {
+            for(int i = 0; i < list.size(); ++i) {
+               nn entity = (nn)list.get(i);
+               if (!entity.G) {
+                  this.n(entity);
+               }
+            }
+         }
+      }
+
+   }
+
+   private void n(nn par1Entity) {
+      par1Entity.a(this);
+   }
+
+   public int ar() {
+      return this.av;
+   }
+
+   public void a(md par1DamageSource) {
+      super.a(par1DamageSource);
+      this.a(0.2F, 0.2F);
+      this.d(this.o, this.p, this.q);
+      this.s = (double)0.1F;
+      if (this.aA.equals("Notch")) {
+         this.a(new aan(yr.at, 1), true);
+      }
+
+      this.ap.i();
+      if (par1DamageSource != null) {
+         this.r = (double)(-gk.b((this.bC + this.u) * (float)Math.PI / 180.0F) * 0.1F);
+         this.t = (double)(-gk.a((this.bC + this.u) * (float)Math.PI / 180.0F) * 0.1F);
+      } else {
+         this.r = this.t = (double)0.0F;
+      }
+
+      this.H = 0.1F;
+      this.a((ajw)gv.y, 1);
+   }
+
+   public void a(nn par1Entity, int par2) {
+      this.av += par2;
+      if (par1Entity instanceof yw) {
+         this.a((ajw)gv.A, 1);
+      } else {
+         this.a((ajw)gv.z, 1);
+      }
+
+   }
+
+   protected int b(int par1) {
+      int i = ais.a(this.ap);
+      return i > 0 && this.U.nextInt(i + 1) > 0 ? par1 : super.b(par1);
+   }
+
+   public fq as() {
+      return this.a(this.ap.a(this.ap.c, 1), false);
+   }
+
+   public fq a(aan par1ItemStack) {
+      return this.a(par1ItemStack, false);
+   }
+
+   public fq a(aan par1ItemStack, boolean par2) {
+      if (par1ItemStack == null) {
+         return null;
+      } else {
+         fq entityitem = new fq(this.k, this.o, this.p - (double)0.3F + (double)this.I(), this.q, par1ItemStack);
+         entityitem.c = 40;
+         float f = 0.1F;
+         if (par2) {
+            float f2 = this.U.nextFloat() * 0.5F;
+            float f4 = this.U.nextFloat() * (float)Math.PI * 2.0F;
+            entityitem.r = (double)(-gk.a(f4) * f2);
+            entityitem.t = (double)(gk.b(f4) * f2);
+            entityitem.s = (double)0.2F;
+         } else {
+            float f1 = 0.3F;
+            entityitem.r = (double)(-gk.a(this.u / 180.0F * (float)Math.PI) * gk.b(this.v / 180.0F * (float)Math.PI) * f1);
+            entityitem.t = (double)(gk.b(this.u / 180.0F * (float)Math.PI) * gk.b(this.v / 180.0F * (float)Math.PI) * f1);
+            entityitem.s = (double)(-gk.a(this.v / 180.0F * (float)Math.PI) * f1 + 0.1F);
+            f1 = 0.02F;
+            float f3 = this.U.nextFloat() * (float)Math.PI * 2.0F;
+            f1 *= this.U.nextFloat();
+            entityitem.r += Math.cos((double)f3) * (double)f1;
+            entityitem.s += (double)((this.U.nextFloat() - this.U.nextFloat()) * 0.1F);
+            entityitem.t += Math.sin((double)f3) * (double)f1;
+         }
+
+         this.a(entityitem);
+         this.a((ajw)gv.v, 1);
+         return entityitem;
+      }
+   }
+
+   protected void a(fq par1EntityItem) {
+      this.k.a(par1EntityItem);
+   }
+
+   public float a(pb par1Block) {
+      float f = this.ap.a(par1Block);
+      float f1 = f;
+      int i = ais.b(this.ap);
+      if (i > 0 && this.ap.b(par1Block)) {
+         f1 = f + (float)(i * i + 1);
+      }
+
+      if (this.a((aad)aad.e)) {
+         f1 *= 1.0F + (float)(this.b((aad)aad.e).c() + 1) * 0.2F;
+      }
+
+      if (this.a((aad)aad.f)) {
+         f1 *= 1.0F - (float)(this.b((aad)aad.f).c() + 1) * 0.2F;
+      }
+
+      if (this.a((acn)acn.g) && !ais.g(this.ap)) {
+         f1 /= 5.0F;
+      }
+
+      if (!this.z) {
+         f1 /= 5.0F;
+      }
+
+      return f1;
+   }
+
+   public boolean b(pb par1Block) {
+      return this.ap.b(par1Block);
+   }
+
+   public void a(ady par1NBTTagCompound) {
+      super.a(par1NBTTagCompound);
+      no nbttaglist = par1NBTTagCompound.n("Inventory");
+      this.ap.b(nbttaglist);
+      this.aB = par1NBTTagCompound.f("Dimension");
+      this.aK = par1NBTTagCompound.o("Sleeping");
+      this.a = par1NBTTagCompound.e("SleepTimer");
+      this.aW = par1NBTTagCompound.h("XpP");
+      this.aU = par1NBTTagCompound.f("XpLevel");
+      this.aV = par1NBTTagCompound.f("XpTotal");
+      if (this.aK) {
+         this.aL = new uh(gk.d(this.o), gk.c(this.p), gk.d(this.q));
+         this.a(true, true, false);
+      }
+
+      if (par1NBTTagCompound.c("SpawnX") && par1NBTTagCompound.c("SpawnY") && par1NBTTagCompound.c("SpawnZ")) {
+         long leSpawnX;
+         try {
+            leSpawnX = par1NBTTagCompound.g("SpawnX");
+         } catch (ClassCastException var9) {
+            leSpawnX = (long)par1NBTTagCompound.f("SpawnX");
+         }
+
+         long leSpawnZ;
+         try {
+            leSpawnZ = par1NBTTagCompound.g("SpawnZ");
+         } catch (ClassCastException var8) {
+            leSpawnZ = (long)par1NBTTagCompound.f("SpawnZ");
+         }
+
+         this.b = new uh(leSpawnX, par1NBTTagCompound.f("SpawnY"), leSpawnZ);
+      }
+
+      this.as.a(par1NBTTagCompound);
+      this.aT.b(par1NBTTagCompound);
+   }
+
+   public void b(ady par1NBTTagCompound) {
+      super.b(par1NBTTagCompound);
+      par1NBTTagCompound.a("Inventory", this.ap.a(new no()));
+      par1NBTTagCompound.a("Dimension", this.aB);
+      par1NBTTagCompound.a("Sleeping", this.aK);
+      par1NBTTagCompound.a("SleepTimer", (short)this.a);
+      par1NBTTagCompound.a("XpP", this.aW);
+      par1NBTTagCompound.a("XpLevel", this.aU);
+      par1NBTTagCompound.a("XpTotal", this.aV);
+      if (this.b != null) {
+         par1NBTTagCompound.a("SpawnX", this.b.a);
+         par1NBTTagCompound.a("SpawnY", this.b.b);
+         par1NBTTagCompound.a("SpawnZ", this.b.c);
+      }
+
+      this.as.b(par1NBTTagCompound);
+      this.aT.a(par1NBTTagCompound);
+   }
+
+   public void a(io iinventory) {
+   }
+
+   public void displayGUIEnchantment(long i, int j, long k) {
+   }
+
+   public void displayWorkbenchGUI(long i, int j, long k) {
+   }
+
+   public void b(nn entity, int i) {
+   }
+
+   public float I() {
+      return 0.12F;
+   }
+
+   protected void aa() {
+      this.H = 1.62F;
+   }
+
+   public boolean a(md par1DamageSource, int par2) {
+      if (this.aT.a && !par1DamageSource.g()) {
+         return false;
+      } else {
+         this.cd = 0;
+         if (this.bb() <= 0) {
+            return false;
+         } else {
+            if (this.az() && !this.k.F) {
+               this.a(true, true, false);
+            }
+
+            nn entity = par1DamageSource.a();
+            if (entity instanceof yy || entity instanceof nm) {
+               if (this.k.q == 0) {
+                  par2 = 0;
+               }
+
+               if (this.k.q == 1) {
+                  par2 = par2 / 2 + 1;
+               }
+
+               if (this.k.q == 3) {
+                  par2 = par2 * 3 / 2;
+               }
+            }
+
+            if (par2 == 0) {
+               return false;
+            } else {
+               nn entity1 = entity;
+               if (entity instanceof nm && ((nm)entity).c != null) {
+                  entity1 = ((nm)entity).c;
+               }
+
+               if (entity1 instanceof acq) {
+                  this.a((acq)entity1, false);
+               }
+
+               this.a(gv.x, par2);
+               return super.a(par1DamageSource, par2);
+            }
+         }
+      }
+   }
+
+   protected int b(md par1DamageSource, int par2) {
+      int i = super.b(par1DamageSource, par2);
+      if (i <= 0) {
+         return 0;
+      } else {
+         int j = ais.a(this.ap, par1DamageSource);
+         if (j > 20) {
+            j = 20;
+         }
+
+         if (j > 0 && j <= 20) {
+            int k = 25 - j;
+            int l = i * k + this.bz;
+            i = l / 25;
+            this.bz = l % 25;
+         }
+
+         return i;
+      }
+   }
+
+   protected boolean B_() {
+      return false;
+   }
+
+   protected void a(acq par1EntityLiving, boolean par2) {
+      if (!(par1EntityLiving instanceof yd) && !(par1EntityLiving instanceof ui)) {
+         if (par1EntityLiving instanceof yo) {
+            yo entitywolf = (yo)par1EntityLiving;
+            if (entitywolf.G_() && this.aA.equals(entitywolf.ag())) {
+               return;
+            }
+         }
+
+         if (!(par1EntityLiving instanceof yw) || this.B_()) {
+            for(nn entity : this.k.a(yo.class, wu.b(this.o, this.p, this.q, this.o + (double)1.0F, this.p + (double)1.0F, this.q + (double)1.0F).b((double)16.0F, (double)4.0F, (double)16.0F))) {
+               yo entitywolf1 = (yo)entity;
+               if (entitywolf1.G_() && entitywolf1.as() == null && this.aA.equals(entitywolf1.ag()) && (!par2 || !entitywolf1.af())) {
+                  entitywolf1.f(false);
+                  entitywolf1.i(par1EntityLiving);
+               }
+            }
+
+         }
+      }
+   }
+
+   protected void h(int par1) {
+      this.ap.g(par1);
+   }
+
+   public int au() {
+      return this.ap.h();
+   }
+
+   protected void c(md par1DamageSource, int par2) {
+      if (!par1DamageSource.e() && this.ao()) {
+         par2 = 1 + par2 >> 1;
+      }
+
+      par2 = this.d(par1DamageSource, par2);
+      par2 = this.b(par1DamageSource, par2);
+      this.c(par1DamageSource.f());
+      this.bx -= par2;
+   }
+
+   public void a(ahg tileentityfurnace) {
+   }
+
+   public void a(az tileentitydispenser) {
+   }
+
+   public void a(sc tileentitysign) {
+   }
+
+   public void a(amc tileentitybrewingstand) {
+   }
+
+   public void j(nn par1Entity) {
+      if (!par1Entity.c(this)) {
+         aan itemstack = this.av();
+         if (itemstack != null && par1Entity instanceof acq) {
+            itemstack.a((acq)par1Entity);
+            if (itemstack.a <= 0) {
+               itemstack.a(this);
+               this.aw();
+            }
+         }
+
+      }
+   }
+
+   public aan av() {
+      return this.ap.b();
+   }
+
+   public void aw() {
+      this.ap.a(this.ap.c, (aan)null);
+   }
+
+   public double P() {
+      return (double)(this.H - 0.5F);
+   }
+
+   public void ax() {
+      if (!this.ay || this.az >= this.bj() / 2 || this.az < 0) {
+         this.az = -1;
+         this.ay = true;
+      }
+
+   }
+
+   public void k(nn par1Entity) {
+      if (par1Entity.k_()) {
+         int i = this.ap.a(par1Entity);
+         if (this.a((aad)aad.g)) {
+            i += 3 << this.b((aad)aad.g).c();
+         }
+
+         if (this.a((aad)aad.t)) {
+            i -= 2 << this.b((aad)aad.t).c();
+         }
+
+         int j = 0;
+         int k = 0;
+         if (par1Entity instanceof acq) {
+            k = ais.a(this.ap, (acq)par1Entity);
+            j += ais.b(this.ap, (acq)par1Entity);
+         }
+
+         if (this.W()) {
+            ++j;
+         }
+
+         if (i > 0 || k > 0) {
+            boolean flag = this.M > 0.0F && !this.z && !this.p() && !this.H() && !this.a((aad)aad.q) && this.j == null && par1Entity instanceof acq;
+            if (flag) {
+               i += this.U.nextInt(i / 2 + 2);
+            }
+
+            i += k;
+            boolean flag1 = par1Entity.a(md.a(this), i);
+            if (flag1) {
+               if (j > 0) {
+                  par1Entity.c((double)(-gk.a(this.u * (float)Math.PI / 180.0F) * (float)j * 0.5F), 0.1, (double)(gk.b(this.u * (float)Math.PI / 180.0F) * (float)j * 0.5F));
+                  this.r *= 0.6;
+                  this.t *= 0.6;
+                  this.d(false);
+               }
+
+               if (flag) {
+                  this.d(par1Entity);
+               }
+
+               if (k > 0) {
+                  this.i(par1Entity);
+               }
+
+               if (i >= 18) {
+                  this.a((ajw)dp.E);
+               }
+
+               this.l(par1Entity);
+            }
+
+            aan itemstack = this.av();
+            if (itemstack != null && par1Entity instanceof acq) {
+               itemstack.a((acq)par1Entity, this);
+               if (itemstack.a <= 0) {
+                  itemstack.a(this);
+                  this.aw();
+               }
+            }
+
+            if (par1Entity instanceof acq) {
+               if (par1Entity.M()) {
+                  this.a((acq)par1Entity, true);
+               }
+
+               this.a(gv.w, i);
+               int l = ais.c(this.ap, (acq)par1Entity);
+               if (l > 0) {
+                  par1Entity.e(l * 4);
+               }
+            }
+
+            this.c(0.3F);
+         }
+
+      }
+   }
+
+   public void d(nn entity) {
+   }
+
+   public void i(nn entity) {
+   }
+
+   public void ag() {
+   }
+
+   public abstract void ab();
+
+   public void b(aan itemstack) {
+   }
+
+   public void A() {
+      super.A();
+      this.aq.a(this);
+      if (this.ar != null) {
+         this.ar.a(this);
+      }
+
+   }
+
+   public boolean N() {
+      return !this.aK && super.N();
+   }
+
+   public ci sleepInBedAt(long par1, int par2, long par3) {
+      if (!this.k.F) {
+         if (this.az() || !this.M()) {
+            return ci.e;
+         }
+
+         if (!this.k.t.e()) {
+            return ci.b;
+         }
+
+         if (this.k.m()) {
+            return ci.c;
+         }
+
+         if (Math.abs(this.o - (double)par1) > (double)3.0F || Math.abs(this.p - (double)par2) > (double)2.0F || Math.abs(this.q - (double)par3) > (double)3.0F) {
+            return ci.d;
+         }
+
+         double d = (double)8.0F;
+         double d1 = (double)5.0F;
+         List list = this.k.a(yy.class, wu.b((double)par1 - d, (double)par2 - d1, (double)par3 - d, (double)par1 + d, (double)par2 + d1, (double)par3 + d));
+         if (!list.isEmpty()) {
+            return ci.f;
+         }
+      }
+
+      this.a(0.2F, 0.2F);
+      this.H = 0.2F;
+      if (this.k.blockExists(par1, par2, par3)) {
+         int i = this.k.getBlockMetadata(par1, par2, par3);
+         int j = pm.a(i);
+         double f = (double)0.5F;
+         double f1 = (double)0.5F;
+         switch (j) {
+            case 0:
+               f1 = 0.9;
+               break;
+            case 1:
+               f = 0.1;
+               break;
+            case 2:
+               f1 = 0.1;
+               break;
+            case 3:
+               f = 0.9;
+         }
+
+         this.d(j);
+         this.d((double)par1 + f, (double)par2 + (double)0.9375F, (double)par3 + f1);
+      } else {
+         this.d((double)par1 + (double)0.5F, (double)par2 + (double)0.9375F, (double)par3 + (double)0.5F);
+      }
+
+      this.aK = true;
+      this.a = 0;
+      this.aL = new uh(par1, par2, par3);
+      this.r = this.t = this.s = (double)0.0F;
+      if (!this.k.F) {
+         this.k.C();
+      }
+
+      return ci.a;
+   }
+
+   private void d(int par1) {
+      this.aM = 0.0F;
+      this.aO = 0.0F;
+      switch (par1) {
+         case 0:
+            this.aO = -1.8F;
+            break;
+         case 1:
+            this.aM = 1.8F;
+            break;
+         case 2:
+            this.aO = 1.8F;
+            break;
+         case 3:
+            this.aM = -1.8F;
+      }
+
+   }
+
+   public void a(boolean par1, boolean par2, boolean par3) {
+      this.a(0.6F, 1.8F);
+      this.aa();
+      uh chunkcoordinates = this.aL;
+      uh chunkcoordinates1 = this.aL;
+      if (chunkcoordinates != null && this.k.getBlockId(chunkcoordinates.a, chunkcoordinates.b, chunkcoordinates.c) == pb.S.bO) {
+         pm.setBedOccupied(this.k, chunkcoordinates.a, chunkcoordinates.b, chunkcoordinates.c, false);
+         uh chunkcoordinates2 = pm.getNearestEmptyChunkCoordinates(this.k, chunkcoordinates.a, chunkcoordinates.b, chunkcoordinates.c, 0);
+         if (chunkcoordinates2 == null) {
+            chunkcoordinates2 = new uh(chunkcoordinates.a, chunkcoordinates.b + 1, chunkcoordinates.c);
+         }
+
+         this.d((double)chunkcoordinates2.a + (double)0.5F, (double)chunkcoordinates2.b + (double)this.H + 0.1, (double)chunkcoordinates2.c + (double)0.5F);
+      }
+
+      this.aK = false;
+      if (!this.k.F && par2) {
+         this.k.C();
+      }
+
+      if (par1) {
+         this.a = 0;
+      } else {
+         this.a = 100;
+      }
+
+      if (par3) {
+         this.a(this.aL);
+      }
+
+   }
+
+   private boolean bk() {
+      return this.k.getBlockId(this.aL.a, this.aL.b, this.aL.c) == pb.S.bO;
+   }
+
+   public static uh a(xd par0World, uh par1ChunkCoordinates) {
+      ca ichunkprovider = par0World.z();
+      ichunkprovider.loadChunk(par1ChunkCoordinates.a - 3L >> 4, par1ChunkCoordinates.c - 3L >> 4);
+      ichunkprovider.loadChunk(par1ChunkCoordinates.a + 3L >> 4, par1ChunkCoordinates.c - 3L >> 4);
+      ichunkprovider.loadChunk(par1ChunkCoordinates.a - 3L >> 4, par1ChunkCoordinates.c + 3L >> 4);
+      ichunkprovider.loadChunk(par1ChunkCoordinates.a + 3L >> 4, par1ChunkCoordinates.c + 3L >> 4);
+      if (par0World.getBlockId(par1ChunkCoordinates.a, par1ChunkCoordinates.b, par1ChunkCoordinates.c) != pb.S.bO) {
+         return null;
+      } else {
+         uh chunkcoordinates = pm.getNearestEmptyChunkCoordinates(par0World, par1ChunkCoordinates.a, par1ChunkCoordinates.b, par1ChunkCoordinates.c, 0);
+         return chunkcoordinates;
+      }
+   }
+
+   public float ay() {
+      if (this.aL != null) {
+         int i = this.k.getBlockMetadata(this.aL.a, this.aL.b, this.aL.c);
+         int j = pm.a(i);
+         switch (j) {
+            case 0:
+               return 90.0F;
+            case 1:
+               return 0.0F;
+            case 2:
+               return 270.0F;
+            case 3:
+               return 180.0F;
+         }
+      }
+
+      return 0.0F;
+   }
+
+   public boolean az() {
+      return this.aK;
+   }
+
+   public boolean aA() {
+      return this.aK && this.a >= 100;
+   }
+
+   public int aB() {
+      return this.a;
+   }
+
+   public void b(String s) {
+   }
+
+   public uh aC() {
+      return this.b;
+   }
+
+   public void a(uh par1ChunkCoordinates) {
+      if (par1ChunkCoordinates != null) {
+         this.b = new uh(par1ChunkCoordinates);
+      } else {
+         this.b = null;
+      }
+
+   }
+
+   public void a(ajw par1StatBase) {
+      this.a((ajw)par1StatBase, 1);
+   }
+
+   public void a(ajw statbase, int i) {
+   }
+
+   protected void aD() {
+      super.aD();
+      this.a((ajw)gv.u, 1);
+      if (this.W()) {
+         this.c(0.8F);
+      } else {
+         this.c(0.2F);
+      }
+
+   }
+
+   public void a_(float par1, float par2) {
+      double d = this.o;
+      double d1 = this.p;
+      double d2 = this.q;
+      if (this.aT.b) {
+         double d3 = this.s;
+         float f = this.bu;
+         this.bu = 0.05F;
+         super.a_(par1, par2);
+         this.s = d3 * 0.6;
+         this.bu = f;
+      } else {
+         super.a_(par1, par2);
+      }
+
+      this.i(this.o - d, this.p - d1, this.q - d2);
+   }
+
+   public void i(double par1, double par3, double par5) {
+      if (this.j == null) {
+         if (this.a((acn)acn.g)) {
+            int i = Math.round(gk.a(par1 * par1 + par3 * par3 + par5 * par5) * 100.0F);
+            if (i > 0) {
+               this.a(gv.q, i);
+               this.c(0.015F * (float)i * 0.01F);
+            }
+         } else if (this.H()) {
+            int j = Math.round(gk.a(par1 * par1 + par5 * par5) * 100.0F);
+            if (j > 0) {
+               this.a(gv.m, j);
+               this.c(0.015F * (float)j * 0.01F);
+            }
+         } else if (this.p()) {
+            if (par3 > (double)0.0F) {
+               this.a(gv.o, (int)Math.round(par3 * (double)100.0F));
+            }
+         } else if (this.z) {
+            int k = Math.round(gk.a(par1 * par1 + par5 * par5) * 100.0F);
+            if (k > 0) {
+               this.a(gv.l, k);
+               if (this.W()) {
+                  this.c(0.09999999F * (float)k * 0.01F);
+               } else {
+                  this.c(0.01F * (float)k * 0.01F);
+               }
+            }
+         } else {
+            int l = Math.round(gk.a(par1 * par1 + par5 * par5) * 100.0F);
+            if (l > 25) {
+               this.a(gv.p, l);
+            }
+         }
+
+      }
+   }
+
+   private void k(double par1, double par3, double par5) {
+      if (this.j != null) {
+         int i = Math.round(gk.a(par1 * par1 + par3 * par3 + par5 * par5) * 100.0F);
+         if (i > 0) {
+            if (this.j instanceof ama) {
+               this.a(gv.r, i);
+               if (this.c == null) {
+                  this.c = new uh(gk.d(this.o), gk.c(this.p), gk.d(this.q));
+               } else if (this.c.getEuclideanDistanceTo(gk.d(this.o), gk.c(this.p), gk.d(this.q)) >= (double)1000.0F) {
+                  this.a((ajw)dp.q, 1);
+               }
+            } else if (this.j instanceof ep) {
+               this.a(gv.s, i);
+            } else if (this.j instanceof qr) {
+               this.a(gv.t, i);
+            }
+         }
+      }
+
+   }
+
+   protected void e(float par1) {
+      if (!this.aT.c) {
+         if (par1 >= 2.0F) {
+            this.a(gv.n, (int)Math.round((double)par1 * (double)100.0F));
+         }
+
+         super.e(par1);
+      }
+   }
+
+   public void b(acq par1EntityLiving) {
+      if (par1EntityLiving instanceof yy) {
+         this.a((ajw)dp.s);
+      }
+
+   }
+
+   public int b(aan par1ItemStack, int par2) {
+      int i = super.b(par1ItemStack, par2);
+      if (par1ItemStack.c == yr.aR.bQ && this.aZ != null) {
+         i = par1ItemStack.b() + 16;
+      } else {
+         if (par1ItemStack.a().c()) {
+            return par1ItemStack.a().a(par1ItemStack.i(), par2);
+         }
+
+         if (this.d != null && par1ItemStack.c == yr.k.bQ) {
+            int j = par1ItemStack.l() - this.e;
+            if (j >= 18) {
+               return 133;
+            }
+
+            if (j > 13) {
+               return 117;
+            }
+
+            if (j > 0) {
+               return 101;
+            }
+         }
+      }
+
+      return i;
+   }
+
+   public void R() {
+      if (this.aP > 0) {
+         this.aP = 10;
+      } else {
+         this.aQ = true;
+      }
+   }
+
+   public void i(int par1) {
+      this.av += par1;
+      int i = Integer.MAX_VALUE - this.aV;
+      if (par1 > i) {
+         par1 = i;
+      }
+
+      this.aW += (float)par1 / (float)this.aE();
+
+      for(this.aV += par1; this.aW >= 1.0F; this.aW /= (float)this.aE()) {
+         this.aW = (this.aW - 1.0F) * (float)this.aE();
+         this.bl();
+      }
+
+   }
+
+   public void j(int par1) {
+      this.aU -= par1;
+      if (this.aU < 0) {
+         this.aU = 0;
+      }
+
+   }
+
+   public int aE() {
+      return 7 + (this.aU * 7 >> 1);
+   }
+
+   private void bl() {
+      ++this.aU;
+   }
+
+   public void c(float par1) {
+      if (!this.aT.a) {
+         if (!this.k.F) {
+            this.as.a(par1);
+         }
+
+      }
+   }
+
+   public ne aF() {
+      return this.as;
+   }
+
+   public boolean a(boolean par1) {
+      return (par1 || this.as.c()) && !this.aT.a;
+   }
+
+   public boolean aG() {
+      return this.bb() > 0 && this.bb() < this.d();
+   }
+
+   public void c(aan par1ItemStack, int par2) {
+      if (par1ItemStack != this.d) {
+         this.d = par1ItemStack;
+         this.e = par2;
+         if (!this.k.F) {
+            this.e(true);
+         }
+
+      }
+   }
+
+   public boolean canPlayerEdit(long par1, int par2, long par3) {
+      return true;
+   }
+
+   protected int b(yw par1EntityPlayer) {
+      int i = this.aU * 7;
+      return i > 100 ? 100 : i;
+   }
+
+   protected boolean aH() {
+      return true;
+   }
+
+   public void c(int i) {
+   }
+
+   public void d(yw par1EntityPlayer) {
+      this.ap.a(par1EntityPlayer.ap);
+      this.bx = par1EntityPlayer.bx;
+      this.as = par1EntityPlayer.as;
+      this.aU = par1EntityPlayer.aU;
+      this.aV = par1EntityPlayer.aV;
+      this.aW = par1EntityPlayer.aW;
+      this.av = par1EntityPlayer.av;
+   }
+
+   protected boolean e_() {
+      return !this.aT.b;
+   }
+
+   public void aI() {
+   }
+}

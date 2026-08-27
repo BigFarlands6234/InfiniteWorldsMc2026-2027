@@ -1,0 +1,90 @@
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Random;
+
+public class so extends he {
+   private LinkedList a = new LinkedList();
+
+   public so(int par1, Random par2Random, long par3, long par4) {
+      super(par1);
+      this.g = new qg(par3, 50, par4, par3 + 7L + (long)par2Random.nextInt(6), 54 + par2Random.nextInt(6), par4 + 7L + (long)par2Random.nextInt(6));
+   }
+
+   public void a(he par1StructureComponent, List par2List, Random par3Random) {
+      int i = this.c();
+      int j1 = this.g.c() - 3 - 1;
+      if (j1 <= 0) {
+         j1 = 1;
+      }
+
+      int j;
+      for(j = 0; j < this.g.b(); j += 4) {
+         j += par3Random.nextInt(this.g.b());
+         if (j + 3 > this.g.b()) {
+            break;
+         }
+
+         he structurecomponent = gp.getNextComponent(par1StructureComponent, par2List, par3Random, this.g.a + (long)j, this.g.b + par3Random.nextInt(j1) + 1, this.g.c - 1L, 2, i);
+         if (structurecomponent != null) {
+            qg structureboundingbox = structurecomponent.b();
+            this.a.add(new qg(structureboundingbox.a, structureboundingbox.b, this.g.c, structureboundingbox.d, structureboundingbox.e, this.g.c + 1L));
+         }
+      }
+
+      for(j = 0; j < this.g.b(); j += 4) {
+         j += par3Random.nextInt(this.g.b());
+         if (j + 3 > this.g.b()) {
+            break;
+         }
+
+         he structurecomponent1 = gp.getNextComponent(par1StructureComponent, par2List, par3Random, this.g.a + (long)j, this.g.b + par3Random.nextInt(j1) + 1, this.g.f + 1L, 0, i);
+         if (structurecomponent1 != null) {
+            qg structureboundingbox1 = structurecomponent1.b();
+            this.a.add(new qg(structureboundingbox1.a, structureboundingbox1.b, this.g.f - 1L, structureboundingbox1.d, structureboundingbox1.e, this.g.f));
+         }
+      }
+
+      for(j = 0; j < this.g.d(); j += 4) {
+         j += par3Random.nextInt(this.g.d());
+         if (j + 3 > this.g.d()) {
+            break;
+         }
+
+         he structurecomponent2 = gp.getNextComponent(par1StructureComponent, par2List, par3Random, this.g.a - 1L, this.g.b + par3Random.nextInt(j1) + 1, this.g.c + (long)j, 1, i);
+         if (structurecomponent2 != null) {
+            qg structureboundingbox2 = structurecomponent2.b();
+            this.a.add(new qg(this.g.a, structureboundingbox2.b, structureboundingbox2.c, this.g.a + 1L, structureboundingbox2.e, structureboundingbox2.f));
+         }
+      }
+
+      for(j = 0; j < this.g.d(); j += 4) {
+         j += par3Random.nextInt(this.g.d());
+         if (j + 3 > this.g.d()) {
+            break;
+         }
+
+         he structurecomponent3 = gp.getNextComponent(par1StructureComponent, par2List, par3Random, this.g.d + 1L, this.g.b + par3Random.nextInt(j1) + 1, this.g.c + (long)j, 3, i);
+         if (structurecomponent3 != null) {
+            qg structureboundingbox3 = structurecomponent3.b();
+            this.a.add(new qg(this.g.d - 1L, structureboundingbox3.b, structureboundingbox3.c, this.g.d, structureboundingbox3.e, structureboundingbox3.f));
+         }
+      }
+
+   }
+
+   public boolean a(xd par1World, Random par2Random, qg par3StructureBoundingBox) {
+      if (this.a(par1World, par3StructureBoundingBox)) {
+         return false;
+      } else {
+         this.fillWithBlocks(par1World, par3StructureBoundingBox, this.g.a, this.g.b, this.g.c, this.g.d, this.g.b, this.g.f, pb.v.bO, 0, true);
+         this.fillWithBlocks(par1World, par3StructureBoundingBox, this.g.a, this.g.b + 1, this.g.c, this.g.d, Math.min(this.g.b + 3, this.g.e), this.g.f, 0, 0, false);
+
+         for(qg structureboundingbox : this.a) {
+            this.fillWithBlocks(par1World, par3StructureBoundingBox, structureboundingbox.a, structureboundingbox.e - 2, structureboundingbox.c, structureboundingbox.d, structureboundingbox.e, structureboundingbox.f, 0, 0, false);
+         }
+
+         this.randomlyRareFillWithBlocks(par1World, par3StructureBoundingBox, this.g.a, this.g.b + 4, this.g.c, this.g.d, this.g.e, this.g.f, 0, false);
+         return true;
+      }
+   }
+}

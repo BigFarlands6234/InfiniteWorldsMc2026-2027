@@ -1,0 +1,63 @@
+public class zi extends rc {
+   private acq b;
+   private xd c;
+   int a = 0;
+
+   public zi(acq par1EntityLiving) {
+      this.b = par1EntityLiving;
+      this.c = par1EntityLiving.k;
+      this.a(7);
+   }
+
+   public boolean a() {
+      if (this.b.aO().nextInt(this.b.bi() ? 50 : 1000) != 0) {
+         return false;
+      } else {
+         long i = gk.d(this.b.o);
+         int j = gk.c(this.b.p);
+         long k = gk.d(this.b.q);
+         if (this.c.getBlockId(i, j, k) == pb.X.bO && this.c.getBlockMetadata(i, j, k) == 1) {
+            return true;
+         } else {
+            return this.c.getBlockId(i, j - 1, k) == pb.u.bO;
+         }
+      }
+   }
+
+   public void c() {
+      this.a = 40;
+      this.c.a(this.b, (byte)10);
+      this.b.aM().f();
+   }
+
+   public void d() {
+      this.a = 0;
+   }
+
+   public boolean b() {
+      return this.a > 0;
+   }
+
+   public int h() {
+      return this.a;
+   }
+
+   public void e() {
+      this.a = Math.max(0, this.a - 1);
+      if (this.a == 4) {
+         long i = gk.d(this.b.o);
+         int j = gk.c(this.b.p);
+         long k = gk.d(this.b.q);
+         if (this.c.getBlockId(i, j, k) == pb.X.bO) {
+            this.c.playAuxSFX(2001, i, j, k, pb.X.bO + 4096);
+            this.c.setBlockWithNotify(i, j, k, 0);
+            this.b.v();
+         } else if (this.c.getBlockId(i, j - 1, k) == pb.u.bO) {
+            this.c.playAuxSFX(2001, i, j - 1, k, pb.u.bO);
+            this.c.setBlockWithNotify(i, j - 1, k, pb.v.bO);
+            this.b.v();
+         }
+
+      }
+   }
+}

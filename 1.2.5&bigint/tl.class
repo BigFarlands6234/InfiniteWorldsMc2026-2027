@@ -1,0 +1,178 @@
+public class tl extends akm {
+   private int b = 0;
+   kd a = null;
+   private int c;
+   private int d;
+
+   public tl(xd par1World) {
+      super(par1World);
+      this.bm = "/mob/villager_golem.png";
+      this.a(1.4F, 2.9F);
+      this.aM().a(true);
+      this.bT.a(1, new ax(this, 0.25F, true));
+      this.bT.a(2, new xz(this, 0.22F, 32.0F));
+      this.bT.a(3, new akr(this, 0.16F, true));
+      this.bT.a(4, new vw(this, 0.16F));
+      this.bT.a(5, new yc(this));
+      this.bT.a(6, new acu(this, 0.16F));
+      this.bT.a(7, new ob(this, yw.class, 6.0F));
+      this.bT.a(8, new bd(this));
+      this.bU.a(1, new hd(this));
+      this.bU.a(2, new zy(this, false));
+      this.bU.a(3, new amf(this, yy.class, 16.0F, 0, false, true));
+   }
+
+   protected void b() {
+      super.b();
+      this.ac.a(16, (byte)0);
+   }
+
+   public boolean b_() {
+      return true;
+   }
+
+   protected void g() {
+      if (--this.b <= 0) {
+         this.b = 70 + this.U.nextInt(50);
+         this.a = this.k.A.findNearestVillage((long)gk.c(this.o), gk.c(this.p), (long)gk.c(this.q), 32);
+         if (this.a == null) {
+            this.aX();
+         } else {
+            uh chunkcoordinates = this.a.a();
+            this.setHomeArea(chunkcoordinates.a, chunkcoordinates.b, chunkcoordinates.c, this.a.b());
+         }
+      }
+
+      super.g();
+   }
+
+   public int d() {
+      return 100;
+   }
+
+   protected int b(int par1) {
+      return par1;
+   }
+
+   public void e() {
+      super.e();
+      if (this.c > 0) {
+         --this.c;
+      }
+
+      if (this.d > 0) {
+         --this.d;
+      }
+
+      if (this.r * this.r + this.t * this.t > (double)2.5000003E-7F && this.U.nextInt(5) == 0) {
+         int i = gk.c(this.o);
+         int j = gk.c(this.p - (double)0.2F - (double)this.H);
+         int k = gk.c(this.q);
+         int l = this.k.getBlockId((long)i, j, (long)k);
+         if (l > 0) {
+            this.k.a("tilecrack_" + l, this.o + ((double)this.U.nextFloat() - (double)0.5F) * (double)this.I, this.y.b + 0.1, this.q + ((double)this.U.nextFloat() - (double)0.5F) * (double)this.I, (double)4.0F * ((double)this.U.nextFloat() - (double)0.5F), (double)0.5F, ((double)this.U.nextFloat() - (double)0.5F) * (double)4.0F);
+         }
+      }
+
+   }
+
+   public boolean a(Class par1Class) {
+      return this.F_() && yw.class.isAssignableFrom(par1Class) ? false : super.a(par1Class);
+   }
+
+   public void b(ady par1NBTTagCompound) {
+      super.b(par1NBTTagCompound);
+      par1NBTTagCompound.a("PlayerCreated", this.F_());
+   }
+
+   public void a(ady par1NBTTagCompound) {
+      super.a(par1NBTTagCompound);
+      this.b(par1NBTTagCompound.o("PlayerCreated"));
+   }
+
+   public boolean c(nn par1Entity) {
+      this.c = 10;
+      this.k.a(this, (byte)4);
+      boolean flag = par1Entity.a(md.a(this), 7 + this.U.nextInt(15));
+      if (flag) {
+         par1Entity.s += (double)0.4F;
+      }
+
+      this.k.a(this, "mob.irongolem.throw", 1.0F, 1.0F);
+      return flag;
+   }
+
+   public void a(byte par1) {
+      if (par1 == 4) {
+         this.c = 10;
+         this.k.a(this, "mob.irongolem.throw", 1.0F, 1.0F);
+      } else if (par1 == 11) {
+         this.d = 400;
+      } else {
+         super.a(par1);
+      }
+
+   }
+
+   public kd aa() {
+      return this.a;
+   }
+
+   public int ab() {
+      return this.c;
+   }
+
+   public void a(boolean par1) {
+      this.d = par1 ? 400 : 0;
+      this.k.a(this, (byte)11);
+   }
+
+   protected String m() {
+      return "none";
+   }
+
+   protected String n() {
+      return "mob.irongolem.hit";
+   }
+
+   protected String o() {
+      return "mob.irongolem.death";
+   }
+
+   protected void playStepSound(long par1, int par2, long par3, int par4) {
+      this.k.a(this, "mob.irongolem.walk", 1.0F, 1.0F);
+   }
+
+   protected void a(boolean par1, int par2) {
+      int i = this.U.nextInt(3);
+
+      for(int j = 0; j < i; ++j) {
+         this.b(pb.ae.bO, 1);
+      }
+
+      int k = 3 + this.U.nextInt(3);
+
+      for(int l = 0; l < k; ++l) {
+         this.b(yr.o.bQ, 1);
+      }
+
+   }
+
+   public int E_() {
+      return this.d;
+   }
+
+   public boolean F_() {
+      return (this.ac.a(16) & 1) != 0;
+   }
+
+   public void b(boolean par1) {
+      byte byte0 = this.ac.a(16);
+      if (par1) {
+         this.ac.b(16, (byte)(byte0 | 1));
+      } else {
+         this.ac.b(16, (byte)(byte0 & -2));
+      }
+
+   }
+}

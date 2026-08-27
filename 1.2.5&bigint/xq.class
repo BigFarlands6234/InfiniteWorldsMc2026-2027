@@ -1,0 +1,75 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+public class xq extends agt {
+   private abn[] a;
+   private boolean f;
+   private sj[] g;
+
+   public xq() {
+      this.a = new abn[]{abn.d, abn.f, abn.e, abn.h, abn.g, abn.n, abn.o, abn.s, abn.t, abn.v, abn.w, abn.x};
+      this.g = new sj[3];
+   }
+
+   protected boolean canSpawnStructureAtCoords(long par1, long par2) {
+      if (!this.f) {
+         Random random = new Random();
+         random.setSeed(this.d.v());
+         double d = random.nextDouble() * Math.PI * (double)2.0F;
+
+         for(int k = 0; k < this.g.length; ++k) {
+            double d1 = ((double)1.25F + random.nextDouble()) * (double)32.0F;
+            long l = (long)((int)Math.round(Math.cos(d) * d1));
+            long i1 = (long)((int)Math.round(Math.sin(d) * d1));
+            ArrayList arraylist = new ArrayList();
+
+            for(abn biomegenbase : this.a) {
+               arraylist.add(biomegenbase);
+            }
+
+            qo chunkposition = this.d.i().findBiomePosition((l << 4) + 8L, (i1 << 4) + 8L, 112, arraylist, random);
+            if (chunkposition != null) {
+               l = chunkposition.a >> 4;
+               i1 = chunkposition.c >> 4;
+            } else {
+               System.out.println("Placed stronghold in INVALID biome at (" + l + ", " + i1 + ")");
+            }
+
+            this.g[k] = new sj(l, i1);
+            d += (Math.PI * 2D) / (double)this.g.length;
+         }
+
+         this.f = true;
+      }
+
+      for(sj chunkcoordintpair : this.g) {
+         if (par1 == chunkcoordintpair.a && par2 == chunkcoordintpair.b) {
+            System.out.println(par1 + ", " + par2);
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   protected List a() {
+      ArrayList arraylist = new ArrayList();
+
+      for(sj chunkcoordintpair : this.g) {
+         if (chunkcoordintpair != null) {
+            arraylist.add(chunkcoordintpair.a(64));
+         }
+      }
+
+      return arraylist;
+   }
+
+   protected pg getStructureStart(long par1, long par2) {
+      ajo structurestrongholdstart;
+      for(structurestrongholdstart = new ajo(this.d, this.c, par1, par2); structurestrongholdstart.b().isEmpty() || ((s)structurestrongholdstart.b().get(0)).b == null; structurestrongholdstart = new ajo(this.d, this.c, par1, par2)) {
+      }
+
+      return structurestrongholdstart;
+   }
+}

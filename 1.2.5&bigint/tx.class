@@ -1,0 +1,49 @@
+public class tx extends rc {
+   private aaa a;
+   private adm b;
+
+   public tx(aaa par1EntityCreature) {
+      this.a = par1EntityCreature;
+   }
+
+   public boolean a() {
+      if (this.a.k.m()) {
+         return false;
+      } else {
+         kd village = this.a.k.A.findNearestVillage(gk.d(this.a.o), gk.c(this.a.p), gk.d(this.a.q), 16);
+         if (village == null) {
+            return false;
+         } else {
+            this.b = village.findNearestDoor(gk.d(this.a.o), gk.c(this.a.p), gk.d(this.a.q));
+            if (this.b == null) {
+               return false;
+            } else {
+               return (double)this.b.getInsideDistanceSquare(gk.d(this.a.o), gk.c(this.a.p), gk.d(this.a.q)) < (double)2.25F;
+            }
+         }
+      }
+   }
+
+   public boolean b() {
+      if (this.a.k.m()) {
+         return false;
+      } else {
+         return !this.b.g && this.b.isInside(gk.d(this.a.o), gk.d(this.a.q));
+      }
+   }
+
+   public void c() {
+      this.a.aM().b(false);
+      this.a.aM().c(false);
+   }
+
+   public void d() {
+      this.a.aM().b(true);
+      this.a.aM().c(true);
+      this.b = null;
+   }
+
+   public void e() {
+      this.b.e();
+   }
+}

@@ -1,0 +1,161 @@
+import java.util.List;
+import java.util.Random;
+
+public class ul extends pb {
+   private agw a;
+
+   protected ul(int par1, int par2, agw par3EnumMobType, acn par4Material) {
+      super(par1, par2, par4Material);
+      this.a = par3EnumMobType;
+      this.a(true);
+      float f = 0.0625F;
+      this.a(f, 0.0F, f, 1.0F - f, 0.03125F, 1.0F - f);
+   }
+
+   public int e() {
+      return 20;
+   }
+
+   public wu getCollisionBoundingBoxFromPool(xd par1World, long par2, int par3, long i) {
+      return null;
+   }
+
+   public boolean a() {
+      return false;
+   }
+
+   public boolean b() {
+      return false;
+   }
+
+   public boolean getBlocksMovement(ali par1IBlockAccess, long par2, int par3, long i) {
+      return true;
+   }
+
+   public boolean canPlaceBlockAt(xd par1World, long par2, int par3, long par4) {
+      return par1World.isBlockNormalCube(par2, par3 - 1, par4) || par1World.getBlockId(par2, par3 - 1, par4) == pb.aZ.bO;
+   }
+
+   public void onBlockAdded(xd world, long i, int j, long k) {
+   }
+
+   public void onNeighborBlockChange(xd par1World, long par2, int par3, long par4, int par5) {
+      boolean flag = false;
+      if (!par1World.isBlockNormalCube(par2, par3 - 1, par4) && par1World.getBlockId(par2, par3 - 1, par4) != pb.aZ.bO) {
+         flag = true;
+      }
+
+      if (flag) {
+         this.dropBlockAsItem(par1World, par2, par3, par4, par1World.getBlockMetadata(par2, par3, par4), 0);
+         par1World.setBlockWithNotify(par2, par3, par4, 0);
+      }
+
+   }
+
+   public void updateTick(xd par1World, long par2, int par3, long par4, Random par5Random) {
+      if (!par1World.F) {
+         if (par1World.getBlockMetadata(par2, par3, par4) != 0) {
+            this.setStateIfMobInteractsWithPlate(par1World, par2, par3, par4);
+         }
+      }
+   }
+
+   public void onEntityCollidedWithBlock(xd par1World, long par2, int par3, long par4, nn par5Entity) {
+      if (!par1World.F) {
+         if (par1World.getBlockMetadata(par2, par3, par4) != 1) {
+            this.setStateIfMobInteractsWithPlate(par1World, par2, par3, par4);
+         }
+      }
+   }
+
+   private void setStateIfMobInteractsWithPlate(xd par1World, long par2, int par3, long par4) {
+      boolean flag = par1World.getBlockMetadata(par2, par3, par4) == 1;
+      boolean flag1 = false;
+      double f = (double)0.125F;
+      List list = null;
+      if (this.a == agw.a) {
+         list = par1World.b((nn)null, wu.b((double)par2 + f, (double)par3, (double)par4 + f, (double)(par2 + 1L) - f, (double)par3 + (double)0.25F, (double)(par4 + 1L) - f));
+      }
+
+      if (this.a == agw.b) {
+         list = par1World.a(acq.class, wu.b((double)par2 + f, (double)par3, (double)par4 + f, (double)(par2 + 1L) - f, (double)par3 + (double)0.25F, (double)(par4 + 1L) - f));
+      }
+
+      if (this.a == agw.c) {
+         list = par1World.a(yw.class, wu.b((double)par2 + f, (double)par3, (double)par4 + f, (double)(par2 + 1L) - f, (double)par3 + (double)0.25F, (double)(par4 + 1L) - f));
+      }
+
+      if (list.size() > 0) {
+         flag1 = true;
+      }
+
+      if (flag1 && !flag) {
+         par1World.setBlockMetadataWithNotify(par2, par3, par4, 1);
+         par1World.notifyBlocksOfNeighborChange(par2, par3, par4, this.bO);
+         par1World.notifyBlocksOfNeighborChange(par2, par3 - 1, par4, this.bO);
+         par1World.markBlocksDirty(par2, par3, par4, par2, par3, par4);
+         par1World.a((double)par2 + (double)0.5F, (double)par3 + 0.1, (double)par4 + (double)0.5F, "random.click", 0.3F, 0.6F);
+      }
+
+      if (!flag1 && flag) {
+         par1World.setBlockMetadataWithNotify(par2, par3, par4, 0);
+         par1World.notifyBlocksOfNeighborChange(par2, par3, par4, this.bO);
+         par1World.notifyBlocksOfNeighborChange(par2, par3 - 1, par4, this.bO);
+         par1World.markBlocksDirty(par2, par3, par4, par2, par3, par4);
+         par1World.a((double)par2 + (double)0.5F, (double)par3 + 0.1, (double)par4 + (double)0.5F, "random.click", 0.3F, 0.5F);
+      }
+
+      if (flag1) {
+         par1World.scheduleBlockUpdate(par2, par3, par4, this.bO, this.e());
+      }
+
+   }
+
+   public void onBlockRemoval(xd par1World, long par2, int par3, long par4) {
+      int i = par1World.getBlockMetadata(par2, par3, par4);
+      if (i > 0) {
+         par1World.notifyBlocksOfNeighborChange(par2, par3, par4, this.bO);
+         par1World.notifyBlocksOfNeighborChange(par2, par3 - 1, par4, this.bO);
+      }
+
+      super.onBlockRemoval(par1World, par2, par3, par4);
+   }
+
+   public void setBlockBoundsBasedOnState(ali par1IBlockAccess, long par2, int par3, long par4) {
+      boolean flag = par1IBlockAccess.getBlockMetadata(par2, par3, par4) == 1;
+      float f = 0.0625F;
+      if (flag) {
+         this.a(f, 0.0F, f, 1.0F - f, 0.03125F, 1.0F - f);
+      } else {
+         this.a(f, 0.0F, f, 1.0F - f, 0.0625F, 1.0F - f);
+      }
+
+   }
+
+   public boolean isPoweringTo(ali par1IBlockAccess, long par2, int par3, long par4, int par5) {
+      return par1IBlockAccess.getBlockMetadata(par2, par3, par4) > 0;
+   }
+
+   public boolean isIndirectlyPoweringTo(xd par1World, long par2, int par3, long par4, int par5) {
+      if (par1World.getBlockMetadata(par2, par3, par4) == 0) {
+         return false;
+      } else {
+         return par5 == 1;
+      }
+   }
+
+   public boolean g() {
+      return true;
+   }
+
+   public void h() {
+      float f = 0.5F;
+      float f1 = 0.125F;
+      float f2 = 0.5F;
+      this.a(0.5F - f, 0.5F - f1, 0.5F - f2, 0.5F + f, 0.5F + f1, 0.5F + f2);
+   }
+
+   public int f() {
+      return 1;
+   }
+}

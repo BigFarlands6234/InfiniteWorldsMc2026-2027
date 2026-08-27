@@ -1,0 +1,40 @@
+import java.util.List;
+import java.util.Random;
+
+public class vr extends aas {
+   public vr(int par1, Random par2Random, qg par3StructureBoundingBox, int par4) {
+      super(par1);
+      this.h = par4;
+      this.g = par3StructureBoundingBox;
+   }
+
+   public void a(he par1StructureComponent, List par2List, Random par3Random) {
+      this.c((aga)par1StructureComponent, par2List, par3Random, 0, 1, true);
+   }
+
+   public static vr createValidComponent(List par0List, Random par1Random, long par2, int par3, long par4, int par5, int par6) {
+      qg structureboundingbox = qg.getComponentToAddBoundingBox(par2, par3, par4, -1L, 0, 0L, 5L, 7, 5L, par5);
+      return a(structureboundingbox) && he.a(par0List, structureboundingbox) == null ? new vr(par6, par1Random, structureboundingbox, par5) : null;
+   }
+
+   public boolean a(xd par1World, Random par2Random, qg par3StructureBoundingBox) {
+      this.fillWithBlocks(par1World, par3StructureBoundingBox, 0L, 0, 0L, 4L, 1, 4L, pb.bA.bO, pb.bA.bO, false);
+      this.fillWithBlocks(par1World, par3StructureBoundingBox, 0L, 2, 0L, 4L, 5, 4L, 0, 0, false);
+      this.fillWithBlocks(par1World, par3StructureBoundingBox, 0L, 2, 0L, 0L, 5, 4L, pb.bA.bO, pb.bA.bO, false);
+      this.fillWithBlocks(par1World, par3StructureBoundingBox, 0L, 3, 1L, 0L, 4, 1L, pb.bB.bO, pb.bB.bO, false);
+      this.fillWithBlocks(par1World, par3StructureBoundingBox, 0L, 3, 3L, 0L, 4, 3L, pb.bB.bO, pb.bB.bO, false);
+      this.fillWithBlocks(par1World, par3StructureBoundingBox, 4L, 2, 0L, 4L, 5, 0L, pb.bA.bO, pb.bA.bO, false);
+      this.fillWithBlocks(par1World, par3StructureBoundingBox, 1L, 2, 4L, 4L, 5, 4L, pb.bA.bO, pb.bA.bO, false);
+      this.fillWithBlocks(par1World, par3StructureBoundingBox, 1L, 3, 4L, 1L, 4, 4L, pb.bB.bO, pb.bA.bO, false);
+      this.fillWithBlocks(par1World, par3StructureBoundingBox, 3L, 3, 4L, 3L, 4, 4L, pb.bB.bO, pb.bA.bO, false);
+      this.fillWithBlocks(par1World, par3StructureBoundingBox, 0L, 6, 0L, 4L, 6, 4L, pb.bA.bO, pb.bA.bO, false);
+
+      for(int i = 0; i <= 4; ++i) {
+         for(int j = 0; j <= 4; ++j) {
+            this.fillCurrentPositionBlocksDownwards(par1World, pb.bA.bO, 0, (long)i, -1, (long)j, par3StructureBoundingBox);
+         }
+      }
+
+      return true;
+   }
+}

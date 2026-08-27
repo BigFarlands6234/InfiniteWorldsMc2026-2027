@@ -1,0 +1,123 @@
+public abstract class rn extends rc {
+   protected acq c;
+   protected float d;
+   protected boolean e;
+   private boolean a;
+   private int b;
+   private int f;
+   private int g;
+
+   public rn(acq par1EntityLiving, float par2, boolean par3) {
+      this(par1EntityLiving, par2, par3, false);
+   }
+
+   public rn(acq par1EntityLiving, float par2, boolean par3, boolean par4) {
+      this.b = 0;
+      this.f = 0;
+      this.g = 0;
+      this.c = par1EntityLiving;
+      this.d = par2;
+      this.e = par3;
+      this.a = par4;
+   }
+
+   public boolean b() {
+      acq entityliving = this.c.aT();
+      if (entityliving == null) {
+         return false;
+      } else if (!entityliving.M()) {
+         return false;
+      } else if (this.c.f(entityliving) > (double)(this.d * this.d)) {
+         return false;
+      } else {
+         if (this.e) {
+            if (!this.c.aN().a(entityliving)) {
+               if (++this.g > 60) {
+                  return false;
+               }
+            } else {
+               this.g = 0;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   public void c() {
+      this.b = 0;
+      this.f = 0;
+      this.g = 0;
+   }
+
+   public void d() {
+      this.c.c((acq)null);
+   }
+
+   protected boolean a(acq par1EntityLiving, boolean par2) {
+      if (par1EntityLiving == null) {
+         return false;
+      } else if (par1EntityLiving == this.c) {
+         return false;
+      } else if (!par1EntityLiving.M()) {
+         return false;
+      } else if (!(par1EntityLiving.y.e <= this.c.y.b) && !(par1EntityLiving.y.b >= this.c.y.e)) {
+         if (!this.c.a(par1EntityLiving.getClass())) {
+            return false;
+         } else {
+            if (this.c instanceof wd && ((wd)this.c).G_()) {
+               if (par1EntityLiving instanceof wd && ((wd)par1EntityLiving).G_()) {
+                  return false;
+               }
+
+               if (par1EntityLiving == ((wd)this.c).ah()) {
+                  return false;
+               }
+            } else if (par1EntityLiving instanceof yw && !par2 && ((yw)par1EntityLiving).aT.a) {
+               return false;
+            }
+
+            if (!this.c.isWithinHomeDistance(gk.d(par1EntityLiving.o), gk.c(par1EntityLiving.p), gk.d(par1EntityLiving.q))) {
+               return false;
+            } else if (this.e && !this.c.aN().a(par1EntityLiving)) {
+               return false;
+            } else {
+               if (this.a) {
+                  if (--this.f <= 0) {
+                     this.b = 0;
+                  }
+
+                  if (this.b == 0) {
+                     this.b = this.a(par1EntityLiving) ? 1 : 2;
+                  }
+
+                  if (this.b == 2) {
+                     return false;
+                  }
+               }
+
+               return true;
+            }
+         }
+      } else {
+         return false;
+      }
+   }
+
+   private boolean a(acq par1EntityLiving) {
+      this.f = 10 + this.c.aO().nextInt(5);
+      vu pathentity = this.c.aM().a(par1EntityLiving);
+      if (pathentity == null) {
+         return false;
+      } else {
+         e pathpoint = pathentity.c();
+         if (pathpoint == null) {
+            return false;
+         } else {
+            long i = pathpoint.a - gk.d(par1EntityLiving.o);
+            long j = pathpoint.c - gk.d(par1EntityLiving.q);
+            return (double)(i * i + j * j) <= (double)2.25F;
+         }
+      }
+   }
+}

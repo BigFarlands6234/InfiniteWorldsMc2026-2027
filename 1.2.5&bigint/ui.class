@@ -1,0 +1,186 @@
+public class ui extends akn implements xf {
+   public int a = 0;
+   public double b;
+   public double c;
+   public double d;
+   private nn an = null;
+   private int ao = 0;
+   public int e = 0;
+   public int am = 0;
+
+   public ui(xd par1World) {
+      super(par1World);
+      this.bm = "/mob/ghast.png";
+      this.a(4.0F, 4.0F);
+      this.ab = true;
+      this.bI = 5;
+   }
+
+   public boolean a(md par1DamageSource, int par2) {
+      if ("fireball".equals(par1DamageSource.l()) && par1DamageSource.a() instanceof yw) {
+         super.a(par1DamageSource, 1000);
+         ((yw)par1DamageSource.a()).a(dp.y);
+         return true;
+      } else {
+         return super.a(par1DamageSource, par2);
+      }
+   }
+
+   protected void b() {
+      super.b();
+      this.ac.a(16, (byte)0);
+   }
+
+   public int d() {
+      return 10;
+   }
+
+   public void J_() {
+      super.J_();
+      byte byte0 = this.ac.a(16);
+      this.bm = byte0 != 1 ? "/mob/ghast.png" : "/mob/ghast_fire.png";
+   }
+
+   protected void y_() {
+      if (!this.k.F && this.k.q == 0) {
+         this.A();
+      }
+
+      this.w();
+      this.e = this.am;
+      double d = this.b - this.o;
+      double d1 = this.c - this.p;
+      double d2 = this.d - this.q;
+      double d3 = (double)gk.a(d * d + d1 * d1 + d2 * d2);
+      if (d3 < (double)1.0F || d3 > (double)60.0F) {
+         this.b = this.o + (double)((this.U.nextFloat() * 2.0F - 1.0F) * 16.0F);
+         this.c = this.p + (double)((this.U.nextFloat() * 2.0F - 1.0F) * 16.0F);
+         this.d = this.q + (double)((this.U.nextFloat() * 2.0F - 1.0F) * 16.0F);
+      }
+
+      if (this.a-- <= 0) {
+         this.a += this.U.nextInt(5) + 2;
+         if (this.a(this.b, this.c, this.d, d3)) {
+            this.r += d / d3 * 0.1;
+            this.s += d1 / d3 * 0.1;
+            this.t += d2 / d3 * 0.1;
+         } else {
+            this.b = this.o;
+            this.c = this.p;
+            this.d = this.q;
+         }
+      }
+
+      if (this.an != null && this.an.G) {
+         this.an = null;
+      }
+
+      if (this.an == null || this.ao-- <= 0) {
+         this.an = this.k.b(this, (double)100.0F);
+         if (this.an != null) {
+            this.ao = 20;
+         }
+      }
+
+      double d4 = (double)64.0F;
+      if (this.an != null && this.an.f(this) < d4 * d4) {
+         double d5 = this.an.o - this.o;
+         double d6 = this.an.y.b + (double)(this.an.J / 2.0F) - (this.p + (double)(this.J / 2.0F));
+         double d7 = this.an.q - this.q;
+         this.bd = this.u = -((float)Math.atan2(d5, d7)) * 180.0F / (float)Math.PI;
+         if (this.m(this.an)) {
+            if (this.am == 10) {
+               this.k.playAuxSFXAtEntity((yw)null, 1007, (long)((int)this.o), (int)this.p, (long)((int)this.q), 0);
+            }
+
+            ++this.am;
+            if (this.am == 20) {
+               this.k.playAuxSFXAtEntity((yw)null, 1008, (long)((int)this.o), (int)this.p, (long)((int)this.q), 0);
+               bt entityfireball = new bt(this.k, this, d5, d6, d7);
+               double d8 = (double)4.0F;
+               bo vec3d = this.k(1.0F);
+               entityfireball.o = this.o + vec3d.a * d8;
+               entityfireball.p = this.p + (double)(this.J / 2.0F) + (double)0.5F;
+               entityfireball.q = this.q + vec3d.c * d8;
+               this.k.a(entityfireball);
+               this.am = -40;
+            }
+         } else if (this.am > 0) {
+            --this.am;
+         }
+      } else {
+         this.bd = this.u = -((float)Math.atan2(this.r, this.t)) * 180.0F / (float)Math.PI;
+         if (this.am > 0) {
+            --this.am;
+         }
+      }
+
+      if (!this.k.F) {
+         byte byte0 = this.ac.a(16);
+         byte byte1 = (byte)(this.am <= 10 ? 0 : 1);
+         if (byte0 != byte1) {
+            this.ac.b(16, byte1);
+         }
+      }
+
+   }
+
+   private boolean a(double par1, double par3, double par5, double par7) {
+      double d = (this.b - this.o) / par7;
+      double d1 = (this.c - this.p) / par7;
+      double d2 = (this.d - this.q) / par7;
+      wu axisalignedbb = this.y.d();
+
+      for(int i = 1; (double)i < par7; ++i) {
+         axisalignedbb.d(d, d1, d2);
+         if (this.k.a(this, axisalignedbb).size() > 0) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   protected String m() {
+      return "mob.ghast.moan";
+   }
+
+   protected String n() {
+      return "mob.ghast.scream";
+   }
+
+   protected String o() {
+      return "mob.ghast.death";
+   }
+
+   protected int f() {
+      return yr.M.bQ;
+   }
+
+   protected void a(boolean par1, int par2) {
+      int i = this.U.nextInt(2) + this.U.nextInt(1 + par2);
+
+      for(int j = 0; j < i; ++j) {
+         this.b(yr.bp.bQ, 1);
+      }
+
+      i = this.U.nextInt(3) + this.U.nextInt(1 + par2);
+
+      for(int k = 0; k < i; ++k) {
+         this.b(yr.M.bQ, 1);
+      }
+
+   }
+
+   protected float C_() {
+      return 10.0F;
+   }
+
+   public boolean i() {
+      return this.U.nextInt(20) == 0 && super.i() && this.k.q > 0;
+   }
+
+   public int ac() {
+      return 1;
+   }
+}

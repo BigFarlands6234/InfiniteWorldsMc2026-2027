@@ -1,0 +1,16 @@
+import java.util.ArrayList;
+import java.util.Random;
+
+public class s extends gd {
+   public ahh a;
+   public acl b;
+   public ArrayList c = new ArrayList();
+
+   public s(int par1, Random par2Random, long par3, long par4) {
+      super(0, par2Random, par3, par4);
+   }
+
+   public qo a_() {
+      return this.b != null ? this.b.a_() : super.a_();
+   }
+}

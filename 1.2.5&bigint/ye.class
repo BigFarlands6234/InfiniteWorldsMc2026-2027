@@ -1,0 +1,45 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+public class ye extends qk {
+   protected ye(int par1, int par2) {
+      super(par1, par2);
+      float f = 0.5F;
+      float f1 = 0.015625F;
+      this.a(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f1, 0.5F + f);
+   }
+
+   public int d() {
+      return 23;
+   }
+
+   public wu getCollisionBoundingBoxFromPool(xd par1World, long par2, int par3, long par4) {
+      return wu.b((double)par2 + this.bV, (double)par3 + this.bW, (double)par4 + this.bX, (double)par2 + this.bY, (double)par3 + this.bZ, (double)par4 + this.ca);
+   }
+
+   public int i() {
+      return 2129968;
+   }
+
+   public int d(int par1) {
+      return 2129968;
+   }
+
+   public boolean canPlaceBlockAt(xd par1World, long par2, int par3, long par4) {
+      return super.canPlaceBlockAt(par1World, par2, par3, par4);
+   }
+
+   public int colorMultiplier(ali par1IBlockAccess, long par2, int par3, long par4) {
+      return 2129968;
+   }
+
+   protected boolean f_(int par1) {
+      return par1 == pb.B.bO;
+   }
+
+   public boolean canBlockStay(xd par1World, long par2, int par3, long par4) {
+      if (par3 >= 0 && par3 < 256) {
+         return par1World.getBlockMaterial(par2, par3 - 1, par4) == acn.g && par1World.getBlockMetadata(par2, par3 - 1, par4) == 0;
+      } else {
+         return false;
+      }
+   }
+}

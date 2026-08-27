@@ -1,0 +1,157 @@
+public class va extends nn {
+   public int a = 0;
+   private double b;
+   private double c;
+   private double d;
+   private int e;
+   private boolean am;
+
+   public va(xd par1World) {
+      super(par1World);
+      this.a(0.25F, 0.25F);
+   }
+
+   protected void b() {
+   }
+
+   public boolean a(double par1) {
+      double d = this.y.c() * (double)4.0F;
+      d *= (double)64.0F;
+      return par1 < d * d;
+   }
+
+   public va(xd par1World, double par2, double par4, double par6) {
+      super(par1World);
+      this.e = 0;
+      this.a(0.25F, 0.25F);
+      this.d(par2, par4, par6);
+      this.H = 0.0F;
+   }
+
+   public void a(double par1, int par3, double par4) {
+      double d = par1 - this.o;
+      double d1 = par4 - this.q;
+      float f = gk.a(d * d + d1 * d1);
+      if (f > 12.0F) {
+         this.b = this.o + d / (double)f * (double)12.0F;
+         this.d = this.q + d1 / (double)f * (double)12.0F;
+         this.c = this.p + (double)8.0F;
+      } else {
+         this.b = par1;
+         this.c = (double)par3;
+         this.d = par4;
+      }
+
+      this.e = 0;
+      this.am = this.U.nextInt(5) > 0;
+   }
+
+   public void a(double par1, double par3, double par5) {
+      this.r = par1;
+      this.s = par3;
+      this.t = par5;
+      if (this.x == 0.0F && this.w == 0.0F) {
+         float f = gk.a(par1 * par1 + par5 * par5);
+         this.w = this.u = (float)(Math.atan2(par1, par5) * (double)180.0F / Math.PI);
+         this.x = this.v = (float)(Math.atan2(par3, (double)f) * (double)180.0F / Math.PI);
+      }
+
+   }
+
+   public void J_() {
+      this.N = this.o;
+      this.O = this.p;
+      this.P = this.q;
+      super.J_();
+      this.o += this.r;
+      this.p += this.s;
+      this.q += this.t;
+      float f = gk.a(this.r * this.r + this.t * this.t);
+      this.u = (float)(Math.atan2(this.r, this.t) * (double)180.0F / Math.PI);
+
+      for(this.v = (float)(Math.atan2(this.s, (double)f) * (double)180.0F / Math.PI); this.v - this.x < -180.0F; this.x -= 360.0F) {
+      }
+
+      while(this.v - this.x >= 180.0F) {
+         this.x += 360.0F;
+      }
+
+      while(this.u - this.w < -180.0F) {
+         this.w -= 360.0F;
+      }
+
+      while(this.u - this.w >= 180.0F) {
+         this.w += 360.0F;
+      }
+
+      this.v = this.x + (this.v - this.x) * 0.2F;
+      this.u = this.w + (this.u - this.w) * 0.2F;
+      if (!this.k.F) {
+         double d = this.b - this.o;
+         double d1 = this.d - this.q;
+         float f2 = (float)Math.sqrt(d * d + d1 * d1);
+         float f3 = (float)Math.atan2(d1, d);
+         double d2 = (double)f + (double)(f2 - f) * 0.0025;
+         if (f2 < 1.0F) {
+            d2 *= 0.8;
+            this.s *= 0.8;
+         }
+
+         this.r = Math.cos((double)f3) * d2;
+         this.t = Math.sin((double)f3) * d2;
+         if (this.p < this.c) {
+            this.s += ((double)1.0F - this.s) * (double)0.015F;
+         } else {
+            this.s += ((double)-1.0F - this.s) * (double)0.015F;
+         }
+      }
+
+      float f1 = 0.25F;
+      if (this.H()) {
+         for(int i = 0; i < 4; ++i) {
+            this.k.a("bubble", this.o - this.r * (double)f1, this.p - this.s * (double)f1, this.q - this.t * (double)f1, this.r, this.s, this.t);
+         }
+      } else {
+         this.k.a("portal", this.o - this.r * (double)f1 + this.U.nextDouble() * 0.6 - 0.3, this.p - this.s * (double)f1 - (double)0.5F, this.q - this.t * (double)f1 + this.U.nextDouble() * 0.6 - 0.3, this.r, this.s, this.t);
+      }
+
+      if (!this.k.F) {
+         this.d(this.o, this.p, this.q);
+         ++this.e;
+         if (this.e > 80 && !this.k.F) {
+            this.A();
+            if (this.am) {
+               this.k.a(new fq(this.k, this.o, this.p, this.q, new aan(yr.bA)));
+            } else {
+               this.k.playAuxSFX(2003, (long)((int)Math.round(this.o)), (int)Math.round(this.p), (long)((int)Math.round(this.q)), 0);
+            }
+         }
+      }
+
+   }
+
+   public void b(ady nbttagcompound) {
+   }
+
+   public void a(ady nbttagcompound) {
+   }
+
+   public void a(yw entityplayer) {
+   }
+
+   public float h_() {
+      return 0.0F;
+   }
+
+   public float a(float par1) {
+      return 1.0F;
+   }
+
+   public int b(float par1) {
+      return 15728880;
+   }
+
+   public boolean k_() {
+      return false;
+   }
+}

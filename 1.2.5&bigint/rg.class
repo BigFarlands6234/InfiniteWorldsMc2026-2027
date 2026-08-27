@@ -1,0 +1,47 @@
+public class rg extends rt {
+   public rg(xd par1World, double par2, double par4, double par6) {
+      super(par1World, par2, par4, par6, (double)0.0F, (double)0.0F, (double)0.0F);
+      this.r *= (double)0.3F;
+      this.s = (double)((float)Math.random() * 0.2F + 0.1F);
+      this.t *= (double)0.3F;
+      this.ao = 1.0F;
+      this.ap = 1.0F;
+      this.aq = 1.0F;
+      this.c(19 + this.U.nextInt(4));
+      this.a(0.01F, 0.01F);
+      this.an = 0.06F;
+      this.e = (int)((double)8.0F / (Math.random() * 0.8 + 0.2));
+   }
+
+   public void J_() {
+      this.l = this.o;
+      this.m = this.p;
+      this.n = this.q;
+      this.s -= (double)this.an;
+      this.b(this.r, this.s, this.t);
+      this.r *= (double)0.98F;
+      this.s *= (double)0.98F;
+      this.t *= (double)0.98F;
+      if (this.e-- <= 0) {
+         this.A();
+      }
+
+      if (this.z) {
+         if (Math.random() < (double)0.5F) {
+            this.A();
+         }
+
+         this.r *= (double)0.7F;
+         this.t *= (double)0.7F;
+      }
+
+      acn material = this.k.getBlockMaterial(gk.d(this.o), gk.c(this.p), gk.d(this.q));
+      if (material.d() || material.a()) {
+         double d = (double)((float)(gk.c(this.p) + 1) - agv.e(this.k.getBlockMetadata(gk.d(this.o), gk.c(this.p), gk.d(this.q))));
+         if (this.p < d) {
+            this.A();
+         }
+      }
+
+   }
+}

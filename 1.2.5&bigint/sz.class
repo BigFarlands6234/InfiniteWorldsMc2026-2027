@@ -1,0 +1,88 @@
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.util.zip.DataFormatException;
+import java.util.zip.Inflater;
+
+public class sz extends abs {
+   public long a;
+   public long b;
+   public int c;
+   public int d;
+   public byte[] e;
+   public boolean f;
+   private int g;
+   private int h;
+   private static byte[] i = new byte[0];
+
+   public sz() {
+      this.q = true;
+   }
+
+   public void a(DataInputStream par1DataInputStream) throws IOException {
+      try {
+         this.a = par1DataInputStream.readLong();
+      } catch (ClassCastException var14) {
+         this.a = (long)par1DataInputStream.readInt();
+      }
+
+      try {
+         this.b = par1DataInputStream.readLong();
+      } catch (ClassCastException var13) {
+         this.b = (long)par1DataInputStream.readInt();
+      }
+
+      this.f = par1DataInputStream.readBoolean();
+      this.c = par1DataInputStream.readShort();
+      this.d = par1DataInputStream.readShort();
+      this.g = par1DataInputStream.readInt();
+      this.h = par1DataInputStream.readInt();
+      if (sz.i.length < this.g) {
+         sz.i = new byte[this.g];
+      }
+
+      par1DataInputStream.readFully(sz.i, 0, this.g);
+      int i = 0;
+
+      for(int j = 0; j < 16; ++j) {
+         i += this.c >> j & 1;
+      }
+
+      int k = 12288 * i;
+      if (this.f) {
+         k += 256;
+      }
+
+      this.e = new byte[k];
+      Inflater inflater = new Inflater();
+      inflater.setInput(sz.i, 0, this.g);
+
+      try {
+         inflater.inflate(this.e);
+      } catch (DataFormatException var11) {
+         throw new IOException("Bad compressed data format");
+      } finally {
+         inflater.end();
+      }
+
+   }
+
+   public void a(DataOutputStream par1DataOutputStream) throws IOException {
+      par1DataOutputStream.writeLong(this.a);
+      par1DataOutputStream.writeLong(this.b);
+      par1DataOutputStream.writeBoolean(this.f);
+      par1DataOutputStream.writeShort((short)(this.c & '\uffff'));
+      par1DataOutputStream.writeShort((short)(this.d & '\uffff'));
+      par1DataOutputStream.writeInt(this.g);
+      par1DataOutputStream.writeInt(this.h);
+      par1DataOutputStream.write(this.e, 0, this.g);
+   }
+
+   public void a(oe par1NetHandler) {
+      par1NetHandler.a(this);
+   }
+
+   public int a() {
+      return 17 + this.g;
+   }
+}

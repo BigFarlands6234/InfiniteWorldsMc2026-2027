@@ -1,0 +1,89 @@
+import java.util.Random;
+
+public class uz extends kw {
+   public int a;
+   public float b;
+   public float c;
+   public float d;
+   public float e;
+   public float f;
+   public float g;
+   public float h;
+   public float p;
+   public float q;
+   private static Random r = new Random();
+
+   public uz() {
+   }
+
+   public void n_() {
+      super.n_();
+      this.g = this.f;
+      this.p = this.h;
+      yw entityplayer = this.i.a((double)this.j + (double)0.5F, (double)((float)this.k + 0.5F), (double)this.l + (double)0.5F, (double)3.0F);
+      if (entityplayer != null) {
+         double d = entityplayer.o - ((double)this.j + (double)0.5F);
+         double d1 = entityplayer.q - ((double)this.l + (double)0.5F);
+         this.q = (float)Math.atan2(d1, d);
+         this.f += 0.1F;
+         if (this.f < 0.5F || r.nextInt(40) == 0) {
+            float f3 = this.d;
+
+            do {
+               this.d += (float)(r.nextInt(4) - r.nextInt(4));
+            } while(f3 == this.d);
+         }
+      } else {
+         this.q += 0.02F;
+         this.f -= 0.1F;
+      }
+
+      while(this.h >= (float)Math.PI) {
+         this.h -= ((float)Math.PI * 2F);
+      }
+
+      while(this.h < -(float)Math.PI) {
+         this.h += ((float)Math.PI * 2F);
+      }
+
+      while(this.q >= (float)Math.PI) {
+         this.q -= ((float)Math.PI * 2F);
+      }
+
+      while(this.q < -(float)Math.PI) {
+         this.q += ((float)Math.PI * 2F);
+      }
+
+      float f;
+      for(f = this.q - this.h; f >= (float)Math.PI; f -= ((float)Math.PI * 2F)) {
+      }
+
+      while(f < -(float)Math.PI) {
+         f += ((float)Math.PI * 2F);
+      }
+
+      this.h += f * 0.4F;
+      if (this.f < 0.0F) {
+         this.f = 0.0F;
+      }
+
+      if (this.f > 1.0F) {
+         this.f = 1.0F;
+      }
+
+      ++this.a;
+      this.c = this.b;
+      float f1 = (this.d - this.b) * 0.4F;
+      float f2 = 0.2F;
+      if (f1 < -f2) {
+         f1 = -f2;
+      }
+
+      if (f1 > f2) {
+         f1 = f2;
+      }
+
+      this.e += (f1 - this.e) * 0.9F;
+      this.b += this.e;
+   }
+}

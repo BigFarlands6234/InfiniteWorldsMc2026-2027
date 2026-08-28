@@ -1,0 +1,50 @@
+import java.util.Random;
+
+public class op extends cp {
+   private am[] a;
+   private int b;
+
+   public op(Random par1Random, int par2) {
+      this.b = par2;
+      this.a = new am[par2];
+
+      for(int i = 0; i < par2; ++i) {
+         this.a[i] = new am(par1Random);
+      }
+
+   }
+
+   public double[] generateNoiseOctaves(double[] par1ArrayOfDouble, long par2, long par3, long par4, int par5, int par6, int par7, double par8, double par10, double par12) {
+      if (par1ArrayOfDouble == null) {
+         par1ArrayOfDouble = new double[par5 * par6 * par7];
+      } else {
+         for(int i = 0; i < par1ArrayOfDouble.length; ++i) {
+            par1ArrayOfDouble[i] = (double)0.0F;
+         }
+      }
+
+      double d = (double)1.0F;
+
+      for(int j = 0; j < this.b; ++j) {
+         double d1 = (double)par2 * d * par8;
+         double d2 = (double)par3 * d * par10;
+         double d3 = (double)par4 * d * par12;
+         long l = gk.d(d1);
+         long l1 = gk.d(d3);
+         d1 -= (double)l;
+         d3 -= (double)l1;
+         l %= 16777216L;
+         l1 %= 16777216L;
+         d1 += (double)l;
+         d3 += (double)l1;
+         this.a[j].a(par1ArrayOfDouble, d1, d2, d3, par5, par6, par7, par8 * d, par10 * d, par12 * d, d);
+         d /= (double)2.0F;
+      }
+
+      return par1ArrayOfDouble;
+   }
+
+   public double[] generateNoiseOctaves(double[] par1ArrayOfDouble, long par2, long par3, int par4, int par5, double par6, double par8, double par10) {
+      return this.generateNoiseOctaves(par1ArrayOfDouble, par2, 10L, par3, par4, 1, par5, par6, (double)1.0F, par8);
+   }
+}

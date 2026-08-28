@@ -1,0 +1,78 @@
+public class ni extends rc {
+   private wd d;
+   private acq e;
+   xd a;
+   private float f;
+   private rh g;
+   private int h;
+   float b;
+   float c;
+   private boolean i;
+
+   public ni(wd par1EntityTameable, float par2, float par3, float par4) {
+      this.d = par1EntityTameable;
+      this.a = par1EntityTameable.k;
+      this.f = par2;
+      this.g = par1EntityTameable.aM();
+      this.c = par3;
+      this.b = par4;
+      this.a(3);
+   }
+
+   public boolean a() {
+      acq entityliving = this.d.ah();
+      if (entityliving == null) {
+         return false;
+      } else if (this.d.af()) {
+         return false;
+      } else if (this.d.f(entityliving) < (double)(this.c * this.c)) {
+         return false;
+      } else {
+         this.e = entityliving;
+         return true;
+      }
+   }
+
+   public boolean b() {
+      return !this.g.e() && this.d.f(this.e) > (double)(this.b * this.b) && !this.d.af();
+   }
+
+   public void c() {
+      this.h = 0;
+      this.i = this.d.aM().a();
+      this.d.aM().a(false);
+   }
+
+   public void d() {
+      this.e = null;
+      this.g.f();
+      this.d.aM().a(this.i);
+   }
+
+   public void e() {
+      this.d.aJ().a(this.e, 10.0F, (float)this.d.ak());
+      if (!this.d.af()) {
+         if (--this.h <= 0) {
+            this.h = 10;
+            if (!this.g.a(this.e, this.f)) {
+               if (!(this.d.f(this.e) < (double)144.0F)) {
+                  long i = gk.d(this.e.o) - 2L;
+                  long j = gk.d(this.e.q) - 2L;
+                  int k = gk.c(this.e.y.b);
+
+                  for(int l = 0; l <= 4; ++l) {
+                     for(int i1 = 0; i1 <= 4; ++i1) {
+                        if ((l < 1 || i1 < 1 || l > 3 || i1 > 3) && this.a.isBlockNormalCube(i + (long)l, k - 1, j + (long)i1) && !this.a.isBlockNormalCube(i + (long)l, k, j + (long)i1) && !this.a.isBlockNormalCube(i + (long)l, k + 1, j + (long)i1)) {
+                           this.d.c((double)(i + (long)l) + (double)0.5F, (double)k, (double)(j + (long)i1) + (double)0.5F, this.d.u, this.d.v);
+                           this.g.f();
+                           return;
+                        }
+                     }
+                  }
+
+               }
+            }
+         }
+      }
+   }
+}

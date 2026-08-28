@@ -1,0 +1,59 @@
+import java.util.List;
+import java.util.Random;
+
+public class kj
+extends fh {
+    private final int a;
+
+    public kj(int par1, Random par2Random, qg par3StructureBoundingBox, int par4) {
+        super(par1);
+        this.h = par4;
+        this.g = par3StructureBoundingBox;
+        this.a = par4 != 2 && par4 != 0 ? par3StructureBoundingBox.b() : par3StructureBoundingBox.d();
+    }
+
+    public void a(he structurecomponent, List list, Random random) {
+    }
+
+    public static qg func_35051_a(List par0List, Random par1Random, long par2, int par3, long par4, int par5) {
+        qg structureboundingbox = qg.getComponentToAddBoundingBox((long)par2, (int)par3, (long)par4, (long)-1L, (int)-1, (long)0L, (long)5L, (int)5, (long)4L, (int)par5);
+        he structurecomponent = he.a((List)par0List, (qg)structureboundingbox);
+        if (structurecomponent == null) {
+            return null;
+        }
+        if (structurecomponent.b().b == structureboundingbox.b) {
+            for (int i = 3; i >= 1; --i) {
+                qg structureboundingbox1 = qg.getComponentToAddBoundingBox((long)par2, (int)par3, (long)par4, (long)-1L, (int)-1, (long)0L, (long)5L, (int)5, (long)(i - 1), (int)par5);
+                if (structurecomponent.b().a(structureboundingbox1)) continue;
+                return qg.getComponentToAddBoundingBox((long)par2, (int)par3, (long)par4, (long)-1L, (int)-1, (long)0L, (long)5L, (int)5, (long)i, (int)par5);
+            }
+        }
+        return null;
+    }
+
+    public boolean a(xd par1World, Random par2Random, qg par3StructureBoundingBox) {
+        if (this.a(par1World, par3StructureBoundingBox)) {
+            return false;
+        }
+        for (int i = 0; i < this.a; ++i) {
+            this.placeBlockAtCurrentPosition(par1World, pb.bm.bO, 0, 0L, 0, i, par3StructureBoundingBox);
+            this.placeBlockAtCurrentPosition(par1World, pb.bm.bO, 0, 1L, 0, i, par3StructureBoundingBox);
+            this.placeBlockAtCurrentPosition(par1World, pb.bm.bO, 0, 2L, 0, i, par3StructureBoundingBox);
+            this.placeBlockAtCurrentPosition(par1World, pb.bm.bO, 0, 3L, 0, i, par3StructureBoundingBox);
+            this.placeBlockAtCurrentPosition(par1World, pb.bm.bO, 0, 4L, 0, i, par3StructureBoundingBox);
+            for (int j = 1; j <= 3; ++j) {
+                this.placeBlockAtCurrentPosition(par1World, pb.bm.bO, 0, 0L, j, i, par3StructureBoundingBox);
+                this.placeBlockAtCurrentPosition(par1World, 0, 0, 1L, j, i, par3StructureBoundingBox);
+                this.placeBlockAtCurrentPosition(par1World, 0, 0, 2L, j, i, par3StructureBoundingBox);
+                this.placeBlockAtCurrentPosition(par1World, 0, 0, 3L, j, i, par3StructureBoundingBox);
+                this.placeBlockAtCurrentPosition(par1World, pb.bm.bO, 0, 4L, j, i, par3StructureBoundingBox);
+            }
+            this.placeBlockAtCurrentPosition(par1World, pb.bm.bO, 0, 0L, 4, i, par3StructureBoundingBox);
+            this.placeBlockAtCurrentPosition(par1World, pb.bm.bO, 0, 1L, 4, i, par3StructureBoundingBox);
+            this.placeBlockAtCurrentPosition(par1World, pb.bm.bO, 0, 2L, 4, i, par3StructureBoundingBox);
+            this.placeBlockAtCurrentPosition(par1World, pb.bm.bO, 0, 3L, 4, i, par3StructureBoundingBox);
+            this.placeBlockAtCurrentPosition(par1World, pb.bm.bO, 0, 4L, 4, i, par3StructureBoundingBox);
+        }
+        return true;
+    }
+}

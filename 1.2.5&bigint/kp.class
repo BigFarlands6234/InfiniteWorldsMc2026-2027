@@ -1,0 +1,56 @@
+import java.util.List;
+import java.util.Random;
+
+public class kp
+extends fh {
+    private final mg a;
+    private final boolean b;
+    private final boolean c;
+
+    public kp(int par1, Random par2Random, qg par3StructureBoundingBox, int par4) {
+        super(par1);
+        this.h = par4;
+        this.a = this.a(par2Random);
+        this.g = par3StructureBoundingBox;
+        this.b = par2Random.nextInt(2) == 0;
+        this.c = par2Random.nextInt(2) == 0;
+    }
+
+    public void a(he par1StructureComponent, List par2List, Random par3Random) {
+        this.getNextComponentNormal((s)par1StructureComponent, par2List, par3Random, 1L, 1);
+        if (this.b) {
+            this.getNextComponentX((s)par1StructureComponent, par2List, par3Random, 1, 2L);
+        }
+        if (this.c) {
+            this.getNextComponentZ((s)par1StructureComponent, par2List, par3Random, 1, 2L);
+        }
+    }
+
+    public static kp findValidPlacement(List par0List, Random par1Random, long par2, int par3, long par4, int par5, int par6) {
+        qg structureboundingbox = qg.getComponentToAddBoundingBox((long)par2, (int)par3, (long)par4, (long)-1L, (int)-1, (long)0L, (long)5L, (int)5, (long)7L, (int)par5);
+        if (!kp.a((qg)structureboundingbox) || he.a((List)par0List, (qg)structureboundingbox) != null) {
+            return null;
+        }
+        return new kp(par6, par1Random, structureboundingbox, par5);
+    }
+
+    public boolean a(xd par1World, Random par2Random, qg par3StructureBoundingBox) {
+        if (this.a(par1World, par3StructureBoundingBox)) {
+            return false;
+        }
+        this.fillWithRandomizedBlocks(par1World, par3StructureBoundingBox, 0L, 0, 0L, 4L, 4, 6L, true, par2Random, (up)abb.b());
+        this.placeDoor(par1World, par2Random, par3StructureBoundingBox, this.a, 1L, 1, 0L);
+        this.placeDoor(par1World, par2Random, par3StructureBoundingBox, mg.a, 1L, 1, 6L);
+        this.randomlyPlaceBlock(par1World, par3StructureBoundingBox, par2Random, 0.1f, 1L, 2, 1L, pb.aq.bO, 0);
+        this.randomlyPlaceBlock(par1World, par3StructureBoundingBox, par2Random, 0.1f, 3L, 2, 1L, pb.aq.bO, 0);
+        this.randomlyPlaceBlock(par1World, par3StructureBoundingBox, par2Random, 0.1f, 1L, 2, 5L, pb.aq.bO, 0);
+        this.randomlyPlaceBlock(par1World, par3StructureBoundingBox, par2Random, 0.1f, 3L, 2, 5L, pb.aq.bO, 0);
+        if (this.b) {
+            this.fillWithBlocks(par1World, par3StructureBoundingBox, 0L, 1, 2L, 0L, 3, 4L, 0, 0, false);
+        }
+        if (this.c) {
+            this.fillWithBlocks(par1World, par3StructureBoundingBox, 4L, 1, 2L, 4L, 3, 4L, 0, 0, false);
+        }
+        return true;
+    }
+}

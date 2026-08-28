@@ -1,0 +1,99 @@
+import java.util.ArrayList;
+import java.util.List;
+
+class os extends dd {
+   public List a = new ArrayList();
+
+   public os(yw par1EntityPlayer) {
+      pb[] ablock = new pb[]{pb.w, pb.t, pb.aw, pb.G, pb.H, pb.I, pb.N, pb.aN, pb.bm, pb.bm, pb.bm, pb.bm, pb.aW, pb.ax, pb.ah, pb.ai, pb.z, pb.O, pb.al, pb.ao, pb.ak, pb.ak, pb.ak, pb.ak, pb.ak, pb.ak, pb.ap, pb.bb, pb.bc, pb.bd, pb.J, pb.J, pb.J, pb.J, pb.K, pb.K, pb.K, pb.K, pb.v, pb.u, pb.E, pb.Q, pb.Q, pb.Q, pb.F, pb.W, pb.x, pb.x, pb.x, pb.x, pb.y, pb.y, pb.y, pb.y, pb.Y, pb.L, pb.aT, pb.aU, pb.ad, pb.ae, pb.af, pb.ag, pb.aV, pb.br, pb.ba, pb.bf, pb.bu, pb.bp, pb.bq, pb.bA, pb.bB, pb.bC, pb.bJ, pb.by, pb.bz, pb.X, pb.X, pb.au, pb.ay, pb.M, pb.am, pb.an, pb.ab, pb.ab, pb.ab, pb.ab, pb.ab, pb.ab, pb.ab, pb.ab, pb.ab, pb.ab, pb.ab, pb.ab, pb.ab, pb.ab, pb.ab, pb.ab, pb.P, pb.aB, pb.R, pb.aY, pb.V, pb.Z, pb.aZ, pb.bv, pb.aF, pb.aG, pb.T, pb.U, pb.aq, pb.at, pb.aH, pb.bw, pb.bx, pb.aJ, pb.aK, pb.aM, pb.aQ, pb.aR, pb.bk, pb.bE, pb.bL, pb.as, pb.bj, pb.bK, pb.bI};
+      int i = 0;
+      int j = 0;
+      int k = 0;
+      int l = 0;
+      int i1 = 0;
+      int j1 = 0;
+      int k1 = 0;
+      int l1 = 0;
+      int i2 = 1;
+
+      for(int j2 = 0; j2 < ablock.length; ++j2) {
+         int i3 = 0;
+         if (ablock[j2] == pb.ab) {
+            i3 = i++;
+         } else if (ablock[j2] == pb.ak) {
+            i3 = j++;
+         } else if (ablock[j2] == pb.J) {
+            i3 = k++;
+         } else if (ablock[j2] == pb.x) {
+            i3 = l++;
+         } else if (ablock[j2] == pb.y) {
+            i3 = i1++;
+         } else if (ablock[j2] == pb.bm) {
+            i3 = j1++;
+         } else if (ablock[j2] == pb.Q) {
+            i3 = k1++;
+         } else if (ablock[j2] == pb.X) {
+            i3 = i2++;
+         } else if (ablock[j2] == pb.K) {
+            i3 = l1++;
+         }
+
+         this.a.add(new aan(ablock[j2], 1, i3));
+      }
+
+      for(int k2 = 256; k2 < yr.e.length; ++k2) {
+         if (yr.e[k2] != null && yr.e[k2].bQ != yr.bs.bQ && yr.e[k2].bQ != yr.bC.bQ) {
+            this.a.add(new aan(yr.e[k2]));
+         }
+      }
+
+      for(int l2 = 1; l2 < 16; ++l2) {
+         this.a.add(new aan(yr.aW.bQ, 1, l2));
+      }
+
+      for(Integer integer : aao.a.keySet()) {
+         this.a.add(new aan(yr.bC.bQ, 1, integer));
+      }
+
+      aak inventoryplayer = par1EntityPlayer.ap;
+
+      for(int j3 = 0; j3 < 9; ++j3) {
+         for(int l3 = 0; l3 < 8; ++l3) {
+            this.a(new yu(sr.g(), l3 + j3 * 8, 8 + l3 * 18, 18 + j3 * 18));
+         }
+      }
+
+      for(int k3 = 0; k3 < 9; ++k3) {
+         this.a(new yu(inventoryplayer, k3, 8 + k3 * 18, 184));
+      }
+
+      this.a(0.0F);
+   }
+
+   public boolean b(yw par1EntityPlayer) {
+      return true;
+   }
+
+   public void a(float par1) {
+      int i = this.a.size() / 8 - 8 + 1;
+      int j = (int)((double)(par1 * (float)i) + (double)0.5F);
+      if (j < 0) {
+         j = 0;
+      }
+
+      for(int k = 0; k < 9; ++k) {
+         for(int l = 0; l < 8; ++l) {
+            int i1 = l + (k + j) * 8;
+            if (i1 >= 0 && i1 < this.a.size()) {
+               sr.g().a(l + k * 8, (aan)this.a.get(i1));
+            } else {
+               sr.g().a(l + k * 8, (aan)null);
+            }
+         }
+      }
+
+   }
+
+   protected void b(int i, int j, boolean flag, yw entityplayer) {
+   }
+}

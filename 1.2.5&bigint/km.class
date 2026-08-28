@@ -1,0 +1,238 @@
+import java.util.Random;
+
+public class km
+extends pb {
+    protected km(int par1, int par2) {
+        super(par1, par2, acn.p);
+        this.a(true);
+    }
+
+    public wu getCollisionBoundingBoxFromPool(xd par1World, long par2, int par3, long i) {
+        return null;
+    }
+
+    public int e() {
+        return 20;
+    }
+
+    public boolean a() {
+        return false;
+    }
+
+    public boolean b() {
+        return false;
+    }
+
+    public boolean canPlaceBlockOnSide(xd par1World, long par2, int par3, long par4, int par5) {
+        if (par5 == 2 && par1World.isBlockNormalCube(par2, par3, par4 + 1L)) {
+            return true;
+        }
+        if (par5 == 3 && par1World.isBlockNormalCube(par2, par3, par4 - 1L)) {
+            return true;
+        }
+        if (par5 == 4 && par1World.isBlockNormalCube(par2 + 1L, par3, par4)) {
+            return true;
+        }
+        return par5 == 5 && par1World.isBlockNormalCube(par2 - 1L, par3, par4);
+    }
+
+    public boolean canPlaceBlockAt(xd par1World, long par2, int par3, long par4) {
+        if (par1World.isBlockNormalCube(par2 - 1L, par3, par4)) {
+            return true;
+        }
+        if (par1World.isBlockNormalCube(par2 + 1L, par3, par4)) {
+            return true;
+        }
+        if (par1World.isBlockNormalCube(par2, par3, par4 - 1L)) {
+            return true;
+        }
+        return par1World.isBlockNormalCube(par2, par3, par4 + 1L);
+    }
+
+    public void onBlockPlaced(xd par1World, long par2, int par3, long par4, int par5) {
+        int i = par1World.getBlockMetadata(par2, par3, par4);
+        int j = i & 8;
+        i &= 7;
+        i = par5 == 2 && par1World.isBlockNormalCube(par2, par3, par4 + 1L) ? 4 : (par5 == 3 && par1World.isBlockNormalCube(par2, par3, par4 - 1L) ? 3 : (par5 == 4 && par1World.isBlockNormalCube(par2 + 1L, par3, par4) ? 2 : (par5 == 5 && par1World.isBlockNormalCube(par2 - 1L, par3, par4) ? 1 : this.getOrientation(par1World, par2, par3, par4))));
+        par1World.setBlockMetadataWithNotify(par2, par3, par4, i + j);
+    }
+
+    private int getOrientation(xd par1World, long par2, int par3, long par4) {
+        if (par1World.isBlockNormalCube(par2 - 1L, par3, par4)) {
+            return 1;
+        }
+        if (par1World.isBlockNormalCube(par2 + 1L, par3, par4)) {
+            return 2;
+        }
+        if (par1World.isBlockNormalCube(par2, par3, par4 - 1L)) {
+            return 3;
+        }
+        return !par1World.isBlockNormalCube(par2, par3, par4 + 1L) ? 1 : 4;
+    }
+
+    public void onNeighborBlockChange(xd par1World, long par2, int par3, long par4, int par5) {
+        if (this.redundantCanPlaceBlockAt(par1World, par2, par3, par4)) {
+            int i = par1World.getBlockMetadata(par2, par3, par4) & 7;
+            boolean flag = false;
+            if (!par1World.isBlockNormalCube(par2 - 1L, par3, par4) && i == 1) {
+                flag = true;
+            }
+            if (!par1World.isBlockNormalCube(par2 + 1L, par3, par4) && i == 2) {
+                flag = true;
+            }
+            if (!par1World.isBlockNormalCube(par2, par3, par4 - 1L) && i == 3) {
+                flag = true;
+            }
+            if (!par1World.isBlockNormalCube(par2, par3, par4 + 1L) && i == 4) {
+                flag = true;
+            }
+            if (flag) {
+                this.dropBlockAsItem(par1World, par2, par3, par4, par1World.getBlockMetadata(par2, par3, par4), 0);
+                par1World.setBlockWithNotify(par2, par3, par4, 0);
+            }
+        }
+    }
+
+    private boolean redundantCanPlaceBlockAt(xd par1World, long par2, int par3, long par4) {
+        if (!this.canPlaceBlockAt(par1World, par2, par3, par4)) {
+            this.dropBlockAsItem(par1World, par2, par3, par4, par1World.getBlockMetadata(par2, par3, par4), 0);
+            par1World.setBlockWithNotify(par2, par3, par4, 0);
+            return false;
+        }
+        return true;
+    }
+
+    public void setBlockBoundsBasedOnState(ali par1IBlockAccess, long par2, int par3, long par4) {
+        int i = par1IBlockAccess.getBlockMetadata(par2, par3, par4);
+        int j = i & 7;
+        boolean flag = (i & 8) > 0;
+        float f = 0.375f;
+        float f1 = 0.625f;
+        float f2 = 0.1875f;
+        float f3 = 0.125f;
+        if (flag) {
+            f3 = 0.0625f;
+        }
+        if (j == 1) {
+            this.a(0.0f, f, 0.5f - f2, f3, f1, 0.5f + f2);
+        } else if (j == 2) {
+            this.a(1.0f - f3, f, 0.5f - f2, 1.0f, f1, 0.5f + f2);
+        } else if (j == 3) {
+            this.a(0.5f - f2, f, 0.0f, 0.5f + f2, f1, f3);
+        } else if (j == 4) {
+            this.a(0.5f - f2, f, 1.0f - f3, 0.5f + f2, f1, 1.0f);
+        }
+    }
+
+    public void onBlockClicked(xd par1World, long par2, int par3, long par4, yw par5EntityPlayer) {
+        this.blockActivated(par1World, par2, par3, par4, par5EntityPlayer);
+    }
+
+    public boolean blockActivated(xd par1World, long par2, int par3, long par4, yw par5EntityPlayer) {
+        int i = par1World.getBlockMetadata(par2, par3, par4);
+        int j = i & 7;
+        int k = 8 - (i & 8);
+        if (k == 0) {
+            return true;
+        }
+        par1World.setBlockMetadataWithNotify(par2, par3, par4, j + k);
+        par1World.markBlocksDirty(par2, par3, par4, par2, par3, par4);
+        par1World.a((double)par2 + 0.5, (double)par3 + 0.5, (double)par4 + 0.5, "random.click", 0.3f, 0.6f);
+        par1World.notifyBlocksOfNeighborChange(par2, par3, par4, this.bO);
+        if (j == 1) {
+            par1World.notifyBlocksOfNeighborChange(par2 - 1L, par3, par4, this.bO);
+        } else if (j == 2) {
+            par1World.notifyBlocksOfNeighborChange(par2 + 1L, par3, par4, this.bO);
+        } else if (j == 3) {
+            par1World.notifyBlocksOfNeighborChange(par2, par3, par4 - 1L, this.bO);
+        } else if (j == 4) {
+            par1World.notifyBlocksOfNeighborChange(par2, par3, par4 + 1L, this.bO);
+        } else {
+            par1World.notifyBlocksOfNeighborChange(par2, par3 - 1, par4, this.bO);
+        }
+        par1World.scheduleBlockUpdate(par2, par3, par4, this.bO, this.e());
+        return true;
+    }
+
+    public void onBlockRemoval(xd par1World, long par2, int par3, long par4) {
+        int i = par1World.getBlockMetadata(par2, par3, par4);
+        if ((i & 8) > 0) {
+            par1World.notifyBlocksOfNeighborChange(par2, par3, par4, this.bO);
+            int j = i & 7;
+            if (j == 1) {
+                par1World.notifyBlocksOfNeighborChange(par2 - 1L, par3, par4, this.bO);
+            } else if (j == 2) {
+                par1World.notifyBlocksOfNeighborChange(par2 + 1L, par3, par4, this.bO);
+            } else if (j == 3) {
+                par1World.notifyBlocksOfNeighborChange(par2, par3, par4 - 1L, this.bO);
+            } else if (j == 4) {
+                par1World.notifyBlocksOfNeighborChange(par2, par3, par4 + 1L, this.bO);
+            } else {
+                par1World.notifyBlocksOfNeighborChange(par2, par3 - 1, par4, this.bO);
+            }
+        }
+        super.onBlockRemoval(par1World, par2, par3, par4);
+    }
+
+    public boolean isPoweringTo(ali par1IBlockAccess, long par2, int par3, long par4, int par5) {
+        return (par1IBlockAccess.getBlockMetadata(par2, par3, par4) & 8) > 0;
+    }
+
+    public boolean isIndirectlyPoweringTo(xd par1World, long par2, int par3, long par4, int par5) {
+        int i = par1World.getBlockMetadata(par2, par3, par4);
+        if ((i & 8) == 0) {
+            return false;
+        }
+        int j = i & 7;
+        if (j == 5 && par5 == 1) {
+            return true;
+        }
+        if (j == 4 && par5 == 2) {
+            return true;
+        }
+        if (j == 3 && par5 == 3) {
+            return true;
+        }
+        if (j == 2 && par5 == 4) {
+            return true;
+        }
+        return j == 1 && par5 == 5;
+    }
+
+    public boolean g() {
+        return true;
+    }
+
+    public void updateTick(xd par1World, long par2, int par3, long par4, Random par5Random) {
+        if (par1World.F) {
+            return;
+        }
+        int i = par1World.getBlockMetadata(par2, par3, par4);
+        if ((i & 8) == 0) {
+            return;
+        }
+        par1World.setBlockMetadataWithNotify(par2, par3, par4, i & 7);
+        par1World.notifyBlocksOfNeighborChange(par2, par3, par4, this.bO);
+        int j = i & 7;
+        if (j == 1) {
+            par1World.notifyBlocksOfNeighborChange(par2 - 1L, par3, par4, this.bO);
+        } else if (j == 2) {
+            par1World.notifyBlocksOfNeighborChange(par2 + 1L, par3, par4, this.bO);
+        } else if (j == 3) {
+            par1World.notifyBlocksOfNeighborChange(par2, par3, par4 - 1L, this.bO);
+        } else if (j == 4) {
+            par1World.notifyBlocksOfNeighborChange(par2, par3, par4 + 1L, this.bO);
+        } else {
+            par1World.notifyBlocksOfNeighborChange(par2, par3 - 1, par4, this.bO);
+        }
+        par1World.a((double)par2 + 0.5, (double)par3 + 0.5, (double)par4 + 0.5, "random.click", 0.3f, 0.5f);
+        par1World.markBlocksDirty(par2, par3, par4, par2, par3, par4);
+    }
+
+    public void h() {
+        float f = 0.1875f;
+        float f1 = 0.125f;
+        float f2 = 0.125f;
+        this.a(0.5f - f, 0.5f - f1, 0.5f - f2, 0.5f + f, 0.5f + f1, 0.5f + f2);
+    }
+}

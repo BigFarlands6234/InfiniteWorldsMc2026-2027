@@ -1,0 +1,59 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class pn {
+   private final rs a;
+   private long b = 0L;
+   private en c = new en();
+   private List d = new ArrayList();
+
+   public pn(rs par1WorldChunkManager) {
+      this.a = par1WorldChunkManager;
+   }
+
+   public air getBiomeCacheBlock(long par1, long par2) {
+      par1 >>= 4;
+      par2 >>= 4;
+      long l = par1 & 4294967295L | (par2 & 4294967295L) << 32;
+      air biomecacheblock = (air)this.c.a(l);
+      if (biomecacheblock == null) {
+         biomecacheblock = new air(this, par1, par2);
+         this.c.a(l, biomecacheblock);
+         this.d.add(biomecacheblock);
+      }
+
+      biomecacheblock.f = System.currentTimeMillis();
+      return biomecacheblock;
+   }
+
+   public abn getBiomeGenAt(long par1, long par2) {
+      return this.getBiomeCacheBlock(par1, par2).getBiomeGenAt(par1, par2);
+   }
+
+   public void a() {
+      long l = System.currentTimeMillis();
+      long l1 = l - this.b;
+      if (l1 > 7500L || l1 < 0L) {
+         this.b = l;
+
+         for(int i = 0; i < this.d.size(); ++i) {
+            air biomecacheblock = (air)this.d.get(i);
+            long l2 = l - biomecacheblock.f;
+            if (l2 > 30000L || l2 < 0L) {
+               this.d.remove(i--);
+               long l3 = biomecacheblock.d & 4294967295L | (biomecacheblock.e & 4294967295L) << 32;
+               this.c.d(l3);
+            }
+         }
+      }
+
+   }
+
+   public abn[] getCachedBiomes(long par1, long par2) {
+      return this.getBiomeCacheBlock(par1, par2).c;
+   }
+
+   static rs a(pn par0BiomeCache) {
+      return par0BiomeCache.a;
+   }
+}

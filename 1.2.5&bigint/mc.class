@@ -1,0 +1,45 @@
+public class mc extends rt {
+   private pb a;
+
+   public mc(xd par1World, double par2, double par4, double par6, double par8, double par10, double par12, pb par14Block, int par15, int par16) {
+      super(par1World, par2, par4, par6, par8, par10, par12);
+      this.a = par14Block;
+      this.c(par14Block.a(0, par16));
+      this.an = par14Block.cc;
+      this.ao = this.ap = this.aq = 0.6F;
+      this.am /= 2.0F;
+   }
+
+   public mc func_4041_a(long par1, int par2, long par3) {
+      if (this.a == pb.u) {
+         return this;
+      } else {
+         int i = this.a.colorMultiplier(this.k, par1, par2, par3);
+         this.ao *= (float)(i >> 16 & 255) / 255.0F;
+         this.ap *= (float)(i >> 8 & 255) / 255.0F;
+         this.aq *= (float)(i & 255) / 255.0F;
+         return this;
+      }
+   }
+
+   public int n() {
+      return 1;
+   }
+
+   public void renderParticle(adz par1Tessellator, double par2, double par3, double par4, double par5, double par6, double par7) {
+      float f = ((float)(this.s() % 16) + this.b / 4.0F) / 16.0F;
+      float f1 = f + 0.01560938F;
+      float f2 = ((float)(this.s() / 16) + this.c / 4.0F) / 16.0F;
+      float f3 = f2 + 0.01560938F;
+      float f4 = 0.1F * this.am;
+      double f5 = this.l + (this.o - this.l) * par2 - ar;
+      double f6 = this.m + (this.p - this.m) * par2 - as;
+      double f7 = this.n + (this.q - this.n) * par2 - at;
+      float f8 = 1.0F;
+      par1Tessellator.a(f8 * this.ao, f8 * this.ap, f8 * this.aq);
+      par1Tessellator.a(f5 - par3 * (double)f4 - par6 * (double)f4, f6 - par4 * (double)f4, f7 - par5 * (double)f4 - par7 * (double)f4, (double)f, (double)f3);
+      par1Tessellator.a(f5 - par3 * (double)f4 + par6 * (double)f4, f6 + par4 * (double)f4, f7 - par5 * (double)f4 + par7 * (double)f4, (double)f, (double)f2);
+      par1Tessellator.a(f5 + par3 * (double)f4 + par6 * (double)f4, f6 + par4 * (double)f4, f7 + par5 * (double)f4 + par7 * (double)f4, (double)f1, (double)f2);
+      par1Tessellator.a(f5 + par3 * (double)f4 - par6 * (double)f4, f6 - par4 * (double)f4, f7 + par5 * (double)f4 - par7 * (double)f4, (double)f1, (double)f3);
+   }
+}

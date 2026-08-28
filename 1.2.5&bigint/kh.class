@@ -1,0 +1,19 @@
+public class kh
+extends yy {
+    public kh(xd par1World) {
+        super(par1World);
+        this.bm = "/mob/zombie.png";
+        this.cj = 0.5f;
+        this.c = 50;
+        this.H *= 6.0f;
+        this.a(this.I * 6.0f, this.J * 6.0f);
+    }
+
+    public int d() {
+        return 100;
+    }
+
+    public float a(int par1, int par2, int par3) {
+        return this.k.getLightBrightness((long)par1, par2, (long)par3) - 0.5f;
+    }
+}

@@ -1,0 +1,31 @@
+import java.util.Random;
+
+public class mv extends pb {
+   public mv(int par1, int par2) {
+      super(par1, par2, acn.D);
+   }
+
+   public void onEntityCollidedWithBlock(xd par1World, long par2, int par3, long par4, nn par5Entity) {
+      par5Entity.q();
+   }
+
+   public boolean a() {
+      return false;
+   }
+
+   public wu getCollisionBoundingBoxFromPool(xd par1World, long par2, int par3, long i) {
+      return null;
+   }
+
+   public int d() {
+      return 1;
+   }
+
+   public boolean b() {
+      return false;
+   }
+
+   public int a(int par1, Random par2Random, int par3) {
+      return yr.K.bQ;
+   }
+}

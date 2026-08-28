@@ -1,0 +1,539 @@
+import java.util.List;
+
+public class oq extends ajn {
+   public double a;
+   public double b;
+   public double c;
+   public double[][] d = new double[64][3];
+   public int e = -1;
+   public dg[] am;
+   public dg an;
+   public dg ao;
+   public dg ap;
+   public dg aq;
+   public dg ar;
+   public dg as;
+   public dg at;
+   public float au = 0.0F;
+   public float av = 0.0F;
+   public boolean aw = false;
+   public boolean ax = false;
+   private nn aB;
+   public int ay = 0;
+   public el az = null;
+
+   public oq(xd par1World) {
+      super(par1World);
+      this.am = new dg[]{this.an = new dg(this, "head", 6.0F, 6.0F), this.ao = new dg(this, "body", 8.0F, 8.0F), this.ap = new dg(this, "tail", 4.0F, 4.0F), this.aq = new dg(this, "tail", 4.0F, 4.0F), this.ar = new dg(this, "tail", 4.0F, 4.0F), this.as = new dg(this, "wing", 4.0F, 4.0F), this.at = new dg(this, "wing", 4.0F, 4.0F)};
+      this.aA = 200;
+      this.l(this.aA);
+      this.bm = "/mob/enderdragon/ender.png";
+      this.a(16.0F, 8.0F);
+      this.S = true;
+      this.ab = true;
+      this.b = (double)100.0F;
+      this.ak = true;
+   }
+
+   protected void b() {
+      super.b();
+      this.ac.a(16, new Integer(this.aA));
+   }
+
+   public double[] a(int par1, float par2) {
+      if (this.bx <= 0) {
+         par2 = 0.0F;
+      }
+
+      par2 = 1.0F - par2;
+      int i = this.e - par1 * 1 & 63;
+      int j = this.e - par1 * 1 - 1 & 63;
+      double[] ad = new double[3];
+      double d = this.d[i][0];
+
+      double d1;
+      for(d1 = this.d[j][0] - d; d1 < (double)-180.0F; d1 += (double)360.0F) {
+      }
+
+      while(d1 >= (double)180.0F) {
+         d1 -= (double)360.0F;
+      }
+
+      ad[0] = d + d1 * (double)par2;
+      d = this.d[i][1];
+      d1 = this.d[j][1] - d;
+      ad[1] = d + d1 * (double)par2;
+      ad[2] = this.d[i][2] + (this.d[j][2] - this.d[i][2]) * (double)par2;
+      return ad;
+   }
+
+   public void e() {
+      this.au = this.av;
+      if (!this.k.F) {
+         this.ac.b(16, this.bx);
+      }
+
+      if (this.bx <= 0) {
+         float f = (this.U.nextFloat() - 0.5F) * 8.0F;
+         float f2 = (this.U.nextFloat() - 0.5F) * 4.0F;
+         float f4 = (this.U.nextFloat() - 0.5F) * 8.0F;
+         this.k.a("largeexplode", this.o + (double)f, this.p + (double)2.0F + (double)f2, this.q + (double)f4, (double)0.0F, (double)0.0F, (double)0.0F);
+      } else {
+         this.af();
+         float f1 = 0.2F / (gk.a(this.r * this.r + this.t * this.t) * 10.0F + 1.0F);
+         f1 *= (float)Math.pow((double)2.0F, this.s);
+         if (this.ax) {
+            this.av += f1 * 0.5F;
+         } else {
+            this.av += f1;
+         }
+
+         while(this.u >= 180.0F) {
+            this.u -= 360.0F;
+         }
+
+         while(this.u < -180.0F) {
+            this.u += 360.0F;
+         }
+
+         if (this.e < 0) {
+            for(int i = 0; i < this.d.length; ++i) {
+               this.d[i][0] = (double)this.u;
+               this.d[i][1] = this.p;
+            }
+         }
+
+         if (++this.e == this.d.length) {
+            this.e = 0;
+         }
+
+         this.d[this.e][0] = (double)this.u;
+         this.d[this.e][1] = this.p;
+         if (this.k.F) {
+            if (this.bV > 0) {
+               double d = this.o + (this.bW - this.o) / (double)this.bV;
+               double d2 = this.p + (this.bX - this.p) / (double)this.bV;
+               double d4 = this.q + (this.bY - this.q) / (double)this.bV;
+
+               double d6;
+               for(d6 = this.bZ - (double)this.u; d6 < (double)-180.0F; d6 += (double)360.0F) {
+               }
+
+               while(d6 >= (double)180.0F) {
+                  d6 -= (double)360.0F;
+               }
+
+               this.u = (float)((double)this.u + d6 / (double)this.bV);
+               this.v = (float)((double)this.v + (this.ca - (double)this.v) / (double)this.bV);
+               --this.bV;
+               this.d(d, d2, d4);
+               this.b(this.u, this.v);
+            }
+         } else {
+            double d1 = this.a - this.o;
+            double d3 = this.b - this.p;
+            double d5 = this.c - this.q;
+            double d7 = d1 * d1 + d3 * d3 + d5 * d5;
+            if (this.aB != null) {
+               this.a = this.aB.o;
+               this.c = this.aB.q;
+               double d8 = this.a - this.o;
+               double d10 = this.c - this.q;
+               double d12 = Math.sqrt(d8 * d8 + d10 * d10);
+               double d13 = (double)0.4F + d12 / (double)80.0F - (double)1.0F;
+               if (d13 > (double)10.0F) {
+                  d13 = (double)10.0F;
+               }
+
+               this.b = this.aB.y.b + d13;
+            } else {
+               this.a += this.U.nextGaussian() * (double)2.0F;
+               this.c += this.U.nextGaussian() * (double)2.0F;
+            }
+
+            if (this.aw || d7 < (double)100.0F || d7 > (double)22500.0F || this.A || this.B) {
+               this.ah();
+            }
+
+            d3 /= (double)gk.a(d1 * d1 + d5 * d5);
+            float f10 = 0.6F;
+            if (d3 < (double)(-f10)) {
+               d3 = (double)(-f10);
+            }
+
+            if (d3 > (double)f10) {
+               d3 = (double)f10;
+            }
+
+            for(this.s += d3 * (double)0.1F; this.u < -180.0F; this.u += 360.0F) {
+            }
+
+            while(this.u >= 180.0F) {
+               this.u -= 360.0F;
+            }
+
+            double d9 = (double)180.0F - Math.atan2(d1, d5) * (double)180.0F / Math.PI;
+
+            double d11;
+            for(d11 = d9 - (double)this.u; d11 < (double)-180.0F; d11 += (double)360.0F) {
+            }
+
+            while(d11 >= (double)180.0F) {
+               d11 -= (double)360.0F;
+            }
+
+            if (d11 > (double)50.0F) {
+               d11 = (double)50.0F;
+            }
+
+            if (d11 < (double)-50.0F) {
+               d11 = (double)-50.0F;
+            }
+
+            bo vec3d = bo.b(this.a - this.o, this.b - this.p, this.c - this.q).c();
+            bo vec3d1 = bo.b((double)gk.a(this.u * (float)Math.PI / 180.0F), this.s, (double)(-gk.b(this.u * (float)Math.PI / 180.0F))).c();
+            float f18 = (float)(vec3d1.b(vec3d) + (double)0.5F) / 1.5F;
+            if (f18 < 0.0F) {
+               f18 = 0.0F;
+            }
+
+            this.cg *= 0.8F;
+            float f19 = gk.a(this.r * this.r + this.t * this.t) * 1.0F + 1.0F;
+            double d14 = Math.sqrt(this.r * this.r + this.t * this.t) * (double)1.0F + (double)1.0F;
+            if (d14 > (double)40.0F) {
+               d14 = (double)40.0F;
+            }
+
+            this.cg = (float)((double)this.cg + d11 * ((double)0.7F / d14 / (double)f19));
+            this.u += this.cg * 0.1F;
+            float f20 = (float)((double)2.0F / (d14 + (double)1.0F));
+            float f21 = 0.06F;
+            this.a(0.0F, -1.0F, f21 * (f18 * f20 + (1.0F - f20)));
+            if (this.ax) {
+               this.b(this.r * (double)0.8F, this.s * (double)0.8F, this.t * (double)0.8F);
+            } else {
+               this.b(this.r, this.s, this.t);
+            }
+
+            bo vec3d2 = bo.b(this.r, this.s, this.t).c();
+            float f22 = (float)(vec3d2.b(vec3d1) + (double)1.0F) / 2.0F;
+            f22 = 0.8F + 0.15F * f22;
+            this.r *= (double)f22;
+            this.t *= (double)f22;
+            this.s *= (double)0.91F;
+         }
+
+         this.bd = this.u;
+         this.an.I = this.an.J = 3.0F;
+         this.ap.I = this.ap.J = 2.0F;
+         this.aq.I = this.aq.J = 2.0F;
+         this.ar.I = this.ar.J = 2.0F;
+         this.ao.J = 3.0F;
+         this.ao.I = 5.0F;
+         this.as.J = 2.0F;
+         this.as.I = 4.0F;
+         this.at.J = 3.0F;
+         this.at.I = 4.0F;
+         float f3 = (float)(this.a(5, 1.0F)[1] - this.a(10, 1.0F)[1]) * 10.0F / 180.0F * (float)Math.PI;
+         float f5 = gk.b(f3);
+         float f6 = -gk.a(f3);
+         float f7 = this.u * (float)Math.PI / 180.0F;
+         float f8 = gk.a(f7);
+         float f9 = gk.b(f7);
+         this.ao.J_();
+         this.ao.c(this.o + (double)(f8 * 0.5F), this.p, this.q - (double)(f9 * 0.5F), 0.0F, 0.0F);
+         this.as.J_();
+         this.as.c(this.o + (double)(f9 * 4.5F), this.p + (double)2.0F, this.q + (double)(f8 * 4.5F), 0.0F, 0.0F);
+         this.at.J_();
+         this.at.c(this.o - (double)(f9 * 4.5F), this.p + (double)2.0F, this.q - (double)(f8 * 4.5F), 0.0F, 0.0F);
+         if (!this.k.F) {
+            this.ag();
+         }
+
+         if (!this.k.F && this.bB == 0) {
+            this.a(this.k.b(this, this.as.y.b((double)4.0F, (double)2.0F, (double)4.0F).d((double)0.0F, (double)-2.0F, (double)0.0F)));
+            this.a(this.k.b(this, this.at.y.b((double)4.0F, (double)2.0F, (double)4.0F).d((double)0.0F, (double)-2.0F, (double)0.0F)));
+            this.b(this.k.b(this, this.an.y.b((double)1.0F, (double)1.0F, (double)1.0F)));
+         }
+
+         double[] ad = this.a(5, 1.0F);
+         double[] ad1 = this.a(0, 1.0F);
+         float f11 = gk.a(this.u * (float)Math.PI / 180.0F - this.cg * 0.01F);
+         float f12 = gk.b(this.u * (float)Math.PI / 180.0F - this.cg * 0.01F);
+         this.an.J_();
+         this.an.c(this.o + (double)(f11 * 5.5F * f5), this.p + (ad1[1] - ad[1]) * (double)1.0F + (double)(f6 * 5.5F), this.q - (double)(f12 * 5.5F * f5), 0.0F, 0.0F);
+
+         for(int j = 0; j < 3; ++j) {
+            dg entitydragonpart = null;
+            if (j == 0) {
+               entitydragonpart = this.ap;
+            }
+
+            if (j == 1) {
+               entitydragonpart = this.aq;
+            }
+
+            if (j == 2) {
+               entitydragonpart = this.ar;
+            }
+
+            double[] ad2 = this.a(12 + j * 2, 1.0F);
+            float f13 = this.u * (float)Math.PI / 180.0F + this.b(ad2[0] - ad[0]) * (float)Math.PI / 180.0F * 1.0F;
+            float f14 = gk.a(f13);
+            float f15 = gk.b(f13);
+            float f16 = 1.5F;
+            float f17 = (float)(j + 1) * 2.0F;
+            entitydragonpart.J_();
+            entitydragonpart.c(this.o - (double)((f8 * f16 + f14 * f17) * f5), this.p + (ad2[1] - ad[1]) * (double)1.0F - (double)((f17 + f16) * f6) + (double)1.5F, this.q + (double)((f9 * f16 + f15 * f17) * f5), 0.0F, 0.0F);
+         }
+
+         if (!this.k.F) {
+            this.ax = this.a(this.an.y) | this.a(this.ao.y);
+         }
+
+      }
+   }
+
+   private void af() {
+      if (this.az != null) {
+         if (this.az.G) {
+            if (!this.k.F) {
+               this.a(this.an, md.l, 10);
+            }
+
+            this.az = null;
+         } else if (this.V % 10 == 0 && this.bx < this.aA) {
+            ++this.bx;
+         }
+      }
+
+      if (this.U.nextInt(10) == 0) {
+         float f = 32.0F;
+         List list = this.k.a(el.class, this.y.b((double)f, (double)f, (double)f));
+         el entityendercrystal = null;
+         double d = Double.MAX_VALUE;
+
+         for(nn entity : list) {
+            double d1 = entity.f(this);
+            if (d1 < d) {
+               d = d1;
+               entityendercrystal = (el)entity;
+            }
+         }
+
+         this.az = entityendercrystal;
+      }
+
+   }
+
+   private void ag() {
+   }
+
+   private void a(List par1List) {
+      double d = (this.ao.y.a + this.ao.y.d) / (double)2.0F;
+      double d1 = (this.ao.y.c + this.ao.y.f) / (double)2.0F;
+
+      for(nn entity : par1List) {
+         if (entity instanceof acq) {
+            double d2 = entity.o - d;
+            double d3 = entity.q - d1;
+            double d4 = d2 * d2 + d3 * d3;
+            entity.c(d2 / d4 * (double)4.0F, (double)0.2F, d3 / d4 * (double)4.0F);
+         }
+      }
+
+   }
+
+   private void b(List par1List) {
+      for(int i = 0; i < par1List.size(); ++i) {
+         nn entity = (nn)par1List.get(i);
+         if (entity instanceof acq) {
+            entity.a(md.a(this), 10);
+         }
+      }
+
+   }
+
+   private void ah() {
+      this.aw = false;
+      if (this.U.nextInt(2) == 0 && this.k.d.size() > 0) {
+         this.aB = (nn)this.k.d.get(this.U.nextInt(this.k.d.size()));
+      } else {
+         boolean flag = false;
+
+         do {
+            this.a = (double)0.0F;
+            this.b = (double)(70.0F + this.U.nextFloat() * 50.0F);
+            this.c = (double)0.0F;
+            this.a += (double)(this.U.nextFloat() * 120.0F - 60.0F);
+            this.c += (double)(this.U.nextFloat() * 120.0F - 60.0F);
+            double d = this.o - this.a;
+            double d1 = this.p - this.b;
+            double d2 = this.q - this.c;
+            flag = d * d + d1 * d1 + d2 * d2 > (double)100.0F;
+         } while(!flag);
+
+         this.aB = null;
+      }
+
+   }
+
+   private float b(double par1) {
+      while(par1 >= (double)180.0F) {
+         par1 -= (double)360.0F;
+      }
+
+      while(par1 < (double)-180.0F) {
+         par1 += (double)360.0F;
+      }
+
+      return (float)par1;
+   }
+
+   private boolean a(wu par1AxisAlignedBB) {
+      long i = gk.d(par1AxisAlignedBB.a);
+      int j = gk.c(par1AxisAlignedBB.b);
+      long k = gk.d(par1AxisAlignedBB.c);
+      long l = gk.d(par1AxisAlignedBB.d);
+      int i1 = gk.c(par1AxisAlignedBB.e);
+      long j1 = gk.d(par1AxisAlignedBB.f);
+      boolean flag = false;
+      boolean flag1 = false;
+
+      for(long k1 = i; k1 <= l; ++k1) {
+         for(int l1 = j; l1 <= i1; ++l1) {
+            for(long i2 = k; i2 <= j1; ++i2) {
+               int j2 = this.k.getBlockId(k1, l1, i2);
+               if (j2 != 0) {
+                  if (j2 != pb.ap.bO && j2 != pb.bJ.bO && j2 != pb.z.bO) {
+                     flag1 = true;
+                     this.k.setBlockWithNotify(k1, l1, i2, 0);
+                  } else {
+                     flag = true;
+                  }
+               }
+            }
+         }
+      }
+
+      if (flag1) {
+         double d = par1AxisAlignedBB.a + (par1AxisAlignedBB.d - par1AxisAlignedBB.a) * (double)this.U.nextFloat();
+         double d1 = par1AxisAlignedBB.b + (par1AxisAlignedBB.e - par1AxisAlignedBB.b) * (double)this.U.nextFloat();
+         double d2 = par1AxisAlignedBB.c + (par1AxisAlignedBB.f - par1AxisAlignedBB.c) * (double)this.U.nextFloat();
+         this.k.a("largeexplode", d, d1, d2, (double)0.0F, (double)0.0F, (double)0.0F);
+      }
+
+      return flag;
+   }
+
+   public boolean a(dg par1EntityDragonPart, md par2DamageSource, int par3) {
+      if (par1EntityDragonPart != this.an) {
+         par3 = par3 / 4 + 1;
+      }
+
+      float f = this.u * (float)Math.PI / 180.0F;
+      float f1 = gk.a(f);
+      float f2 = gk.b(f);
+      this.a = this.o + (double)(f1 * 5.0F) + (double)((this.U.nextFloat() - 0.5F) * 2.0F);
+      this.b = this.p + (double)(this.U.nextFloat() * 3.0F) + (double)1.0F;
+      this.c = this.q - (double)(f2 * 5.0F) + (double)((this.U.nextFloat() - 0.5F) * 2.0F);
+      this.aB = null;
+      if (par2DamageSource.a() instanceof yw || par2DamageSource == md.l) {
+         this.e(par2DamageSource, par3);
+      }
+
+      return true;
+   }
+
+   protected void w_() {
+      ++this.ay;
+      if (this.ay >= 180 && this.ay <= 200) {
+         float f = (this.U.nextFloat() - 0.5F) * 8.0F;
+         float f1 = (this.U.nextFloat() - 0.5F) * 4.0F;
+         float f2 = (this.U.nextFloat() - 0.5F) * 8.0F;
+         this.k.a("hugeexplosion", this.o + (double)f, this.p + (double)2.0F + (double)f1, this.q + (double)f2, (double)0.0F, (double)0.0F, (double)0.0F);
+      }
+
+      if (!this.k.F && this.ay > 150 && this.ay % 5 == 0) {
+         int i = 1000;
+
+         while(i > 0) {
+            int k = bz.b(i);
+            i -= k;
+            this.k.a(new bz(this.k, this.o, this.p, this.q, k));
+         }
+      }
+
+      this.b((double)0.0F, (double)0.1F, (double)0.0F);
+      this.bd = this.u += 20.0F;
+      if (this.ay == 200) {
+         int j = 10000;
+
+         while(j > 0) {
+            int l = bz.b(j);
+            j -= l;
+            this.k.a(new bz(this.k, this.o, this.p, this.q, l));
+         }
+
+         this.createEnderPortal(gk.d(this.o), gk.d(this.q));
+         this.bc();
+         this.A();
+      }
+
+   }
+
+   private void createEnderPortal(long par1, long par2) {
+      byte byte0 = 64;
+      tc.a = true;
+      int i = 4;
+
+      for(int j = byte0 - 1; j <= byte0 + 32; ++j) {
+         for(long k = par1 - (long)i; k <= par1 + (long)i; ++k) {
+            for(long l = par2 - (long)i; l <= par2 + (long)i; ++l) {
+               double d = (double)(k - par1);
+               double d1 = (double)(l - par2);
+               double d2 = (double)gk.a(d * d + d1 * d1);
+               if (!(d2 > (double)i - (double)0.5F)) {
+                  if (j < byte0) {
+                     if (d2 <= (double)(i - 1) - (double)0.5F) {
+                        this.k.setBlockWithNotify(k, j, l, pb.z.bO);
+                     }
+                  } else if (j > byte0) {
+                     this.k.setBlockWithNotify(k, j, l, 0);
+                  } else if (d2 > (double)(i - 1) - (double)0.5F) {
+                     this.k.setBlockWithNotify(k, j, l, pb.z.bO);
+                  } else {
+                     this.k.setBlockWithNotify(k, j, l, pb.bH.bO);
+                  }
+               }
+            }
+         }
+      }
+
+      this.k.setBlockWithNotify(par1, byte0 + 0, par2, pb.z.bO);
+      this.k.setBlockWithNotify(par1, byte0 + 1, par2, pb.z.bO);
+      this.k.setBlockWithNotify(par1, byte0 + 2, par2, pb.z.bO);
+      this.k.setBlockWithNotify(par1 - 1L, byte0 + 2, par2, pb.aq.bO);
+      this.k.setBlockWithNotify(par1 + 1L, byte0 + 2, par2, pb.aq.bO);
+      this.k.setBlockWithNotify(par1, byte0 + 2, par2 - 1L, pb.aq.bO);
+      this.k.setBlockWithNotify(par1, byte0 + 2, par2 + 1L, pb.aq.bO);
+      this.k.setBlockWithNotify(par1, byte0 + 3, par2, pb.z.bO);
+      this.k.setBlockWithNotify(par1, byte0 + 4, par2, pb.bK.bO);
+      tc.a = false;
+   }
+
+   protected void w() {
+   }
+
+   public nn[] Z() {
+      return this.am;
+   }
+
+   public boolean l_() {
+      return false;
+   }
+
+   public int x() {
+      return this.ac.c(16);
+   }
+}

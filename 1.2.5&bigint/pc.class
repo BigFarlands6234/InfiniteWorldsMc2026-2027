@@ -1,0 +1,67 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class pc implements ca {
+   private ack a;
+   private en b = new en();
+   private List c = new ArrayList();
+   private xd d;
+
+   public pc(xd par1World) {
+      this.a = new ace(par1World, 0L, 0L);
+      this.d = par1World;
+   }
+
+   public boolean chunkExists(long par1, long par2) {
+      return true;
+   }
+
+   public void func_539_c(long par1, long par2) {
+      ack chunk = this.provideChunk(par1, par2);
+      if (!chunk.g()) {
+         chunk.e();
+      }
+
+      this.b.d(sj.chunkXZ2Int(par1, par2));
+      this.c.remove(chunk);
+   }
+
+   public ack loadChunk(long par1, long par2) {
+      ack chunk = new ack(this.d, par1, par2);
+      this.b.a(sj.chunkXZ2Int(par1, par2), chunk);
+      chunk.d = true;
+      return chunk;
+   }
+
+   public ack provideChunk(long par1, long par2) {
+      ack chunk = (ack)this.b.a(sj.chunkXZ2Int(par1, par2));
+      return chunk == null ? this.a : chunk;
+   }
+
+   public boolean a(boolean par1, rw par2IProgressUpdate) {
+      return true;
+   }
+
+   public boolean a() {
+      return false;
+   }
+
+   public boolean b() {
+      return false;
+   }
+
+   public void populate(ca ichunkprovider, long i, long j) {
+   }
+
+   public String c() {
+      return "MultiplayerChunkCache: " + this.b.a();
+   }
+
+   public List getPossibleCreatures(acf par1EnumCreatureType, long par2, int par3, long i) {
+      return null;
+   }
+
+   public qo findClosestStructure(xd par1World, String par2Str, long par3, int i, long j) {
+      return null;
+   }
+}

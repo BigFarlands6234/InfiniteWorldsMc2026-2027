@@ -1,0 +1,152 @@
+import java.util.Random;
+
+public class pa extends agy {
+   public pa(int par1) {
+      super(par1, acn.E);
+      this.c(-1.0F);
+   }
+
+   public kw u_() {
+      return null;
+   }
+
+   public void onBlockAdded(xd world, long i, int j, long k) {
+   }
+
+   public void onBlockRemoval(xd par1World, long par2, int par3, long par4) {
+      kw tileentity = par1World.getBlockTileEntity(par2, par3, par4);
+      if (tileentity != null && tileentity instanceof ou) {
+         ((ou)tileentity).g();
+      } else {
+         super.onBlockRemoval(par1World, par2, par3, par4);
+      }
+
+   }
+
+   public boolean canPlaceBlockAt(xd par1World, long par2, int par3, long i) {
+      return false;
+   }
+
+   public boolean canPlaceBlockOnSide(xd par1World, long par2, int par3, long i, int j) {
+      return false;
+   }
+
+   public int d() {
+      return -1;
+   }
+
+   public boolean a() {
+      return false;
+   }
+
+   public boolean b() {
+      return false;
+   }
+
+   public boolean blockActivated(xd par1World, long par2, int par3, long par4, yw par5EntityPlayer) {
+      if (!par1World.F && par1World.getBlockTileEntity(par2, par3, par4) == null) {
+         par1World.setBlockWithNotify(par2, par3, par4, 0);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public int a(int par1, Random par2Random, int par3) {
+      return 0;
+   }
+
+   public void dropBlockAsItemWithChance(xd par1World, long par2, int par3, long par4, int par5, float par6, int par7) {
+      if (!par1World.F) {
+         ou tileentitypiston = this.getTileEntityAtLocation(par1World, par2, par3, par4);
+         if (tileentitypiston != null) {
+            pb.m[tileentitypiston.a()].dropBlockAsItem(par1World, par2, par3, par4, tileentitypiston.i(), 0);
+         }
+      }
+   }
+
+   public void onNeighborBlockChange(xd par1World, long par2, int par3, long par4, int par5) {
+      if (!par1World.F && par1World.getBlockTileEntity(par2, par3, par4) != null) {
+      }
+
+   }
+
+   public static kw a(int par0, int par1, int par2, boolean par3, boolean par4) {
+      return new ou(par0, par1, par2, par3, par4);
+   }
+
+   public wu getCollisionBoundingBoxFromPool(xd par1World, long par2, int par3, long par4) {
+      ou tileentitypiston = this.getTileEntityAtLocation(par1World, par2, par3, par4);
+      if (tileentitypiston == null) {
+         return null;
+      } else {
+         float f = tileentitypiston.a(0.0F);
+         if (tileentitypiston.d()) {
+            f = 1.0F - f;
+         }
+
+         return this.getAxisAlignedBB(par1World, par2, par3, par4, tileentitypiston.a(), f, tileentitypiston.e());
+      }
+   }
+
+   public void setBlockBoundsBasedOnState(ali par1IBlockAccess, long par2, int par3, long par4) {
+      ou tileentitypiston = this.getTileEntityAtLocation(par1IBlockAccess, par2, par3, par4);
+      if (tileentitypiston != null) {
+         pb block = pb.m[tileentitypiston.a()];
+         if (block == null || block == this) {
+            return;
+         }
+
+         block.setBlockBoundsBasedOnState(par1IBlockAccess, par2, par3, par4);
+         float f = tileentitypiston.a(0.0F);
+         if (tileentitypiston.d()) {
+            f = 1.0F - f;
+         }
+
+         int i = tileentitypiston.e();
+         this.bV = block.bV - (double)((float)qs.b[i] * f);
+         this.bW = block.bW - (double)((float)qs.c[i] * f);
+         this.bX = block.bX - (double)((float)qs.d[i] * f);
+         this.bY = block.bY - (double)((float)qs.b[i] * f);
+         this.bZ = block.bZ - (double)((float)qs.c[i] * f);
+         this.ca = block.ca - (double)((float)qs.d[i] * f);
+      }
+
+   }
+
+   public wu getAxisAlignedBB(xd par1World, long par2, int par3, long par4, int par5, float par6, int par7) {
+      if (par5 != 0 && par5 != this.bO) {
+         wu axisalignedbb = pb.m[par5].getCollisionBoundingBoxFromPool(par1World, par2, par3, par4);
+         if (axisalignedbb == null) {
+            return null;
+         } else {
+            if (qs.b[par7] < 0) {
+               axisalignedbb.a -= (double)((float)qs.b[par7] * par6);
+            } else {
+               axisalignedbb.d -= (double)((float)qs.b[par7] * par6);
+            }
+
+            if (qs.c[par7] < 0) {
+               axisalignedbb.b -= (double)((float)qs.c[par7] * par6);
+            } else {
+               axisalignedbb.e -= (double)((float)qs.c[par7] * par6);
+            }
+
+            if (qs.d[par7] < 0) {
+               axisalignedbb.c -= (double)((float)qs.d[par7] * par6);
+            } else {
+               axisalignedbb.f -= (double)((float)qs.d[par7] * par6);
+            }
+
+            return axisalignedbb;
+         }
+      } else {
+         return null;
+      }
+   }
+
+   private ou getTileEntityAtLocation(ali par1IBlockAccess, long par2, int par3, long par4) {
+      kw tileentity = par1IBlockAccess.getBlockTileEntity(par2, par3, par4);
+      return tileentity != null && tileentity instanceof ou ? (ou)tileentity : null;
+   }
+}

@@ -1,0 +1,28 @@
+public class qo {
+   public final long a;
+   public final int b;
+   public final long c;
+
+   public qo(long par1, int par2, long par3) {
+      this.a = par1;
+      this.b = par2;
+      this.c = par3;
+   }
+
+   public qo(bo par1Vec3D) {
+      this(gk.d(par1Vec3D.a), gk.c(par1Vec3D.b), gk.d(par1Vec3D.c));
+   }
+
+   public boolean equals(Object par1Obj) {
+      if (!(par1Obj instanceof qo)) {
+         return false;
+      } else {
+         qo chunkposition = (qo)par1Obj;
+         return chunkposition.a == this.a && chunkposition.b == this.b && chunkposition.c == this.c;
+      }
+   }
+
+   public int hashCode() {
+      return (int)(this.a * 8976890L + (long)(this.b * 981131) + this.c);
+   }
+}

@@ -1,0 +1,144 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class kw {
+   private static Map a = new HashMap();
+   private static Map b = new HashMap();
+   public xd i;
+   public long j;
+   public int k;
+   public long l;
+   protected boolean m;
+   public int n = -1;
+   public pb o;
+
+   public kw() {
+   }
+
+   private static void a(Class par0Class, String par1Str) {
+      if (b.containsKey(par1Str)) {
+         throw new IllegalArgumentException("Duplicate id: " + par1Str);
+      } else {
+         a.put(par1Str, par0Class);
+         b.put(par0Class, par1Str);
+      }
+   }
+
+   public void a(ady par1NBTTagCompound) {
+      try {
+         this.j = par1NBTTagCompound.g("x");
+      } catch (ClassCastException var4) {
+         this.j = (long)par1NBTTagCompound.f("x");
+      }
+
+      this.k = par1NBTTagCompound.f("y");
+
+      try {
+         this.l = par1NBTTagCompound.g("z");
+      } catch (ClassCastException var3) {
+         this.l = (long)par1NBTTagCompound.f("z");
+      }
+
+   }
+
+   public void b(ady par1NBTTagCompound) {
+      String s = (String)b.get(this.getClass());
+      if (s == null) {
+         throw new RuntimeException(this.getClass() + " is missing a mapping! This is a bug!");
+      } else {
+         par1NBTTagCompound.a("id", s);
+         par1NBTTagCompound.a("x", this.j);
+         par1NBTTagCompound.a("y", this.k);
+         par1NBTTagCompound.a("z", this.l);
+      }
+   }
+
+   public void n_() {
+   }
+
+   public static kw c(ady par0NBTTagCompound) {
+      kw tileentity = null;
+
+      try {
+         Class class1 = (Class)a.get(par0NBTTagCompound.j("id"));
+         if (class1 != null) {
+            tileentity = (kw)class1.newInstance();
+         }
+      } catch (Exception exception) {
+         exception.printStackTrace();
+      }
+
+      if (tileentity != null) {
+         tileentity.a(par0NBTTagCompound);
+      } else {
+         System.out.println("Skipping TileEntity with id " + par0NBTTagCompound.j("id"));
+      }
+
+      return tileentity;
+   }
+
+   public int i() {
+      if (this.n == -1) {
+         this.n = this.i.getBlockMetadata(this.j, this.k, this.l);
+      }
+
+      return this.n;
+   }
+
+   public void j() {
+      if (this.i != null) {
+         this.n = this.i.getBlockMetadata(this.j, this.k, this.l);
+         this.i.updateTileEntityChunkAndDoNothing(this.j, this.k, this.l, this);
+      }
+
+   }
+
+   public double a(double par1, double par3, double par5) {
+      double d = (double)this.j + (double)0.5F - par1;
+      double d1 = (double)this.k + (double)0.5F - par3;
+      double d2 = (double)this.l + (double)0.5F - par5;
+      return d * d + d1 * d1 + d2 * d2;
+   }
+
+   public pb k() {
+      if (this.o == null) {
+         this.o = pb.m[this.i.getBlockId(this.j, this.k, this.l)];
+      }
+
+      return this.o;
+   }
+
+   public boolean l() {
+      return this.m;
+   }
+
+   public void h() {
+      this.m = true;
+   }
+
+   public void m() {
+      this.m = false;
+   }
+
+   public void b(int i, int j) {
+   }
+
+   public void b() {
+      this.o = null;
+      this.n = -1;
+   }
+
+   static {
+      a(ahg.class, "Furnace");
+      a(hb.class, "Chest");
+      a(dk.class, "RecordPlayer");
+      a(az.class, "Trap");
+      a(sc.class, "Sign");
+      a(cj.class, "MobSpawner");
+      a(oh.class, "Music");
+      a(ou.class, "Piston");
+      a(amc.class, "Cauldron");
+      a(uz.class, "EnchantTable");
+      a(bw.class, "Airportal");
+   }
+}

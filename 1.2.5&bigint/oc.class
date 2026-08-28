@@ -1,0 +1,66 @@
+import java.nio.IntBuffer;
+import org.lwjgl.opengl.GL11;
+
+public class oc {
+   private long a;
+   private int b;
+   private long c;
+   private double d;
+   private double e;
+   private double f;
+   private IntBuffer g = ew.d(65536);
+   private boolean h = false;
+   private boolean i = false;
+
+   public oc() {
+   }
+
+   public void func_861_a(long par1, int par2, long par3, double par4, double par6, double par8) {
+      this.h = true;
+      this.g.clear();
+      this.a = par1;
+      this.b = par2;
+      this.c = par3;
+      this.d = par4;
+      this.e = par6;
+      this.f = par8;
+   }
+
+   public boolean func_862_a(long par1, int par2, long par3) {
+      if (!this.h) {
+         return false;
+      } else {
+         return par1 == this.a && par2 == this.b && par3 == this.c;
+      }
+   }
+
+   public void a(int par1) {
+      this.g.put(par1);
+      if (this.g.remaining() == 0) {
+         this.a();
+      }
+
+   }
+
+   public void a() {
+      if (this.h) {
+         if (!this.i) {
+            this.g.flip();
+            this.i = true;
+         }
+
+         if (this.g.remaining() > 0) {
+            GL11.glPushMatrix();
+            GL11.glTranslatef((float)((double)this.a - this.d), (float)((double)this.b - this.e), (float)((double)this.c - this.f));
+            GL11.glCallLists(this.g);
+            GL11.glPopMatrix();
+         }
+
+      }
+   }
+
+   public void b() {
+      this.h = false;
+      this.i = false;
+   }
+}

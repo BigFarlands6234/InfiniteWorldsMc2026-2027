@@ -1,0 +1,11 @@
+class og {
+   long a;
+   int b;
+   long c;
+   int d;
+   int e;
+   int f;
+
+   og() {
+   }
+}

@@ -1,0 +1,851 @@
+import java.util.ArrayList;
+import java.util.Random;
+
+public class pb {
+   public static final vj d = new vj("stone", 1.0F, 1.0F);
+   public static final vj e = new vj("wood", 1.0F, 1.0F);
+   public static final vj f = new vj("gravel", 1.0F, 1.0F);
+   public static final vj g = new vj("grass", 1.0F, 1.0F);
+   public static final vj h = new vj("stone", 1.0F, 1.0F);
+   public static final vj i = new vj("stone", 1.0F, 1.5F);
+   public static final vj j = new ak("stone", 1.0F, 1.0F);
+   public static final vj k = new vj("cloth", 1.0F, 1.0F);
+   public static final vj l = new aj("sand", 1.0F, 1.0F);
+   public static final pb[] m = new pb[4096];
+   public static final boolean[] n = new boolean[4096];
+   public static final int[] o = new int[4096];
+   public static final boolean[] p = new boolean[4096];
+   public static final int[] q = new int[4096];
+   public static final boolean[] r = new boolean[4096];
+   public static boolean[] s = new boolean[4096];
+   public static final pb t;
+   public static final qy u;
+   public static final pb v;
+   public static final pb w;
+   public static final pb x;
+   public static final pb y;
+   public static final pb z;
+   public static final pb A;
+   public static final pb B;
+   public static final pb C;
+   public static final pb D;
+   public static final pb E;
+   public static final pb F;
+   public static final pb G;
+   public static final pb H;
+   public static final pb I;
+   public static final pb J;
+   public static final uf K;
+   public static final pb L;
+   public static final pb M;
+   public static final pb N;
+   public static final pb O;
+   public static final pb P;
+   public static final pb Q;
+   public static final pb R;
+   public static final pb S;
+   public static final pb T;
+   public static final pb U;
+   public static final pb V;
+   public static final pb W;
+   public static final my X;
+   public static final gs Y;
+   public static final pb Z;
+   public static final sq aa;
+   public static final pb ab;
+   public static final pa ac;
+   public static final qk ad;
+   public static final qk ae;
+   public static final qk af;
+   public static final qk ag;
+   public static final pb ah;
+   public static final pb ai;
+   public static final pb aj;
+   public static final pb ak;
+   public static final pb al;
+   public static final pb am;
+   public static final pb an;
+   public static final pb ao;
+   public static final pb ap;
+   public static final pb aq;
+   public static final ame ar;
+   public static final pb as;
+   public static final pb at;
+   public static final pb au;
+   public static final pb av;
+   public static final pb aw;
+   public static final pb ax;
+   public static final pb ay;
+   public static final pb az;
+   public static final pb aA;
+   public static final pb aB;
+   public static final pb aC;
+   public static final pb aD;
+   public static final pb aE;
+   public static final pb aF;
+   public static final pb aG;
+   public static final pb aH;
+   public static final pb aI;
+   public static final pb aJ;
+   public static final pb aK;
+   public static final pb aL;
+   public static final pb aM;
+   public static final pb aN;
+   public static final pb aO;
+   public static final pb aP;
+   public static final pb aQ;
+   public static final pb aR;
+   public static final pb aS;
+   public static final pb aT;
+   public static final pb aU;
+   public static final pb aV;
+   public static final pb aW;
+   public static final pb aX;
+   public static final pb aY;
+   public static final pb aZ;
+   public static final pb ba;
+   public static final pb bb;
+   public static final pb bc;
+   public static final pb bd;
+   public static final al be;
+   public static final pb bf;
+   public static final pb bg;
+   public static final pb bh;
+   public static final pb bi;
+   public static final pb bj;
+   public static final pb bk;
+   public static final pb bl;
+   public static final pb bm;
+   public static final pb bn;
+   public static final pb bo;
+   public static final pb bp;
+   public static final pb bq;
+   public static final pb br;
+   public static final pb bs;
+   public static final pb bt;
+   public static final pb bu;
+   public static final pb bv;
+   public static final pb bw;
+   public static final pb bx;
+   public static final alr by;
+   public static final pb bz;
+   public static final pb bA;
+   public static final pb bB;
+   public static final pb bC;
+   public static final pb bD;
+   public static final pb bE;
+   public static final pb bF;
+   public static final pb bG;
+   public static final pb bH;
+   public static final pb bI;
+   public static final pb bJ;
+   public static final pb bK;
+   public static final pb bL;
+   public static final pb bM;
+   public int bN;
+   public final int bO;
+   protected float bP;
+   protected float bQ;
+   protected boolean bR;
+   protected boolean bS;
+   protected boolean bT;
+   protected boolean bU;
+   public double bV;
+   public double bW;
+   public double bX;
+   public double bY;
+   public double bZ;
+   public double ca;
+   public vj cb;
+   public float cc;
+   public final acn cd;
+   public float ce;
+   private String a;
+
+   protected pb(int par1, acn par2Material) {
+      this.bR = true;
+      this.bS = true;
+      this.cb = d;
+      this.cc = 1.0F;
+      this.ce = 0.6F;
+      if (m[par1] != null) {
+         throw new IllegalArgumentException("Slot " + par1 + " is already occupied by " + m[par1] + " when adding " + this);
+      } else {
+         this.cd = par2Material;
+         m[par1] = this;
+         this.bO = par1;
+         this.a(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+         n[par1] = this.a();
+         o[par1] = this.a() ? 255 : 0;
+         p[par1] = !par2Material.b();
+      }
+   }
+
+   protected pb k() {
+      r[this.bO] = true;
+      return this;
+   }
+
+   protected void l() {
+   }
+
+   protected pb(int par1, int par2, acn par3Material) {
+      this(par1, par3Material);
+      this.bN = par2;
+   }
+
+   protected pb a(vj par1StepSound) {
+      this.cb = par1StepSound;
+      return this;
+   }
+
+   protected pb f(int par1) {
+      o[this.bO] = par1;
+      return this;
+   }
+
+   protected pb a(float par1) {
+      q[this.bO] = (int)(15.0F * par1);
+      return this;
+   }
+
+   protected pb b(float par1) {
+      this.bQ = par1 * 3.0F;
+      return this;
+   }
+
+   public static boolean g(int par0) {
+      pb block = m[par0];
+      if (block == null) {
+         return false;
+      } else {
+         return block.cd.j() && block.b();
+      }
+   }
+
+   public boolean b() {
+      return true;
+   }
+
+   public boolean getBlocksMovement(ali par1IBlockAccess, long par2, int par3, long par4) {
+      return !this.cd.c();
+   }
+
+   public int d() {
+      return 0;
+   }
+
+   protected pb c(float par1) {
+      this.bP = par1;
+      if (this.bQ < par1 * 5.0F) {
+         this.bQ = par1 * 5.0F;
+      }
+
+      return this;
+   }
+
+   protected pb m() {
+      this.c(-1.0F);
+      return this;
+   }
+
+   public float n() {
+      return this.bP;
+   }
+
+   protected pb a(boolean par1) {
+      this.bT = par1;
+      return this;
+   }
+
+   public boolean o() {
+      return this.bT;
+   }
+
+   public boolean p() {
+      return this.bU;
+   }
+
+   public void a(float par1, float par2, float par3, float par4, float par5, float par6) {
+      this.bV = (double)par1;
+      this.bW = (double)par2;
+      this.bX = (double)par3;
+      this.bY = (double)par4;
+      this.bZ = (double)par5;
+      this.ca = (double)par6;
+   }
+
+   public float getBlockBrightness(ali par1IBlockAccess, long par2, int par3, long par4) {
+      return par1IBlockAccess.getBrightness(par2, par3, par4, q[this.bO]);
+   }
+
+   public int getMixedBrightnessForBlock(ali par1IBlockAccess, long par2, int par3, long par4) {
+      return par1IBlockAccess.getLightBrightnessForSkyBlocks(par2, par3, par4, q[this.bO]);
+   }
+
+   public boolean shouldSideBeRendered(ali par1IBlockAccess, long par2, int par3, long par4, int par5) {
+      if (par5 == 0 && this.bW > (double)0.0F) {
+         return true;
+      } else if (par5 == 1 && this.bZ < (double)1.0F) {
+         return true;
+      } else if (par5 == 2 && this.bX > (double)0.0F) {
+         return true;
+      } else if (par5 == 3 && this.ca < (double)1.0F) {
+         return true;
+      } else if (par5 == 4 && this.bV > (double)0.0F) {
+         return true;
+      } else if (par5 == 5 && this.bY < (double)1.0F) {
+         return true;
+      } else {
+         return !par1IBlockAccess.isBlockOpaqueCube(par2, par3, par4);
+      }
+   }
+
+   public boolean isBlockSolid(ali par1IBlockAccess, long par2, int par3, long par4, int par5) {
+      return par1IBlockAccess.getBlockMaterial(par2, par3, par4).a();
+   }
+
+   public int getBlockTexture(ali par1IBlockAccess, long par2, int par3, long par4, int par5) {
+      return this.a(par5, par1IBlockAccess.getBlockMetadata(par2, par3, par4));
+   }
+
+   public int a(int par1, int par2) {
+      return this.a_(par1);
+   }
+
+   public int a_(int par1) {
+      return this.bN;
+   }
+
+   public wu getSelectedBoundingBoxFromPool(xd par1World, long par2, int par3, long par4) {
+      return wu.b((double)par2 + this.bV, (double)par3 + this.bW, (double)par4 + this.bX, (double)par2 + this.bY, (double)par3 + this.bZ, (double)par4 + this.ca);
+   }
+
+   public void getCollidingBoundingBoxes(xd par1World, long par2, int par3, long par4, wu par5AxisAlignedBB, ArrayList par6ArrayList) {
+      wu axisalignedbb = this.getCollisionBoundingBoxFromPool(par1World, par2, par3, par4);
+      if (axisalignedbb != null && par5AxisAlignedBB.a(axisalignedbb)) {
+         par6ArrayList.add(axisalignedbb);
+      }
+
+   }
+
+   public wu getCollisionBoundingBoxFromPool(xd par1World, long par2, int par3, long par4) {
+      return wu.b((double)par2 + this.bV, (double)par3 + this.bW, (double)par4 + this.bX, (double)par2 + this.bY, (double)par3 + this.bZ, (double)par4 + this.ca);
+   }
+
+   public boolean a() {
+      return true;
+   }
+
+   public boolean a(int par1, boolean par2) {
+      return this.j();
+   }
+
+   public boolean j() {
+      return true;
+   }
+
+   public void updateTick(xd world, long i, int j, long k, Random random) {
+   }
+
+   public void randomDisplayTick(xd world, long i, int j, long k, Random random) {
+   }
+
+   public void onBlockDestroyedByPlayer(xd world, long i, int j, long k, int l) {
+   }
+
+   public void onNeighborBlockChange(xd world, long i, int j, long k, int l) {
+   }
+
+   public int e() {
+      return 10;
+   }
+
+   public void onBlockAdded(xd world, long i, int j, long k) {
+   }
+
+   public void onBlockRemoval(xd world, long i, int j, long k) {
+   }
+
+   public int a(Random par1Random) {
+      return 1;
+   }
+
+   public int a(int par1, Random par2Random, int par3) {
+      return this.bO;
+   }
+
+   public float a(yw par1EntityPlayer) {
+      if (this.bP < 0.0F) {
+         return 0.0F;
+      } else {
+         return !par1EntityPlayer.b(this) ? 1.0F / this.bP / 100.0F : par1EntityPlayer.a(this) / this.bP / 30.0F;
+      }
+   }
+
+   public final void dropBlockAsItem(xd par1World, long par2, int par3, long par4, int par5, int par6) {
+      this.dropBlockAsItemWithChance(par1World, par2, par3, par4, par5, 1.0F, par6);
+   }
+
+   public void dropBlockAsItemWithChance(xd par1World, long par2, int par3, long par4, int par5, float par6, int par7) {
+      if (!par1World.F) {
+         int i = this.a(par7, par1World.r);
+
+         for(int j = 0; j < i; ++j) {
+            if (!(par1World.r.nextFloat() > par6)) {
+               int k = this.a(par5, par1World.r, par7);
+               if (k > 0) {
+                  this.dropBlockAsItem_do(par1World, par2, par3, par4, new aan(k, 1, this.c(par5)));
+               }
+            }
+         }
+
+      }
+   }
+
+   protected void dropBlockAsItem_do(xd par1World, long par2, int par3, long par4, aan par5ItemStack) {
+      if (!par1World.F) {
+         float f = 0.7F;
+         double d = (double)(par1World.r.nextFloat() * f) + (double)(1.0F - f) * (double)0.5F;
+         double d1 = (double)(par1World.r.nextFloat() * f) + (double)(1.0F - f) * (double)0.5F;
+         double d2 = (double)(par1World.r.nextFloat() * f) + (double)(1.0F - f) * (double)0.5F;
+         fq entityitem = new fq(par1World, (double)par2 + d, (double)par3 + d1, (double)par4 + d2, par5ItemStack);
+         entityitem.c = 10;
+         par1World.a(entityitem);
+      }
+   }
+
+   protected int c(int par1) {
+      return 0;
+   }
+
+   public float a(nn par1Entity) {
+      return this.bQ / 5.0F;
+   }
+
+   public pl collisionRayTrace(xd par1World, long par2, int par3, long par4, bo par5Vec3D, bo par6Vec3D) {
+      this.setBlockBoundsBasedOnState(par1World, par2, par3, par4);
+      par5Vec3D = par5Vec3D.c((double)(-par2), (double)(-par3), (double)(-par4));
+      par6Vec3D = par6Vec3D.c((double)(-par2), (double)(-par3), (double)(-par4));
+      bo vec3d = par5Vec3D.a(par6Vec3D, this.bV);
+      bo vec3d1 = par5Vec3D.a(par6Vec3D, this.bY);
+      bo vec3d2 = par5Vec3D.b(par6Vec3D, this.bW);
+      bo vec3d3 = par5Vec3D.b(par6Vec3D, this.bZ);
+      bo vec3d4 = par5Vec3D.c(par6Vec3D, this.bX);
+      bo vec3d5 = par5Vec3D.c(par6Vec3D, this.ca);
+      if (!this.a(vec3d)) {
+         vec3d = null;
+      }
+
+      if (!this.a(vec3d1)) {
+         vec3d1 = null;
+      }
+
+      if (!this.b(vec3d2)) {
+         vec3d2 = null;
+      }
+
+      if (!this.b(vec3d3)) {
+         vec3d3 = null;
+      }
+
+      if (!this.c(vec3d4)) {
+         vec3d4 = null;
+      }
+
+      if (!this.c(vec3d5)) {
+         vec3d5 = null;
+      }
+
+      bo vec3d6 = null;
+      if (vec3d != null && (vec3d6 == null || par5Vec3D.d(vec3d) < par5Vec3D.d(vec3d6))) {
+         vec3d6 = vec3d;
+      }
+
+      if (vec3d1 != null && (vec3d6 == null || par5Vec3D.d(vec3d1) < par5Vec3D.d(vec3d6))) {
+         vec3d6 = vec3d1;
+      }
+
+      if (vec3d2 != null && (vec3d6 == null || par5Vec3D.d(vec3d2) < par5Vec3D.d(vec3d6))) {
+         vec3d6 = vec3d2;
+      }
+
+      if (vec3d3 != null && (vec3d6 == null || par5Vec3D.d(vec3d3) < par5Vec3D.d(vec3d6))) {
+         vec3d6 = vec3d3;
+      }
+
+      if (vec3d4 != null && (vec3d6 == null || par5Vec3D.d(vec3d4) < par5Vec3D.d(vec3d6))) {
+         vec3d6 = vec3d4;
+      }
+
+      if (vec3d5 != null && (vec3d6 == null || par5Vec3D.d(vec3d5) < par5Vec3D.d(vec3d6))) {
+         vec3d6 = vec3d5;
+      }
+
+      if (vec3d6 == null) {
+         return null;
+      } else {
+         byte byte0 = -1;
+         if (vec3d6 == vec3d) {
+            byte0 = 4;
+         }
+
+         if (vec3d6 == vec3d1) {
+            byte0 = 5;
+         }
+
+         if (vec3d6 == vec3d2) {
+            byte0 = 0;
+         }
+
+         if (vec3d6 == vec3d3) {
+            byte0 = 1;
+         }
+
+         if (vec3d6 == vec3d4) {
+            byte0 = 2;
+         }
+
+         if (vec3d6 == vec3d5) {
+            byte0 = 3;
+         }
+
+         return new pl(par2, par3, par4, byte0, vec3d6.c((double)par2, (double)par3, (double)par4));
+      }
+   }
+
+   private boolean a(bo par1Vec3D) {
+      if (par1Vec3D == null) {
+         return false;
+      } else {
+         return par1Vec3D.b >= this.bW && par1Vec3D.b <= this.bZ && par1Vec3D.c >= this.bX && par1Vec3D.c <= this.ca;
+      }
+   }
+
+   private boolean b(bo par1Vec3D) {
+      if (par1Vec3D == null) {
+         return false;
+      } else {
+         return par1Vec3D.a >= this.bV && par1Vec3D.a <= this.bY && par1Vec3D.c >= this.bX && par1Vec3D.c <= this.ca;
+      }
+   }
+
+   private boolean c(bo par1Vec3D) {
+      if (par1Vec3D == null) {
+         return false;
+      } else {
+         return par1Vec3D.a >= this.bV && par1Vec3D.a <= this.bY && par1Vec3D.b >= this.bW && par1Vec3D.b <= this.bZ;
+      }
+   }
+
+   public void onBlockDestroyedByExplosion(xd world, long i, int j, long k) {
+   }
+
+   public int c() {
+      return 0;
+   }
+
+   public boolean canPlaceBlockOnSide(xd par1World, long par2, int par3, long par4, int par5) {
+      return this.canPlaceBlockAt(par1World, par2, par3, par4);
+   }
+
+   public boolean canPlaceBlockAt(xd par1World, long par2, int par3, long par4) {
+      int i = par1World.getBlockId(par2, par3, par4);
+      return i == 0 || m[i].cd.i();
+   }
+
+   public boolean blockActivated(xd par1World, long par2, int par3, long i, yw entityplayer) {
+      return false;
+   }
+
+   public void onEntityWalking(xd world, long i, int j, long k, nn entity) {
+   }
+
+   public void onBlockPlaced(xd world, long i, int j, long k, int l) {
+   }
+
+   public void onBlockClicked(xd world, long i, int j, long k, yw entityplayer) {
+   }
+
+   public void velocityToAddToEntity(xd world, long i, int j, long k, nn entity, bo vec3d) {
+   }
+
+   public void setBlockBoundsBasedOnState(ali iblockaccess, long i, int j, long k) {
+   }
+
+   public int i() {
+      return 16777215;
+   }
+
+   public int d(int par1) {
+      return 16777215;
+   }
+
+   public int colorMultiplier(ali par1IBlockAccess, long par2, int par3, long par4) {
+      return 16777215;
+   }
+
+   public boolean isPoweringTo(ali par1IBlockAccess, long par2, int par3, long i, int j) {
+      return false;
+   }
+
+   public boolean g() {
+      return false;
+   }
+
+   public void onEntityCollidedWithBlock(xd world, long i, int j, long k, nn entity) {
+   }
+
+   public boolean isIndirectlyPoweringTo(xd par1World, long par2, int par3, long i, int j) {
+      return false;
+   }
+
+   public void h() {
+   }
+
+   public void harvestBlock(xd par1World, yw par2EntityPlayer, long par3, int par4, long par5, int par6) {
+      par2EntityPlayer.a(gv.C[this.bO], 1);
+      par2EntityPlayer.c(0.025F);
+      if (this.q() && ais.d(par2EntityPlayer.ap)) {
+         aan itemstack = this.b(par6);
+         if (itemstack != null) {
+            this.dropBlockAsItem_do(par1World, par3, par4, par5, itemstack);
+         }
+      } else {
+         int i = ais.e(par2EntityPlayer.ap);
+         this.dropBlockAsItem(par1World, par3, par4, par5, par6, i);
+      }
+
+   }
+
+   protected boolean q() {
+      return this.b() && !this.bU;
+   }
+
+   protected aan b(int par1) {
+      int i = 0;
+      if (this.bO >= 0 && this.bO < yr.e.length && yr.e[this.bO].g()) {
+         i = par1;
+      }
+
+      return new aan(this.bO, 1, i);
+   }
+
+   public int a(int par1, Random par2Random) {
+      return this.a(par2Random);
+   }
+
+   public boolean canBlockStay(xd par1World, long par2, int par3, long i) {
+      return true;
+   }
+
+   public void onBlockPlacedBy(xd world, long i, int j, long k, acq entityliving) {
+   }
+
+   public pb a(String par1Str) {
+      this.a = "tile." + par1Str;
+      return this;
+   }
+
+   public String r() {
+      return cy.a(this.s() + ".name");
+   }
+
+   public String s() {
+      return this.a;
+   }
+
+   public void powerBlock(xd world, long i, int j, long k, int l, int i1) {
+   }
+
+   public boolean t() {
+      return this.bS;
+   }
+
+   protected pb u() {
+      this.bS = false;
+      return this;
+   }
+
+   public int f() {
+      return this.cd.l();
+   }
+
+   public float getAmbientOcclusionLightValue(ali par1IBlockAccess, long par2, int par3, long par4) {
+      return par1IBlockAccess.isBlockNormalCube(par2, par3, par4) ? 0.2F : 1.0F;
+   }
+
+   public void onFallenUpon(xd world, long i, int j, long k, nn entity, float f) {
+   }
+
+   static {
+      t = (new do(1, 1)).c(1.5F).b(10.0F).a(h).a("stone");
+      u = (qy)(new qy(2)).c(0.6F).a(g).a("grass");
+      v = (new aet(3, 2)).c(0.5F).a(f).a("dirt");
+      w = (new pb(4, 16, acn.e)).c(2.0F).b(10.0F).a(h).a("stonebrick");
+      x = (new nz(5)).c(2.0F).b(5.0F).a(e).a("wood").k();
+      y = (new zc(6, 15)).c(0.0F).a(g).a("sapling").k();
+      z = (new pb(7, 17, acn.e)).m().b(6000000.0F).a(h).a("bedrock").u();
+      A = (new kr(8, acn.g)).c(100.0F).f(3).a("water").u().k();
+      B = (new aea(9, acn.g)).c(100.0F).f(3).a("water").u().k();
+      C = (new kr(10, acn.h)).c(0.0F).a(1.0F).f(255).a("lava").u().k();
+      D = (new aea(11, acn.h)).c(100.0F).a(1.0F).f(255).a("lava").u().k();
+      E = (new yp(12, 18)).c(0.5F).a(l).a("sand");
+      F = (new jq(13, 19)).c(0.6F).a(f).a("gravel");
+      G = (new jj(14, 32)).c(3.0F).b(5.0F).a(h).a("oreGold");
+      H = (new jj(15, 33)).c(3.0F).b(5.0F).a(h).a("oreIron");
+      I = (new jj(16, 34)).c(3.0F).b(5.0F).a(h).a("oreCoal");
+      J = (new pp(17)).c(2.0F).a(e).a("log").k();
+      K = (uf)(new uf(18, 52)).c(0.2F).f(1).a(g).a("leaves").k();
+      L = (new rf(19)).c(0.6F).a(g).a("sponge");
+      M = (new xj(20, 49, acn.q, false)).c(0.3F).a(j).a("glass");
+      N = (new jj(21, 160)).c(3.0F).b(5.0F).a(h).a("oreLapis");
+      O = (new pb(22, 144, acn.e)).c(3.0F).b(5.0F).a(h).a("blockLapis");
+      P = (new alj(23)).c(3.5F).a(h).a("dispenser").k();
+      Q = (new mo(24)).a(h).c(0.8F).a("sandStone").k();
+      R = (new afp(25)).c(0.8F).a("musicBlock").k();
+      S = (new pm(26)).c(0.2F).a("bed").u().k();
+      T = (new aez(27, 179, true)).c(0.7F).a(pb.i).a("goldenRail").k();
+      U = (new afe(28, 195)).c(0.7F).a(pb.i).a("detectorRail").k();
+      V = (new abc(29, 106, true)).a("pistonStickyBase").k();
+      W = (new mv(30, 11)).f(1).c(4.0F).a("web");
+      X = (my)(new my(31, 39)).c(0.0F).a(g).a("tallgrass");
+      Y = (gs)(new gs(32, 55)).c(0.0F).a(g).a("deadbush");
+      Z = (new abc(33, 107, false)).a("pistonBase").k();
+      aa = (sq)(new sq(34, 107)).k();
+      ab = (new wo()).c(0.8F).a(k).a("cloth").k();
+      ac = new pa(36);
+      ad = (qk)(new qk(37, 13)).c(0.0F).a(g).a("flower");
+      ae = (qk)(new qk(38, 12)).c(0.0F).a(g).a("rose");
+      af = (qk)(new ahx(39, 29)).c(0.0F).a(g).a(0.125F).a("mushroom");
+      ag = (qk)(new ahx(40, 28)).c(0.0F).a(g).a("mushroom");
+      ah = (new su(41, 23)).c(3.0F).b(10.0F).a(pb.i).a("blockGold");
+      ai = (new su(42, 22)).c(5.0F).b(10.0F).a(pb.i).a("blockIron");
+      aj = (new amh(43, true)).c(2.0F).b(10.0F).a(h).a("stoneSlab");
+      ak = (new amh(44, false)).c(2.0F).b(10.0F).a(h).a("stoneSlab");
+      al = (new pb(45, 7, acn.e)).c(2.0F).b(10.0F).a(h).a("brick");
+      am = (new ae(46, 8)).c(0.0F).a(g).a("tnt");
+      an = (new fi(47, 35)).c(1.5F).a(e).a("bookshelf");
+      ao = (new pb(48, 36, acn.e)).c(2.0F).b(10.0F).a(h).a("stoneMoss");
+      ap = (new xb(49, 37)).c(50.0F).b(2000.0F).a(h).a("obsidian");
+      aq = (new pt(50, 80)).c(0.0F).a(0.9375F).a(e).a("torch").k();
+      ar = (ame)(new ame(51, 31)).c(0.0F).a(1.0F).a(e).a("fire").u();
+      as = (new cm(52, 65)).c(5.0F).a(pb.i).a("mobSpawner").u();
+      at = (new nr(53, x)).a("stairsWood").k();
+      au = (new sn(54)).c(2.5F).a(e).a("chest").k();
+      av = (new ahi(55, 164)).c(0.0F).a(d).a("redstoneDust").u().k();
+      aw = (new jj(56, 50)).c(3.0F).b(5.0F).a(h).a("oreDiamond");
+      ax = (new su(57, 24)).c(5.0F).b(10.0F).a(pb.i).a("blockDiamond");
+      ay = (new ef(58)).c(2.5F).a(e).a("workbench");
+      az = (new jx(59, 88)).c(0.0F).a(g).a("crops").u().k();
+      aA = (new ajp(60)).c(0.6F).a(f).a("farmland").k();
+      aB = (new aho(61, false)).c(3.5F).a(h).a("furnace").k();
+      aC = (new aho(62, true)).c(3.5F).a(h).a(0.875F).a("furnace").k();
+      aD = (new ot(63, sc.class, true)).c(1.0F).a(e).a("sign").u().k();
+      aE = (new acb(64, acn.d)).c(3.0F).a(e).a("doorWood").u().k();
+      aF = (new cx(65, 83)).c(0.4F).a(e).a("ladder").k();
+      aG = (new aez(66, 128, false)).c(0.7F).a(pb.i).a("rail").k();
+      aH = (new nr(67, w)).a("stairsStone").k();
+      aI = (new ot(68, sc.class, false)).c(1.0F).a(e).a("sign").u().k();
+      aJ = (new alk(69, 96)).c(0.5F).a(e).a("lever").k();
+      aK = (new ul(70, t.bN, agw.b, acn.e)).c(0.5F).a(h).a("pressurePlate").k();
+      aL = (new acb(71, acn.f)).c(5.0F).a(pb.i).a("doorIron").u().k();
+      aM = (new ul(72, x.bN, agw.a, acn.d)).c(0.5F).a(e).a("pressurePlate").k();
+      aN = (new uj(73, 51, false)).c(3.0F).b(5.0F).a(h).a("oreRedstone").k();
+      aO = (new uj(74, 51, true)).a(0.625F).c(3.0F).b(5.0F).a(h).a("oreRedstone").k();
+      aP = (new vo(75, 115, false)).c(0.0F).a(e).a("notGate").k();
+      aQ = (new vo(76, 99, true)).c(0.0F).a(0.5F).a(e).a("notGate").k();
+      aR = (new km(77, t.bN)).c(0.5F).a(h).a("button").k();
+      aS = (new ha(78, 66)).c(0.1F).a(k).a("snow").f(0);
+      aT = (new jz(79, 67)).c(0.5F).f(3).a(j).a("ice");
+      aU = (new aa(80, 66)).c(0.2F).a(k).a("snow");
+      aV = (new aer(81, 70)).c(0.4F).a(k).a("cactus");
+      aW = (new agz(82, 72)).c(0.6F).a(f).a("clay");
+      aX = (new ago(83, 73)).c(0.0F).a(g).a("reeds").u();
+      aY = (new xl(84, 74)).c(2.0F).b(10.0F).a(h).a("jukebox").k();
+      aZ = (new abg(85, 4)).c(2.0F).b(5.0F).a(e).a("fence");
+      ba = (new xa(86, 102, false)).c(1.0F).a(e).a("pumpkin").k();
+      bb = (new sa(87, 103)).c(0.4F).a(h).a("hellrock");
+      bc = (new aee(88, 104)).c(0.5F).a(l).a("hellsand");
+      bd = (new iq(89, 105, acn.q)).c(0.3F).a(j).a(1.0F).a("lightgem");
+      be = (al)(new al(90, 14)).c(-1.0F).a(j).a(0.75F).a("portal");
+      bf = (new xa(91, 102, true)).c(1.0F).a(e).a(1.0F).a("litpumpkin").k();
+      bg = (new ov(92, 121)).c(0.5F).a(k).a("cake").u().k();
+      bh = (new qx(93, false)).c(0.0F).a(e).a("diode").u().k();
+      bi = (new qx(94, true)).c(0.0F).a(0.625F).a(e).a("diode").u().k();
+      bj = (new abx(95)).c(0.0F).a(1.0F).a(e).a("lockedchest").a(true).k();
+      bk = (new kt(96, acn.d)).c(3.0F).a(e).a("trapdoor").u().k();
+      bl = (new age(97)).c(0.75F);
+      bm = (new agi(98)).c(1.5F).b(10.0F).a(h).a("stonebricksmooth");
+      bn = (new pw(99, acn.d, 142, 0)).c(0.2F).a(e).a("mushroom").k();
+      bo = (new pw(100, acn.d, 142, 1)).c(0.2F).a(e).a("mushroom").k();
+      bp = (new akq(101, 85, 85, acn.f, true)).c(5.0F).b(10.0F).a(pb.i).a("fenceIron");
+      bq = (new akq(102, 49, 148, acn.q, false)).c(0.3F).a(j).a("thinGlass");
+      br = (new eb(103)).c(1.0F).a(e).a("melon");
+      bs = (new aei(104, ba)).c(0.0F).a(e).a("pumpkinStem").k();
+      bt = (new aei(105, br)).c(0.0F).a(e).a("pumpkinStem").k();
+      bu = (new aem(106)).c(0.2F).a(g).a("vine").k();
+      bv = (new ajf(107, 4)).c(2.0F).b(5.0F).a(e).a("fenceGate").k();
+      bw = (new nr(108, al)).a("stairsBrick").k();
+      bx = (new nr(109, bm)).a("stairsStoneBrickSmooth").k();
+      by = (alr)(new alr(110)).c(0.6F).a(g).a("mycel");
+      bz = (new ye(111, 76)).c(0.0F).a(g).a("waterlily");
+      bA = (new pb(112, 224, acn.e)).c(2.0F).b(10.0F).a(h).a("netherBrick");
+      bB = (new abg(113, 224, acn.e)).c(2.0F).b(10.0F).a(h).a("netherFence");
+      bC = (new nr(114, bA)).a("stairsNetherBrick").k();
+      bD = (new rr(115)).a("netherStalk").k();
+      bE = (new yl(116)).c(5.0F).b(2000.0F).a("enchantmentTable");
+      bF = (new xc(117)).c(0.5F).a(0.125F).a("brewingStand").k();
+      bG = (new xm(118)).c(2.0F).a("cauldron").k();
+      bH = (new tc(119, acn.B)).c(-1.0F).b(6000000.0F);
+      bI = (new amj(120)).a(j).a(0.125F).c(-1.0F).a("endPortalFrame").k().b(6000000.0F);
+      bJ = (new pb(121, 175, acn.e)).c(3.0F).b(15.0F).a(h).a("whiteStone");
+      bK = (new de(122, 167)).c(3.0F).b(15.0F).a(h).a(0.125F).a("dragonEgg");
+      bL = (new ir(123, false)).c(0.3F).a(j).a("redstoneLight");
+      bM = (new ir(124, true)).c(0.3F).a(j).a("redstoneLight");
+      yr.e[ab.bO] = (new uc(ab.bO - 256)).a("cloth");
+      yr.e[J.bO] = (new aba(J.bO - 256, J)).a("log");
+      yr.e[x.bO] = (new aba(x.bO - 256, x)).a("wood");
+      yr.e[bm.bO] = (new aba(bm.bO - 256, bm)).a("stonebricksmooth");
+      yr.e[Q.bO] = (new aba(Q.bO - 256, Q)).a("sandStone");
+      yr.e[ak.bO] = (new wt(ak.bO - 256)).a("stoneSlab");
+      yr.e[y.bO] = (new jh(y.bO - 256)).a("sapling");
+      yr.e[K.bO] = (new ph(K.bO - 256)).a("leaves");
+      yr.e[bu.bO] = new aky(bu.bO - 256, false);
+      yr.e[X.bO] = (new aky(X.bO - 256, true)).a(new String[]{"shrub", "grass", "fern"});
+      yr.e[bz.bO] = new agq(bz.bO - 256);
+      yr.e[Z.bO] = new agc(Z.bO - 256);
+      yr.e[V.bO] = new agc(V.bO - 256);
+
+      for(int i = 0; i < 256; ++i) {
+         if (m[i] != null) {
+            if (yr.e[i] == null) {
+               yr.e[i] = new vd(i - 256);
+               m[i].l();
+            }
+
+            boolean flag = false;
+            if (i > 0 && m[i].d() == 10) {
+               flag = true;
+            }
+
+            if (i > 0 && m[i] instanceof amh) {
+               flag = true;
+            }
+
+            if (i == aA.bO) {
+               flag = true;
+            }
+
+            if (p[i]) {
+               flag = true;
+            }
+
+            s[i] = flag;
+         }
+      }
+
+      p[0] = true;
+      gv.b();
+   }
+}

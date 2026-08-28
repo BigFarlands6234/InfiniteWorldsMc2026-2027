@@ -1,0 +1,186 @@
+import java.util.ArrayList;
+import java.util.Random;
+
+public class nr extends pb {
+   private pb a;
+
+   protected nr(int par1, pb par2Block) {
+      super(par1, par2Block.bN, par2Block.cd);
+      this.a = par2Block;
+      this.c(par2Block.bP);
+      this.b(par2Block.bQ / 3.0F);
+      this.a(par2Block.cb);
+      this.f(255);
+   }
+
+   public void setBlockBoundsBasedOnState(ali par1IBlockAccess, long par2, int par3, long par4) {
+      this.a(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+   }
+
+   public wu getCollisionBoundingBoxFromPool(xd par1World, long par2, int par3, long par4) {
+      return super.getCollisionBoundingBoxFromPool(par1World, par2, par3, par4);
+   }
+
+   public boolean a() {
+      return false;
+   }
+
+   public boolean b() {
+      return false;
+   }
+
+   public int d() {
+      return 10;
+   }
+
+   public boolean shouldSideBeRendered(ali par1IBlockAccess, long par2, int par3, long par4, int par5) {
+      return super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, par5);
+   }
+
+   public void getCollidingBoundingBoxes(xd par1World, long par2, int par3, long par4, wu par5AxisAlignedBB, ArrayList par6ArrayList) {
+      int i = par1World.getBlockMetadata(par2, par3, par4);
+      int j = i & 3;
+      float f = 0.0F;
+      float f1 = 0.5F;
+      float f2 = 0.5F;
+      float f3 = 1.0F;
+      if ((i & 4) != 0) {
+         f = 0.5F;
+         f1 = 1.0F;
+         f2 = 0.0F;
+         f3 = 0.5F;
+      }
+
+      this.a(0.0F, f, 0.0F, 1.0F, f1, 1.0F);
+      super.getCollidingBoundingBoxes(par1World, par2, par3, par4, par5AxisAlignedBB, par6ArrayList);
+      if (j == 0) {
+         this.a(0.5F, f2, 0.0F, 1.0F, f3, 1.0F);
+         super.getCollidingBoundingBoxes(par1World, par2, par3, par4, par5AxisAlignedBB, par6ArrayList);
+      } else if (j == 1) {
+         this.a(0.0F, f2, 0.0F, 0.5F, f3, 1.0F);
+         super.getCollidingBoundingBoxes(par1World, par2, par3, par4, par5AxisAlignedBB, par6ArrayList);
+      } else if (j == 2) {
+         this.a(0.0F, f2, 0.5F, 1.0F, f3, 1.0F);
+         super.getCollidingBoundingBoxes(par1World, par2, par3, par4, par5AxisAlignedBB, par6ArrayList);
+      } else if (j == 3) {
+         this.a(0.0F, f2, 0.0F, 1.0F, f3, 0.5F);
+         super.getCollidingBoundingBoxes(par1World, par2, par3, par4, par5AxisAlignedBB, par6ArrayList);
+      }
+
+      this.a(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+   }
+
+   public void randomDisplayTick(xd par1World, long par2, int par3, long par4, Random par5Random) {
+      this.a.randomDisplayTick(par1World, par2, par3, par4, par5Random);
+   }
+
+   public void onBlockClicked(xd par1World, long par2, int par3, long par4, yw par5EntityPlayer) {
+      this.a.onBlockClicked(par1World, par2, par3, par4, par5EntityPlayer);
+   }
+
+   public void onBlockDestroyedByPlayer(xd par1World, long par2, int par3, long par4, int par5) {
+      this.a.onBlockDestroyedByPlayer(par1World, par2, par3, par4, par5);
+   }
+
+   public int getMixedBrightnessForBlock(ali par1IBlockAccess, long par2, int par3, long par4) {
+      return this.a.getMixedBrightnessForBlock(par1IBlockAccess, par2, par3, par4);
+   }
+
+   public float getBlockBrightness(ali par1IBlockAccess, long par2, int par3, long par4) {
+      return this.a.getBlockBrightness(par1IBlockAccess, par2, par3, par4);
+   }
+
+   public float a(nn par1Entity) {
+      return this.a.a(par1Entity);
+   }
+
+   public int c() {
+      return this.a.c();
+   }
+
+   public int a(int par1, int par2) {
+      return this.a.a(par1, 0);
+   }
+
+   public int a_(int par1) {
+      return this.a.a(par1, 0);
+   }
+
+   public int e() {
+      return this.a.e();
+   }
+
+   public wu getSelectedBoundingBoxFromPool(xd par1World, long par2, int par3, long par4) {
+      return this.a.getSelectedBoundingBoxFromPool(par1World, par2, par3, par4);
+   }
+
+   public void velocityToAddToEntity(xd par1World, long par2, int par3, long par4, nn par5Entity, bo par6Vec3D) {
+      this.a.velocityToAddToEntity(par1World, par2, par3, par4, par5Entity, par6Vec3D);
+   }
+
+   public boolean j() {
+      return this.a.j();
+   }
+
+   public boolean a(int par1, boolean par2) {
+      return this.a.a(par1, par2);
+   }
+
+   public boolean canPlaceBlockAt(xd par1World, long par2, int par3, long par4) {
+      return this.a.canPlaceBlockAt(par1World, par2, par3, par4);
+   }
+
+   public void onBlockAdded(xd par1World, long par2, int par3, long par4) {
+      this.onNeighborBlockChange(par1World, par2, par3, par4, 0);
+      this.a.onBlockAdded(par1World, par2, par3, par4);
+   }
+
+   public void onBlockRemoval(xd par1World, long par2, int par3, long par4) {
+      this.a.onBlockRemoval(par1World, par2, par3, par4);
+   }
+
+   public void onEntityWalking(xd par1World, long par2, int par3, long par4, nn par5Entity) {
+      this.a.onEntityWalking(par1World, par2, par3, par4, par5Entity);
+   }
+
+   public void updateTick(xd par1World, long par2, int par3, long par4, Random par5Random) {
+      this.a.updateTick(par1World, par2, par3, par4, par5Random);
+   }
+
+   public boolean blockActivated(xd par1World, long par2, int par3, long par4, yw par5EntityPlayer) {
+      return this.a.blockActivated(par1World, par2, par3, par4, par5EntityPlayer);
+   }
+
+   public void onBlockDestroyedByExplosion(xd par1World, long par2, int par3, long par4) {
+      this.a.onBlockDestroyedByExplosion(par1World, par2, par3, par4);
+   }
+
+   public void onBlockPlacedBy(xd par1World, long par2, int par3, long par4, acq par5EntityLiving) {
+      int i = gk.c((double)(par5EntityLiving.u * 4.0F / 360.0F) + (double)0.5F) & 3;
+      int j = par1World.getBlockMetadata(par2, par3, par4) & 4;
+      if (i == 0) {
+         par1World.setBlockMetadataWithNotify(par2, par3, par4, 2 | j);
+      }
+
+      if (i == 1) {
+         par1World.setBlockMetadataWithNotify(par2, par3, par4, 1 | j);
+      }
+
+      if (i == 2) {
+         par1World.setBlockMetadataWithNotify(par2, par3, par4, 3 | j);
+      }
+
+      if (i == 3) {
+         par1World.setBlockMetadataWithNotify(par2, par3, par4, 0 | j);
+      }
+
+   }
+
+   public void onBlockPlaced(xd par1World, long par2, int par3, long par4, int par5) {
+      if (par5 == 0) {
+         int i = par1World.getBlockMetadata(par2, par3, par4);
+         par1World.setBlockMetadataWithNotify(par2, par3, par4, i | 4);
+      }
+
+   }
+}

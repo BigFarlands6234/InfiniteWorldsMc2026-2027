@@ -1,0 +1,60 @@
+import java.util.Random;
+
+public class na extends rc {
+   private aaa a;
+   private double b;
+   private double c;
+   private double d;
+   private float e;
+   private xd f;
+
+   public na(aaa par1EntityCreature, float par2) {
+      this.a = par1EntityCreature;
+      this.e = par2;
+      this.f = par1EntityCreature.k;
+      this.a(1);
+   }
+
+   public boolean a() {
+      if (!this.f.m()) {
+         return false;
+      } else if (!this.a.T()) {
+         return false;
+      } else if (!this.f.canBlockSeeTheSky(gk.d(this.a.o), (int)this.a.y.b, gk.d(this.a.q))) {
+         return false;
+      } else {
+         bo vec3d = this.h();
+         if (vec3d == null) {
+            return false;
+         } else {
+            this.b = vec3d.a;
+            this.c = vec3d.b;
+            this.d = vec3d.c;
+            return true;
+         }
+      }
+   }
+
+   public boolean b() {
+      return !this.a.aM().e();
+   }
+
+   public void c() {
+      this.a.aM().a(this.b, this.c, this.d, this.e);
+   }
+
+   private bo h() {
+      Random random = this.a.aO();
+
+      for(int i = 0; i < 10; ++i) {
+         long j = gk.d(this.a.o + (double)random.nextInt(20) - (double)10.0F);
+         int k = gk.c(this.a.y.b + (double)random.nextInt(6) - (double)3.0F);
+         long l = gk.d(this.a.q + (double)random.nextInt(20) - (double)10.0F);
+         if (!this.f.canBlockSeeTheSky(j, k, l) && this.a.getBlockPathWeight(j, k, l) < 0.0F) {
+            return bo.b((double)j, (double)k, (double)l);
+         }
+      }
+
+      return null;
+   }
+}

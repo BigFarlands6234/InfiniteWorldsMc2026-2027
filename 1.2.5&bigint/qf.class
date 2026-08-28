@@ -1,0 +1,56 @@
+import java.util.List;
+import java.util.Random;
+
+public class qf extends aih {
+   private int a = -1;
+
+   public qf(int par1, Random par2Random, qg par3StructureBoundingBox, int par4) {
+      super(par1);
+      this.h = par4;
+      this.g = par3StructureBoundingBox;
+   }
+
+   public void a(he structurecomponent, List list, Random random) {
+   }
+
+   public static qf findValidPlacement(List par0List, Random par1Random, long par2, int par3, long par4, int par5, int par6) {
+      qg structureboundingbox = qg.getComponentToAddBoundingBox(par2, par3, par4, 0L, 0, 0L, 7L, 4, 9L, par5);
+      return a(structureboundingbox) && he.a(par0List, structureboundingbox) == null ? new qf(par6, par1Random, structureboundingbox, par5) : null;
+   }
+
+   public boolean a(xd par1World, Random par2Random, qg par3StructureBoundingBox) {
+      if (this.a < 0) {
+         this.a = this.b(par1World, par3StructureBoundingBox);
+         if (this.a < 0) {
+            return true;
+         }
+
+         this.g.offset(0L, this.a - this.g.e + 4 - 1, 0L);
+      }
+
+      this.fillWithBlocks(par1World, par3StructureBoundingBox, 0L, 1, 0L, 6L, 4, 8L, 0, 0, false);
+      this.fillWithBlocks(par1World, par3StructureBoundingBox, 1L, 0, 1L, 2L, 0, 7L, pb.aA.bO, pb.aA.bO, false);
+      this.fillWithBlocks(par1World, par3StructureBoundingBox, 4L, 0, 1L, 5L, 0, 7L, pb.aA.bO, pb.aA.bO, false);
+      this.fillWithBlocks(par1World, par3StructureBoundingBox, 0L, 0, 0L, 0L, 0, 8L, pb.J.bO, pb.J.bO, false);
+      this.fillWithBlocks(par1World, par3StructureBoundingBox, 6L, 0, 0L, 6L, 0, 8L, pb.J.bO, pb.J.bO, false);
+      this.fillWithBlocks(par1World, par3StructureBoundingBox, 1L, 0, 0L, 5L, 0, 0L, pb.J.bO, pb.J.bO, false);
+      this.fillWithBlocks(par1World, par3StructureBoundingBox, 1L, 0, 8L, 5L, 0, 8L, pb.J.bO, pb.J.bO, false);
+      this.fillWithBlocks(par1World, par3StructureBoundingBox, 3L, 0, 1L, 3L, 0, 7L, pb.A.bO, pb.A.bO, false);
+
+      for(int i = 1; i <= 7; ++i) {
+         this.placeBlockAtCurrentPosition(par1World, pb.az.bO, gk.a(par2Random, 2, 7), 1L, 1, (long)i, par3StructureBoundingBox);
+         this.placeBlockAtCurrentPosition(par1World, pb.az.bO, gk.a(par2Random, 2, 7), 2L, 1, (long)i, par3StructureBoundingBox);
+         this.placeBlockAtCurrentPosition(par1World, pb.az.bO, gk.a(par2Random, 2, 7), 4L, 1, (long)i, par3StructureBoundingBox);
+         this.placeBlockAtCurrentPosition(par1World, pb.az.bO, gk.a(par2Random, 2, 7), 5L, 1, (long)i, par3StructureBoundingBox);
+      }
+
+      for(int j = 0; j < 9; ++j) {
+         for(int k = 0; k < 7; ++k) {
+            this.clearCurrentPositionBlocksUpwards(par1World, (long)k, 4, (long)j, par3StructureBoundingBox);
+            this.fillCurrentPositionBlocksDownwards(par1World, pb.v.bO, 0, (long)k, -1, (long)j, par3StructureBoundingBox);
+         }
+      }
+
+      return true;
+   }
+}

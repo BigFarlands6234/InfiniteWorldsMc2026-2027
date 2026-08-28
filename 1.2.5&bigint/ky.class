@@ -1,0 +1,30 @@
+public class ky extends rt {
+   public ky(xd par1World, double par2, double par4, double par6, double par8, double par10, double par12) {
+      super(par1World, par2, par4 - (double)0.125F, par6, par8, par10, par12);
+      this.ao = 0.4F;
+      this.ap = 0.4F;
+      this.aq = 0.7F;
+      this.c(0);
+      this.a(0.01F, 0.01F);
+      this.am *= this.U.nextFloat() * 0.6F + 0.2F;
+      this.r = par8 * (double)0.0F;
+      this.s = par10 * (double)0.0F;
+      this.t = par12 * (double)0.0F;
+      this.e = (int)((double)16.0F / (Math.random() * 0.8 + 0.2));
+   }
+
+   public void J_() {
+      this.l = this.o;
+      this.m = this.p;
+      this.n = this.q;
+      this.b(this.r, this.s, this.t);
+      if (this.k.getBlockMaterial(gk.d(this.o), gk.c(this.p), gk.d(this.q)) != acn.g) {
+         this.A();
+      }
+
+      if (this.e-- <= 0) {
+         this.A();
+      }
+
+   }
+}

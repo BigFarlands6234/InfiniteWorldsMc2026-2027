@@ -1,0 +1,62 @@
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+
+public class mr extends abs {
+   public int a;
+   public long b;
+   public int c;
+   public long d;
+   public byte e;
+   public byte f;
+
+   public mr() {
+   }
+
+   public mr(nn par1Entity) {
+      this.a = par1Entity.f;
+      this.b = gk.d(par1Entity.o * (double)32.0F);
+      this.c = gk.c(par1Entity.p * (double)32.0F);
+      this.d = gk.d(par1Entity.q * (double)32.0F);
+      this.e = (byte)((int)(par1Entity.u * 256.0F / 360.0F));
+      this.f = (byte)((int)(par1Entity.v * 256.0F / 360.0F));
+   }
+
+   public void a(DataInputStream par1DataInputStream) throws IOException {
+      this.a = par1DataInputStream.readInt();
+
+      try {
+         this.b = par1DataInputStream.readLong();
+      } catch (ClassCastException var4) {
+         this.b = (long)par1DataInputStream.readInt();
+      }
+
+      this.c = par1DataInputStream.readInt();
+
+      try {
+         this.d = par1DataInputStream.readLong();
+      } catch (ClassCastException var3) {
+         this.d = (long)par1DataInputStream.readInt();
+      }
+
+      this.e = (byte)par1DataInputStream.read();
+      this.f = (byte)par1DataInputStream.read();
+   }
+
+   public void a(DataOutputStream par1DataOutputStream) throws IOException {
+      par1DataOutputStream.writeInt(this.a);
+      par1DataOutputStream.writeLong(this.b);
+      par1DataOutputStream.writeInt(this.c);
+      par1DataOutputStream.writeLong(this.d);
+      par1DataOutputStream.write(this.e);
+      par1DataOutputStream.write(this.f);
+   }
+
+   public void a(oe par1NetHandler) {
+      par1NetHandler.a(this);
+   }
+
+   public int a() {
+      return 34;
+   }
+}

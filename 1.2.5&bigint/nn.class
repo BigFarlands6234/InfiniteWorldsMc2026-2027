@@ -1,0 +1,1278 @@
+import java.util.List;
+import java.util.Random;
+
+public abstract class nn {
+   private static int a = 0;
+   public int f;
+   public double g;
+   public boolean h;
+   public nn i;
+   public nn j;
+   public xd k;
+   public double l;
+   public double m;
+   public double n;
+   public double o;
+   public double p;
+   public double q;
+   public double r;
+   public double s;
+   public double t;
+   public float u;
+   public float v;
+   public float w;
+   public float x;
+   public final wu y = wu.a((double)0.0F, (double)0.0F, (double)0.0F, (double)0.0F, (double)0.0F, (double)0.0F);
+   public boolean z;
+   public boolean A;
+   public boolean B;
+   public boolean C;
+   public boolean D;
+   protected boolean E;
+   public boolean F;
+   public boolean G;
+   public float H;
+   public float I;
+   public float J;
+   public float K;
+   public float L;
+   public float M;
+   private int b;
+   public double N;
+   public double O;
+   public double P;
+   public float Q;
+   public float R;
+   public boolean S;
+   public float T;
+   protected Random U;
+   public int V;
+   public int W;
+   private int c;
+   protected boolean X;
+   public int Y;
+   private boolean d;
+   public String Z;
+   public String aa;
+   protected boolean ab;
+   protected aim ac;
+   private double e;
+   private double am;
+   public boolean ad;
+   public long ae;
+   public int af;
+   public long ag;
+   public long ah;
+   public int ai;
+   public long aj;
+   public boolean ak;
+   public boolean al;
+
+   public nn(xd par1World) {
+      this.f = a++;
+      this.g = (double)1.0F;
+      this.h = false;
+      this.z = false;
+      this.C = false;
+      this.D = false;
+      this.F = true;
+      this.G = false;
+      this.H = 0.0F;
+      this.I = 0.6F;
+      this.J = 1.8F;
+      this.K = 0.0F;
+      this.L = 0.0F;
+      this.M = 0.0F;
+      this.b = 1;
+      this.Q = 0.0F;
+      this.R = 0.0F;
+      this.S = false;
+      this.T = 0.0F;
+      this.U = new Random();
+      this.V = 0;
+      this.W = 1;
+      this.c = 0;
+      this.X = false;
+      this.Y = 0;
+      this.d = true;
+      this.ab = false;
+      this.ac = new aim();
+      this.ad = false;
+      this.k = par1World;
+      this.d((double)0.0F, (double)0.0F, (double)0.0F);
+      this.ac.a(0, (byte)0);
+      this.ac.a(1, (short)300);
+      this.b();
+   }
+
+   protected abstract void b();
+
+   public aim y() {
+      return this.ac;
+   }
+
+   public boolean equals(Object par1Obj) {
+      if (par1Obj instanceof nn) {
+         return ((nn)par1Obj).f == this.f;
+      } else {
+         return false;
+      }
+   }
+
+   public int hashCode() {
+      return this.f;
+   }
+
+   protected void z() {
+      if (this.k != null) {
+         while(!(this.p <= (double)0.0F)) {
+            this.d(this.o, this.p, this.q);
+            if (this.k.a(this, this.y).size() == 0) {
+               break;
+            }
+
+            ++this.p;
+         }
+
+         this.r = this.s = this.t = (double)0.0F;
+         this.v = 0.0F;
+      }
+   }
+
+   public void A() {
+      this.G = true;
+   }
+
+   protected void a(float par1, float par2) {
+      this.I = par1;
+      this.J = par2;
+   }
+
+   protected void b(float par1, float par2) {
+      this.u = par1 % 360.0F;
+      this.v = par2 % 360.0F;
+   }
+
+   public void d(double par1, double par3, double par5) {
+      this.o = par1;
+      this.p = par3;
+      this.q = par5;
+      float f = this.I / 2.0F;
+      float f1 = this.J;
+      this.y.c(par1 - (double)f, par3 - (double)this.H + (double)this.Q, par5 - (double)f, par1 + (double)f, par3 - (double)this.H + (double)this.Q + (double)f1, par5 + (double)f);
+   }
+
+   public void c(float par1, float par2) {
+      float f = this.v;
+      float f1 = this.u;
+      this.u = (float)((double)this.u + (double)par1 * 0.15);
+      this.v = (float)((double)this.v - (double)par2 * 0.15);
+      if (this.v < -90.0F) {
+         this.v = -90.0F;
+      }
+
+      if (this.v > 90.0F) {
+         this.v = 90.0F;
+      }
+
+      this.x += this.v - f;
+      this.w += this.u - f1;
+   }
+
+   public void J_() {
+      this.B();
+   }
+
+   public void B() {
+      lv.a("entityBaseTick");
+      if (this.j != null && this.j.G) {
+         this.j = null;
+      }
+
+      ++this.V;
+      this.K = this.L;
+      this.l = this.o;
+      this.m = this.p;
+      this.n = this.q;
+      this.x = this.v;
+      this.w = this.u;
+      if (this.W() && !this.H()) {
+         long i = gk.d(this.o);
+         int j = gk.c(this.p - (double)0.2F - (double)this.H);
+         long k = gk.d(this.q);
+         int j1 = this.k.getBlockId(i, j, k);
+         if (j1 > 0) {
+            this.k.a("tilecrack_" + j1, this.o + ((double)this.U.nextFloat() - (double)0.5F) * (double)this.I, this.y.b + 0.1, this.q + ((double)this.U.nextFloat() - (double)0.5F) * (double)this.I, -this.r * (double)4.0F, (double)1.5F, -this.t * (double)4.0F);
+         }
+      }
+
+      if (this.g_()) {
+         if (!this.X && !this.d) {
+            float f = gk.a(this.r * this.r * (double)0.2F + this.s * this.s + this.t * this.t * (double)0.2F) * 0.2F;
+            if (f > 1.0F) {
+               f = 1.0F;
+            }
+
+            this.k.a(this, "random.splash", f, 1.0F + (this.U.nextFloat() - this.U.nextFloat()) * 0.4F);
+            float f1 = (float)gk.c(this.y.b);
+
+            for(int l = 0; (float)l < 1.0F + this.I * 20.0F; ++l) {
+               float f2 = (this.U.nextFloat() * 2.0F - 1.0F) * this.I;
+               float f4 = (this.U.nextFloat() * 2.0F - 1.0F) * this.I;
+               this.k.a("bubble", this.o + (double)f2, (double)(f1 + 1.0F), this.q + (double)f4, this.r, this.s - (double)(this.U.nextFloat() * 0.2F), this.t);
+            }
+
+            for(int i1 = 0; (float)i1 < 1.0F + this.I * 20.0F; ++i1) {
+               float f3 = (this.U.nextFloat() * 2.0F - 1.0F) * this.I;
+               float f5 = (this.U.nextFloat() * 2.0F - 1.0F) * this.I;
+               this.k.a("splash", this.o + (double)f3, (double)(f1 + 1.0F), this.q + (double)f5, this.r, this.s, this.t);
+            }
+         }
+
+         this.M = 0.0F;
+         this.X = true;
+         this.c = 0;
+      } else {
+         this.X = false;
+      }
+
+      if (this.k.F) {
+         this.c = 0;
+      } else if (this.c > 0) {
+         if (this.ab) {
+            this.c -= 4;
+            if (this.c < 0) {
+               this.c = 0;
+            }
+         } else {
+            if (this.c % 20 == 0) {
+               this.a((md)md.c, 1);
+            }
+
+            --this.c;
+         }
+      }
+
+      if (this.J()) {
+         this.C();
+         this.M *= 0.5F;
+      }
+
+      if (this.p < (double)-64.0F) {
+         this.E();
+      }
+
+      if (!this.k.F) {
+         this.a(0, this.c > 0);
+         this.a(2, this.j != null);
+      }
+
+      this.d = false;
+      lv.b();
+   }
+
+   protected void C() {
+      if (!this.ab) {
+         this.a((md)md.d, 4);
+         this.e(15);
+      }
+
+   }
+
+   public void e(int par1) {
+      int i = par1 * 20;
+      if (this.c < i) {
+         this.c = i;
+      }
+
+   }
+
+   public void D() {
+      this.c = 0;
+   }
+
+   protected void E() {
+      this.A();
+   }
+
+   public boolean e(double par1, double par3, double par5) {
+      wu axisalignedbb = this.y.c(par1, par3, par5);
+      List list = this.k.a(this, axisalignedbb);
+      if (list.size() > 0) {
+         return false;
+      } else {
+         return !this.k.b(axisalignedbb);
+      }
+   }
+
+   public void b(double par1, double par3, double par5) {
+      if (this.S) {
+         this.y.d(par1, par3, par5);
+         this.o = (this.y.a + this.y.d) / (double)2.0F;
+         this.p = this.y.b + (double)this.H - (double)this.Q;
+         this.q = (this.y.c + this.y.f) / (double)2.0F;
+      } else {
+         lv.a("move");
+         this.Q *= 0.4F;
+         double d = this.o;
+         double d1 = this.q;
+         if (this.E) {
+            this.E = false;
+            par1 *= (double)0.25F;
+            par3 *= (double)0.05F;
+            par5 *= (double)0.25F;
+            this.r = (double)0.0F;
+            this.s = (double)0.0F;
+            this.t = (double)0.0F;
+         }
+
+         double d2 = par1;
+         double d3 = par3;
+         double d4 = par5;
+         wu axisalignedbb = this.y.d();
+         boolean flag = this.z && this.V() && this instanceof yw;
+         if (flag) {
+            double d5;
+            for(d5 = 0.05; par1 != (double)0.0F && this.k.a(this, this.y.c(par1, (double)-1.0F, (double)0.0F)).size() == 0; d2 = par1) {
+               if (par1 < d5 && par1 >= -d5) {
+                  par1 = (double)0.0F;
+               } else if (par1 > (double)0.0F) {
+                  par1 -= d5;
+               } else {
+                  par1 += d5;
+               }
+            }
+
+            for(; par5 != (double)0.0F && this.k.a(this, this.y.c((double)0.0F, (double)-1.0F, par5)).size() == 0; d4 = par5) {
+               if (par5 < d5 && par5 >= -d5) {
+                  par5 = (double)0.0F;
+               } else if (par5 > (double)0.0F) {
+                  par5 -= d5;
+               } else {
+                  par5 += d5;
+               }
+            }
+
+            while(par1 != (double)0.0F && par5 != (double)0.0F && this.k.a(this, this.y.c(par1, (double)-1.0F, par5)).size() == 0) {
+               if (par1 < d5 && par1 >= -d5) {
+                  par1 = (double)0.0F;
+               } else if (par1 > (double)0.0F) {
+                  par1 -= d5;
+               } else {
+                  par1 += d5;
+               }
+
+               if (par5 < d5 && par5 >= -d5) {
+                  par5 = (double)0.0F;
+               } else if (par5 > (double)0.0F) {
+                  par5 -= d5;
+               } else {
+                  par5 += d5;
+               }
+
+               d2 = par1;
+               d4 = par5;
+            }
+         }
+
+         List list = this.k.a(this, this.y.a(par1, par3, par5));
+
+         for(int i = 0; i < list.size(); ++i) {
+            par3 = ((wu)list.get(i)).b(this.y, par3);
+         }
+
+         this.y.d((double)0.0F, par3, (double)0.0F);
+         if (!this.F && d3 != par3) {
+            par5 = (double)0.0F;
+            par3 = (double)0.0F;
+            par1 = (double)0.0F;
+         }
+
+         boolean flag1 = this.z || d3 != par3 && d3 < (double)0.0F;
+
+         for(int j = 0; j < list.size(); ++j) {
+            par1 = ((wu)list.get(j)).a(this.y, par1);
+         }
+
+         this.y.d(par1, (double)0.0F, (double)0.0F);
+         if (!this.F && d2 != par1) {
+            par5 = (double)0.0F;
+            par3 = (double)0.0F;
+            par1 = (double)0.0F;
+         }
+
+         for(int k = 0; k < list.size(); ++k) {
+            par5 = ((wu)list.get(k)).c(this.y, par5);
+         }
+
+         this.y.d((double)0.0F, (double)0.0F, par5);
+         if (!this.F && d4 != par5) {
+            par5 = (double)0.0F;
+            par3 = (double)0.0F;
+            par1 = (double)0.0F;
+         }
+
+         if (this.R > 0.0F && flag1 && (flag || this.Q < 0.05F) && (d2 != par1 || d4 != par5)) {
+            double d6 = par1;
+            double d8 = par3;
+            double d10 = par5;
+            par1 = d2;
+            par3 = (double)this.R;
+            par5 = d4;
+            wu axisalignedbb1 = this.y.d();
+            this.y.b(axisalignedbb);
+            List list1 = this.k.a(this, this.y.a(d2, par3, d4));
+
+            for(int j2 = 0; j2 < list1.size(); ++j2) {
+               par3 = ((wu)list1.get(j2)).b(this.y, par3);
+            }
+
+            this.y.d((double)0.0F, par3, (double)0.0F);
+            if (!this.F && d3 != par3) {
+               par5 = (double)0.0F;
+               par3 = (double)0.0F;
+               par1 = (double)0.0F;
+            }
+
+            for(int k2 = 0; k2 < list1.size(); ++k2) {
+               par1 = ((wu)list1.get(k2)).a(this.y, par1);
+            }
+
+            this.y.d(par1, (double)0.0F, (double)0.0F);
+            if (!this.F && d2 != par1) {
+               par5 = (double)0.0F;
+               par3 = (double)0.0F;
+               par1 = (double)0.0F;
+            }
+
+            for(int l2 = 0; l2 < list1.size(); ++l2) {
+               par5 = ((wu)list1.get(l2)).c(this.y, par5);
+            }
+
+            this.y.d((double)0.0F, (double)0.0F, par5);
+            if (!this.F && d4 != par5) {
+               par5 = (double)0.0F;
+               par3 = (double)0.0F;
+               par1 = (double)0.0F;
+            }
+
+            if (!this.F && d3 != par3) {
+               par5 = (double)0.0F;
+               par3 = (double)0.0F;
+               par1 = (double)0.0F;
+            } else {
+               par3 = (double)(-this.R);
+
+               for(int i3 = 0; i3 < list1.size(); ++i3) {
+                  par3 = ((wu)list1.get(i3)).b(this.y, par3);
+               }
+
+               this.y.d((double)0.0F, par3, (double)0.0F);
+            }
+
+            if (d6 * d6 + d10 * d10 >= par1 * par1 + par5 * par5) {
+               par1 = d6;
+               par3 = d8;
+               par5 = d10;
+               this.y.b(axisalignedbb1);
+            } else {
+               double d11 = this.y.b - (double)((int)this.y.b);
+               if (d11 > (double)0.0F) {
+                  this.Q = (float)((double)this.Q + d11 + 0.01);
+               }
+            }
+         }
+
+         lv.b();
+         lv.a("rest");
+         this.o = (this.y.a + this.y.d) / (double)2.0F;
+         this.p = this.y.b + (double)this.H - (double)this.Q;
+         this.q = (this.y.c + this.y.f) / (double)2.0F;
+         this.A = d2 != par1 || d4 != par5;
+         this.B = d3 != par3;
+         this.z = d3 != par3 && d3 < (double)0.0F;
+         this.C = this.A || this.B;
+         this.a(par3, this.z);
+         if (d2 != par1) {
+            this.r = (double)0.0F;
+         }
+
+         if (d3 != par3) {
+            this.s = (double)0.0F;
+         }
+
+         if (d4 != par5) {
+            this.t = (double)0.0F;
+         }
+
+         double d7 = this.o - d;
+         double d9 = this.q - d1;
+         if (this.e_() && !flag && this.j == null) {
+            this.L = (float)((double)this.L + (double)gk.a(d7 * d7 + d9 * d9) * 0.6);
+            long l = gk.d(this.o);
+            int j1 = gk.c(this.p - (double)0.2F - (double)this.H);
+            long l1 = gk.d(this.q);
+            int j3 = this.k.getBlockId(l, j1, l1);
+            if (j3 == 0 && this.k.getBlockId(l, j1 - 1, l1) == pb.aZ.bO) {
+               j3 = this.k.getBlockId(l, j1 - 1, l1);
+            }
+
+            if (this.L > (float)this.b && j3 > 0) {
+               this.b = (int)this.L + 1;
+               this.playStepSound(l, j1, l1, j3);
+               pb.m[j3].onEntityWalking(this.k, l, j1, l1, this);
+            }
+         }
+
+         long i1 = gk.d(this.y.a + 0.001);
+         int k1 = gk.c(this.y.b + 0.001);
+         long i2 = gk.d(this.y.c + 0.001);
+         long k3 = gk.d(this.y.d - 0.001);
+         int l3 = gk.c(this.y.e - 0.001);
+         long i4 = gk.d(this.y.f - 0.001);
+         if (this.k.checkChunksExist(i1, k1, i2, k3, l3, i4)) {
+            for(long j4 = i1; j4 <= k3; ++j4) {
+               for(int k4 = k1; k4 <= l3; ++k4) {
+                  for(long l4 = i2; l4 <= i4; ++l4) {
+                     int i5 = this.k.getBlockId(j4, k4, l4);
+                     if (i5 > 0) {
+                        pb.m[i5].onEntityCollidedWithBlock(this.k, j4, k4, l4, this);
+                     }
+                  }
+               }
+            }
+         }
+
+         boolean flag2 = this.G();
+         if (this.k.c(this.y.e(0.001, 0.001, 0.001))) {
+            this.a((int)1);
+            if (!flag2) {
+               ++this.c;
+               if (this.c == 0) {
+                  this.e(8);
+               }
+            }
+         } else if (this.c <= 0) {
+            this.c = -this.W;
+         }
+
+         if (flag2 && this.c > 0) {
+            this.k.a(this, "random.fizz", 0.7F, 1.6F + (this.U.nextFloat() - this.U.nextFloat()) * 0.4F);
+            this.c = -this.W;
+         }
+
+         lv.b();
+      }
+   }
+
+   protected void playStepSound(long par1, int par2, long par3, int par4) {
+      vj stepsound = pb.m[par4].cb;
+      if (this.k.getBlockId(par1, par2 + 1, par3) == pb.aS.bO) {
+         stepsound = pb.aS.cb;
+         this.k.a(this, stepsound.d(), stepsound.b() * 0.15F, stepsound.c());
+      } else if (!pb.m[par4].cd.d()) {
+         this.k.a(this, stepsound.d(), stepsound.b() * 0.15F, stepsound.c());
+      }
+
+   }
+
+   protected boolean e_() {
+      return true;
+   }
+
+   protected void a(double par1, boolean par3) {
+      if (par3) {
+         if (this.M > 0.0F) {
+            if (this instanceof acq) {
+               long i = gk.d(this.o);
+               int j = gk.c(this.p - (double)0.2F - (double)this.H);
+               long k = gk.d(this.q);
+               int l = this.k.getBlockId(i, j, k);
+               if (l == 0 && this.k.getBlockId(i, j - 1, k) == pb.aZ.bO) {
+                  l = this.k.getBlockId(i, j - 1, k);
+               }
+
+               if (l > 0) {
+                  pb.m[l].onFallenUpon(this.k, i, j, k, this, this.M);
+               }
+            }
+
+            this.e(this.M);
+            this.M = 0.0F;
+         }
+      } else if (par1 < (double)0.0F) {
+         this.M = (float)((double)this.M - par1);
+      }
+
+   }
+
+   public wu f_() {
+      return null;
+   }
+
+   protected void a(int par1) {
+      if (!this.ab) {
+         this.a(md.b, par1);
+      }
+
+   }
+
+   public final boolean F() {
+      return this.ab;
+   }
+
+   protected void e(float par1) {
+      if (this.i != null) {
+         this.i.e(par1);
+      }
+
+   }
+
+   public boolean G() {
+      return this.X || this.k.canLightningStrikeAt(gk.d(this.o), gk.c(this.p), gk.d(this.q));
+   }
+
+   public boolean H() {
+      return this.X;
+   }
+
+   public boolean g_() {
+      return this.k.a(this.y.b((double)0.0F, (double)-0.4F, (double)0.0F).e(0.001, 0.001, 0.001), acn.g, this);
+   }
+
+   public boolean a(acn par1Material) {
+      double d = this.p + (double)this.I();
+      long i = gk.d(this.o);
+      int j = gk.d((float)gk.c(d));
+      long k = gk.d(this.q);
+      int l = this.k.getBlockId(i, j, k);
+      if (l != 0 && pb.m[l].cd == par1Material) {
+         float f = agv.e(this.k.getBlockMetadata(i, j, k)) - 0.1111111F;
+         float f1 = (float)(j + 1) - f;
+         return d < (double)f1;
+      } else {
+         return false;
+      }
+   }
+
+   public float I() {
+      return 0.0F;
+   }
+
+   public boolean J() {
+      return this.k.a(this.y.b((double)-0.1F, (double)-0.4F, (double)-0.1F), acn.h);
+   }
+
+   public void a(float par1, float par2, float par3) {
+      float f = gk.c(par1 * par1 + par2 * par2);
+      if (!(f < 0.01F)) {
+         if (f < 1.0F) {
+            f = 1.0F;
+         }
+
+         f = par3 / f;
+         par1 *= f;
+         par2 *= f;
+         float f1 = gk.a(this.u * (float)Math.PI / 180.0F);
+         float f2 = gk.b(this.u * (float)Math.PI / 180.0F);
+         this.r += (double)(par1 * f2 - par2 * f1);
+         this.t += (double)(par2 * f2 + par1 * f1);
+      }
+   }
+
+   public int b(float par1) {
+      long i = gk.d(this.o);
+      long j = gk.d(this.q);
+      if (this.k.blockExists(i, 0, j)) {
+         double d = (this.y.e - this.y.b) * 0.66;
+         int k = gk.c(this.p - (double)this.H + d);
+         return this.k.getLightBrightnessForSkyBlocks(i, k, j, 0);
+      } else {
+         return 0;
+      }
+   }
+
+   public float a(float par1) {
+      long i = gk.d(this.o);
+      long j = gk.d(this.q);
+      if (this.k.blockExists(i, 0, j)) {
+         double d = (this.y.e - this.y.b) * 0.66;
+         int k = gk.c(this.p - (double)this.H + d);
+         return this.k.getLightBrightness(i, k, j);
+      } else {
+         return 0.0F;
+      }
+   }
+
+   public void a(xd par1World) {
+      this.k = par1World;
+   }
+
+   public void b(double par1, double par3, double par5, float par7, float par8) {
+      this.l = this.o = par1;
+      this.m = this.p = par3;
+      this.n = this.q = par5;
+      this.w = this.u = par7;
+      this.x = this.v = par8;
+      this.Q = 0.0F;
+      double d = (double)(this.w - par7);
+      if (d < (double)-180.0F) {
+         this.w += 360.0F;
+      }
+
+      if (d >= (double)180.0F) {
+         this.w -= 360.0F;
+      }
+
+      this.d(this.o, this.p, this.q);
+      this.b(par7, par8);
+   }
+
+   public void c(double par1, double par3, double par5, float par7, float par8) {
+      this.N = this.l = this.o = par1;
+      this.O = this.m = this.p = par3 + (double)this.H;
+      this.P = this.n = this.q = par5;
+      this.u = par7;
+      this.v = par8;
+      this.d(this.o, this.p, this.q);
+   }
+
+   public float e(nn par1Entity) {
+      float f = (float)(this.o - par1Entity.o);
+      float f1 = (float)(this.p - par1Entity.p);
+      float f2 = (float)(this.q - par1Entity.q);
+      return gk.c(f * f + f1 * f1 + f2 * f2);
+   }
+
+   public double f(double par1, double par3, double par5) {
+      double d = this.o - par1;
+      double d1 = this.p - par3;
+      double d2 = this.q - par5;
+      return d * d + d1 * d1 + d2 * d2;
+   }
+
+   public double g(double par1, double par3, double par5) {
+      double d = this.o - par1;
+      double d1 = this.p - par3;
+      double d2 = this.q - par5;
+      return (double)gk.a(d * d + d1 * d1 + d2 * d2);
+   }
+
+   public double f(nn par1Entity) {
+      double d = this.o - par1Entity.o;
+      double d1 = this.p - par1Entity.p;
+      double d2 = this.q - par1Entity.q;
+      return d * d + d1 * d1 + d2 * d2;
+   }
+
+   public void a(yw entityplayer) {
+   }
+
+   public void g(nn par1Entity) {
+      if (par1Entity.i != this && par1Entity.j != this) {
+         double d = par1Entity.o - this.o;
+         double d1 = par1Entity.q - this.q;
+         double d2 = gk.a(d, d1);
+         if (d2 >= (double)0.01F) {
+            d2 = (double)gk.a(d2);
+            d /= d2;
+            d1 /= d2;
+            double d3 = (double)1.0F / d2;
+            if (d3 > (double)1.0F) {
+               d3 = (double)1.0F;
+            }
+
+            d *= d3;
+            d1 *= d3;
+            d *= (double)0.05F;
+            d1 *= (double)0.05F;
+            d *= (double)(1.0F - this.T);
+            d1 *= (double)(1.0F - this.T);
+            this.c(-d, (double)0.0F, -d1);
+            par1Entity.c(d, (double)0.0F, d1);
+         }
+
+      }
+   }
+
+   public void c(double par1, double par3, double par5) {
+      this.r += par1;
+      this.s += par3;
+      this.t += par5;
+      this.al = true;
+   }
+
+   protected void K() {
+      this.D = true;
+   }
+
+   public boolean a(md par1DamageSource, int par2) {
+      this.K();
+      return false;
+   }
+
+   public boolean l_() {
+      return false;
+   }
+
+   public boolean d_() {
+      return false;
+   }
+
+   public void a(nn entity, int i) {
+   }
+
+   public boolean a(bo par1Vec3D) {
+      double d = this.o - par1Vec3D.a;
+      double d1 = this.p - par1Vec3D.b;
+      double d2 = this.q - par1Vec3D.c;
+      double d3 = d * d + d1 * d1 + d2 * d2;
+      return this.a(d3);
+   }
+
+   public boolean a(double par1) {
+      double d = this.y.c();
+      d *= (double)64.0F * this.g;
+      return par1 < d * d;
+   }
+
+   public String v_() {
+      return null;
+   }
+
+   public boolean c(ady par1NBTTagCompound) {
+      String s = this.L();
+      if (!this.G && s != null) {
+         par1NBTTagCompound.a("id", s);
+         this.d(par1NBTTagCompound);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public void d(ady par1NBTTagCompound) {
+      par1NBTTagCompound.a("Pos", this.a(new double[]{this.o, this.p + (double)this.Q, this.q}));
+      par1NBTTagCompound.a("Motion", this.a(new double[]{this.r, this.s, this.t}));
+      par1NBTTagCompound.a("Rotation", this.a(new float[]{this.u, this.v}));
+      par1NBTTagCompound.a("FallDistance", this.M);
+      par1NBTTagCompound.a("Fire", (short)this.c);
+      par1NBTTagCompound.a("Air", (short)this.Y());
+      par1NBTTagCompound.a("OnGround", this.z);
+      this.b(par1NBTTagCompound);
+   }
+
+   public void e(ady par1NBTTagCompound) {
+      no nbttaglist = par1NBTTagCompound.n("Pos");
+      no nbttaglist1 = par1NBTTagCompound.n("Motion");
+      no nbttaglist2 = par1NBTTagCompound.n("Rotation");
+      this.r = ((ahl)nbttaglist1.a(0)).a;
+      this.s = ((ahl)nbttaglist1.a(1)).a;
+      this.t = ((ahl)nbttaglist1.a(2)).a;
+      if (Math.abs(this.r) > (double)10.0F) {
+         this.r = (double)0.0F;
+      }
+
+      if (Math.abs(this.s) > (double)10.0F) {
+         this.s = (double)0.0F;
+      }
+
+      if (Math.abs(this.t) > (double)10.0F) {
+         this.t = (double)0.0F;
+      }
+
+      this.l = this.N = this.o = ((ahl)nbttaglist.a(0)).a;
+      this.m = this.O = this.p = ((ahl)nbttaglist.a(1)).a;
+      this.n = this.P = this.q = ((ahl)nbttaglist.a(2)).a;
+      this.w = this.u = ((m)nbttaglist2.a(0)).a;
+      this.x = this.v = ((m)nbttaglist2.a(1)).a;
+      this.M = par1NBTTagCompound.h("FallDistance");
+      this.c = par1NBTTagCompound.e("Fire");
+      this.g(par1NBTTagCompound.e("Air"));
+      this.z = par1NBTTagCompound.o("OnGround");
+      this.d(this.o, this.p, this.q);
+      this.b(this.u, this.v);
+      this.a(par1NBTTagCompound);
+   }
+
+   protected final String L() {
+      return aao.b(this);
+   }
+
+   protected abstract void a(ady var1);
+
+   protected abstract void b(ady var1);
+
+   protected no a(double[] par1ArrayOfDouble) {
+      no nbttaglist = new no();
+
+      for(double d : par1ArrayOfDouble) {
+         nbttaglist.a(new ahl((String)null, d));
+      }
+
+      return nbttaglist;
+   }
+
+   protected no a(float[] par1ArrayOfFloat) {
+      no nbttaglist = new no();
+
+      for(float f : par1ArrayOfFloat) {
+         nbttaglist.a(new m((String)null, f));
+      }
+
+      return nbttaglist;
+   }
+
+   public float h_() {
+      return this.J / 2.0F;
+   }
+
+   public fq b(int par1, int par2) {
+      return this.a(par1, par2, 0.0F);
+   }
+
+   public fq a(int par1, int par2, float par3) {
+      return this.a(new aan(par1, par2, 0), par3);
+   }
+
+   public fq a(aan par1ItemStack, float par2) {
+      fq entityitem = new fq(this.k, this.o, this.p + (double)par2, this.q, par1ItemStack);
+      entityitem.c = 10;
+      this.k.a(entityitem);
+      return entityitem;
+   }
+
+   public boolean M() {
+      return !this.G;
+   }
+
+   public boolean N() {
+      for(int i = 0; i < 8; ++i) {
+         float f = ((float)((i >> 0) % 2) - 0.5F) * this.I * 0.8F;
+         float f1 = ((float)((i >> 1) % 2) - 0.5F) * 0.1F;
+         float f2 = ((float)((i >> 2) % 2) - 0.5F) * this.I * 0.8F;
+         long j = gk.d(this.o + (double)f);
+         int k = gk.c(this.p + (double)this.I() + (double)f1);
+         long l = gk.d(this.q + (double)f2);
+         if (this.k.isBlockNormalCube(j, k, l)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public boolean c(yw par1EntityPlayer) {
+      return false;
+   }
+
+   public wu b(nn par1Entity) {
+      return null;
+   }
+
+   public void O() {
+      if (this.j.G) {
+         this.j = null;
+      } else {
+         this.r = (double)0.0F;
+         this.s = (double)0.0F;
+         this.t = (double)0.0F;
+         this.J_();
+         if (this.j != null) {
+            this.j.i_();
+            this.am += (double)(this.j.u - this.j.w);
+
+            for(this.e += (double)(this.j.v - this.j.x); this.am >= (double)180.0F; this.am -= (double)360.0F) {
+            }
+
+            while(this.am < (double)-180.0F) {
+               this.am += (double)360.0F;
+            }
+
+            while(this.e >= (double)180.0F) {
+               this.e -= (double)360.0F;
+            }
+
+            while(this.e < (double)-180.0F) {
+               this.e += (double)360.0F;
+            }
+
+            double d = this.am * (double)0.5F;
+            double d1 = this.e * (double)0.5F;
+            float f = 10.0F;
+            if (d > (double)f) {
+               d = (double)f;
+            }
+
+            if (d < (double)(-f)) {
+               d = (double)(-f);
+            }
+
+            if (d1 > (double)f) {
+               d1 = (double)f;
+            }
+
+            if (d1 < (double)(-f)) {
+               d1 = (double)(-f);
+            }
+
+            this.am -= d;
+            this.e -= d1;
+            this.u = (float)((double)this.u + d);
+            this.v = (float)((double)this.v + d1);
+         }
+      }
+   }
+
+   public void i_() {
+      this.i.d(this.o, this.p + this.l() + this.i.P(), this.q);
+   }
+
+   public double P() {
+      return (double)this.H;
+   }
+
+   public double l() {
+      return (double)this.J * (double)0.75F;
+   }
+
+   public void h(nn par1Entity) {
+      this.e = (double)0.0F;
+      this.am = (double)0.0F;
+      if (par1Entity == null) {
+         if (this.j != null) {
+            this.c(this.j.o, this.j.y.b + (double)this.j.J, this.j.q, this.u, this.v);
+            this.j.i = null;
+         }
+
+         this.j = null;
+      } else if (this.j == par1Entity) {
+         this.j.i = null;
+         this.j = null;
+         this.c(par1Entity.o, par1Entity.y.b + (double)par1Entity.J, par1Entity.q, this.u, this.v);
+      } else {
+         if (this.j != null) {
+            this.j.i = null;
+         }
+
+         if (par1Entity.i != null) {
+            par1Entity.i.j = null;
+         }
+
+         this.j = par1Entity;
+         par1Entity.i = this;
+      }
+   }
+
+   public void a(double par1, double par3, double par5, float par7, float par8, int par9) {
+      this.d(par1, par3, par5);
+      this.b(par7, par8);
+      List list = this.k.a(this, this.y.e((double)0.03125F, (double)0.0F, (double)0.03125F));
+      if (list.size() > 0) {
+         double d = (double)0.0F;
+
+         for(int i = 0; i < list.size(); ++i) {
+            wu axisalignedbb = (wu)list.get(i);
+            if (axisalignedbb.e > d) {
+               d = axisalignedbb.e;
+            }
+         }
+
+         par3 += d - this.y.b;
+         this.d(par1, par3, par5);
+      }
+
+   }
+
+   public float j_() {
+      return 0.1F;
+   }
+
+   public bo Q() {
+      return null;
+   }
+
+   public void R() {
+   }
+
+   public void a(double par1, double par3, double par5) {
+      this.r = par1;
+      this.s = par3;
+      this.t = par5;
+   }
+
+   public void a(byte byte0) {
+   }
+
+   public void k() {
+   }
+
+   public void S() {
+   }
+
+   public void b(int i, int j, int k) {
+   }
+
+   public boolean T() {
+      return this.c > 0 || this.f(0);
+   }
+
+   public boolean U() {
+      return this.j != null || this.f(2);
+   }
+
+   public boolean V() {
+      return this.f(1);
+   }
+
+   public void c(boolean par1) {
+      this.a(1, par1);
+   }
+
+   public boolean W() {
+      return this.f(3);
+   }
+
+   public void d(boolean par1) {
+      this.a(3, par1);
+   }
+
+   public boolean X() {
+      return this.f(4);
+   }
+
+   public void e(boolean par1) {
+      this.a(4, par1);
+   }
+
+   protected boolean f(int par1) {
+      return (this.ac.a(0) & 1 << par1) != 0;
+   }
+
+   protected void a(int par1, boolean par2) {
+      byte byte0 = this.ac.a(0);
+      if (par2) {
+         this.ac.b(0, (byte)(byte0 | 1 << par1));
+      } else {
+         this.ac.b(0, (byte)(byte0 & ~(1 << par1)));
+      }
+
+   }
+
+   public int Y() {
+      return this.ac.b(1);
+   }
+
+   public void g(int par1) {
+      this.ac.b(1, (short)par1);
+   }
+
+   public void a(d par1EntityLightningBolt) {
+      this.a((int)5);
+      ++this.c;
+      if (this.c == 0) {
+         this.e(8);
+      }
+
+   }
+
+   public void b(acq entityliving) {
+   }
+
+   protected boolean h(double par1, double par3, double par5) {
+      long i = gk.d(par1);
+      int j = gk.c(par3);
+      long k = gk.d(par5);
+      double d = par1 - (double)i;
+      double d1 = par3 - (double)j;
+      double d2 = par5 - (double)k;
+      if (this.k.isBlockNormalCube(i, j, k)) {
+         boolean flag = !this.k.isBlockNormalCube(i - 1L, j, k);
+         boolean flag1 = !this.k.isBlockNormalCube(i + 1L, j, k);
+         boolean flag2 = !this.k.isBlockNormalCube(i, j - 1, k);
+         boolean flag3 = !this.k.isBlockNormalCube(i, j + 1, k);
+         boolean flag4 = !this.k.isBlockNormalCube(i, j, k - 1L);
+         boolean flag5 = !this.k.isBlockNormalCube(i, j, k + 1L);
+         byte byte0 = -1;
+         double d3 = (double)9999.0F;
+         if (flag && d < d3) {
+            d3 = d;
+            byte0 = 0;
+         }
+
+         if (flag1 && (double)1.0F - d < d3) {
+            d3 = (double)1.0F - d;
+            byte0 = 1;
+         }
+
+         if (flag2 && d1 < d3) {
+            d3 = d1;
+            byte0 = 2;
+         }
+
+         if (flag3 && (double)1.0F - d1 < d3) {
+            d3 = (double)1.0F - d1;
+            byte0 = 3;
+         }
+
+         if (flag4 && d2 < d3) {
+            d3 = d2;
+            byte0 = 4;
+         }
+
+         if (flag5 && (double)1.0F - d2 < d3) {
+            double d4 = (double)1.0F - d2;
+            byte0 = 5;
+         }
+
+         float f = this.U.nextFloat() * 0.2F + 0.1F;
+         if (byte0 == 0) {
+            this.r = (double)(-f);
+         }
+
+         if (byte0 == 1) {
+            this.r = (double)f;
+         }
+
+         if (byte0 == 2) {
+            this.s = (double)(-f);
+         }
+
+         if (byte0 == 3) {
+            this.s = (double)f;
+         }
+
+         if (byte0 == 4) {
+            this.t = (double)(-f);
+         }
+
+         if (byte0 == 5) {
+            this.t = (double)f;
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public void q() {
+      this.E = true;
+      this.M = 0.0F;
+   }
+
+   public nn[] Z() {
+      return null;
+   }
+
+   public boolean a(nn par1Entity) {
+      return this == par1Entity;
+   }
+
+   public void f(float f) {
+   }
+
+   public boolean k_() {
+      return true;
+   }
+}

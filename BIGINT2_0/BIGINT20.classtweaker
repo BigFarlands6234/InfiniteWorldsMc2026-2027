@@ -1,0 +1,52 @@
+classTweaker    v1  intermediary
+accessible  field   net/minecraft/unmapped/C_68333747   f_02330620  I
+accessible  field   net/minecraft/unmapped/C_68333747   f_89118127  Lnet/minecraft/unmapped/C_96603444;
+accessible  field   net/minecraft/unmapped/C_68333747   f_86457436  Z
+accessible  field   net/minecraft/unmapped/C_68333747   f_12117860  Ljava/util/List;
+accessible  method  net/minecraft/unmapped/C_68333747   m_72149829  ()V
+extendable  method  net/minecraft/unmapped/C_14917579   m_56076720  (II)V
+accessible  field   net/minecraft/unmapped/C_71226614   f_99302835  J
+accessible  field   net/minecraft/unmapped/C_59053975   f_21072174  Ljava/util/Map;
+accessible  method  net/minecraft/client/Minecraft  m_46125407  ()Lnet/minecraft/unmapped/C_09602128;
+accessible  field   net/minecraft/unmapped/C_62858513   f_62093482  I
+accessible  method  net/minecraft/unmapped/C_64041439   m_61275883  ()V
+
+inject-interface    net/minecraft/unmapped/C_39588828   me/bigfarlands/extensions/networking/BigConnectionExtension
+inject-interface    net/minecraft/unmapped/C_10918870   me/bigfarlands/extensions/networking/PayloadPacketListenerExtension
+inject-interface    net/minecraft/unmapped/C_14917579   me/bigfarlands/extensions/BigLevelChunkExtension
+inject-interface    net/minecraft/unmapped/C_44627882   me/bigfarlands/extensions/BigChunkSourceExtension
+inject-interface    net/minecraft/unmapped/C_08489468   me/bigfarlands/extensions/entities/BigLevelStorageExtension
+inject-interface    net/minecraft/unmapped/C_99656780   me/bigfarlands/extensions/BigChunkStorageExtension
+inject-interface    net/minecraft/unmapped/C_64676926   me/bigfarlands/extensions/BigLevelDataExtension
+inject-interface    net/minecraft/unmapped/C_46108969   me/bigfarlands/extensions/BigLevelSourceExtension
+inject-interface    net/minecraft/unmapped/C_50078015   me/bigfarlands/extensions/BigLevelListenerExtension
+inject-interface    net/minecraft/unmapped/C_64041439   me/bigfarlands/extensions/BigLevelExtension
+inject-interface    net/minecraft/unmapped/C_31728388   me/bigfarlands/extensions/BigLargeFeatureExtension
+inject-interface    net/minecraft/unmapped/C_30339133   me/bigfarlands/extensions/BigFeatureExtension
+inject-interface    net/minecraft/unmapped/C_28112798   me/bigfarlands/extensions/BigBiomeSourceExtension
+inject-interface    net/minecraft/unmapped/C_42232651   me/bigfarlands/extensions/BigEntityExtension
+inject-interface    net/minecraft/unmapped/C_81592558   me/bigfarlands/extensions/BigTileExtension
+inject-interface    net/minecraft/unmapped/C_40735137   me/bigfarlands/extensions/BigTileEntityExtension
+inject-interface    net/minecraft/unmapped/C_71940803   me/bigfarlands/extensions/tiles/BigPortalTileExtension
+inject-interface    net/minecraft/unmapped/C_32290952   me/bigfarlands/extensions/tiles/BigFireTileExtension
+inject-interface    net/minecraft/unmapped/C_34225397   me/bigfarlands/extensions/tiles/BigSaplingTileExtension
+inject-interface    net/minecraft/unmapped/C_62147686   me/bigfarlands/extensions/tiles/BigCropTileExtension
+inject-interface    net/minecraft/unmapped/C_88996113   me/bigfarlands/extensions/tiles/BigRecordPlayerTileExtension
+inject-interface    net/minecraft/unmapped/C_98888256   me/bigfarlands/extensions/items/BigItemExtension
+inject-interface    net/minecraft/unmapped/C_88708284   me/bigfarlands/extensions/items/BigItemInstanceExtension
+inject-interface    net/minecraft/unmapped/C_14230742   me/bigfarlands/extensions/server/BigServerPlayerGameModeExtension
+inject-interface    net/minecraft/unmapped/C_27018031   me/bigfarlands/extensions/server/BigServerChunkCacheExtension
+inject-interface    net/minecraft/unmapped/C_70668269   me/bigfarlands/extensions/server/BigServerLevelExtension
+inject-interface    net/minecraft/unmapped/C_49202226   me/bigfarlands/extensions/server/BigServerPlayerExtension
+inject-interface    net/minecraft/unmapped/C_17889813   me/bigfarlands/extensions/networking/server/BigPlayerChunkMapExtension
+inject-interface    net/minecraft/unmapped/C_99660737   me/bigfarlands/extensions/networking/BigPlayerConnectionExtension
+inject-interface    net/minecraft/unmapped/C_34267874   me/bigfarlands/extensions/BigGameModeExtension
+inject-interface    net/minecraft/unmapped/C_57778754   me/bigfarlands/extensions/features/commands/LocalPlayerExtension
+inject-interface    net/minecraft/unmapped/C_34399650   me/bigfarlands/extensions/networking/client/BigMultiPlayerLevelExtension
+inject-interface    net/minecraft/unmapped/C_97866173   me/bigfarlands/extensions/features/commands/GuiExtension
+inject-interface    net/minecraft/unmapped/C_23014920   me/bigfarlands/extensions/features/commands/FontExtension
+inject-interface    net/minecraft/client/Minecraft  me/bigfarlands/extensions/features/commands/ChatMinecraftExtension
+inject-interface    net/minecraft/unmapped/C_03670941   me/bigfarlands/extensions/BigTileRendererExtension
+inject-interface    net/minecraft/unmapped/C_03670941   me/bigfarlands/extensions/features/fix_stripelands/BigTileRendererExtension
+inject-interface    net/minecraft/unmapped/C_15682602   me/bigfarlands/extensions/BigOffsettedRenderListExtension
+inject-interface    net/minecraft/unmapped/C_96603444   me/bigfarlands/extensions/features/fix_stripelands/BigTesselatorExtension

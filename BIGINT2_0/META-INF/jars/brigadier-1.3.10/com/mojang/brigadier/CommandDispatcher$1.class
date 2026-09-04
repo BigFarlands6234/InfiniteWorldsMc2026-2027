@@ -1,0 +1,14 @@
+package com.mojang.brigadier;
+
+import com.mojang.brigadier.tree.CommandNode;
+import java.util.function.Predicate;
+
+class CommandDispatcher$1 implements Predicate<CommandNode<S>> {
+   CommandDispatcher$1(CommandDispatcher this$0) {
+      this.this$0 = this$0;
+   }
+
+   public boolean test(CommandNode<S> input) {
+      return input != null && (input.getCommand() != null || input.getChildren().stream().anyMatch(CommandDispatcher.access$000(this.this$0)));
+   }
+}
